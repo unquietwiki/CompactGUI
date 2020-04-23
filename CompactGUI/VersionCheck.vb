@@ -2,6 +2,7 @@
 Imports System.Net
 
 Class VersionCheck
+
     Shared Sub VC(version As String)
 
         Try

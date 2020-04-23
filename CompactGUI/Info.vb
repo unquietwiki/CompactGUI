@@ -21,8 +21,8 @@ Public Class Info
     Private Sub panel_header_MouseDown(sender As Object, e As MouseEventArgs) Handles panel_header.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
     End Sub
-#End Region
 
+#End Region
 
     Private Sub Info_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         semVersion.Text = "V " + Compact.version
@@ -38,16 +38,12 @@ Public Class Info
 
         populateNonCompressable()
 
-
-
     End Sub
-
 
     Private Sub GithubLinks(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_CheckUpdates.LinkClicked, link_Github.LinkClicked
         If sender Is lbl_CheckUpdates Then Process.Start("https://github.com/ImminentFate/CompactGUI/releases")
         If sender Is link_Github Then Process.Start("https://github.com/ImminentFate/CompactGUI")
     End Sub
-
 
     Private Sub checkEnableRCMenu_CheckedChanged(sender As Object, e As EventArgs) Handles checkEnableRCMenu.Click
         If checkEnableRCMenu.Checked = True Then
@@ -57,7 +53,6 @@ Public Class Info
         End If
     End Sub
 
-
     Private Sub checkExperimentalBrowser_CheckedChanged(sender As Object, e As EventArgs) Handles checkExperimentalBrowser.CheckedChanged
         If checkExperimentalBrowser.Checked = True Then
             My.Settings.ExperimentalBrowser = True
@@ -66,7 +61,6 @@ Public Class Info
         End If
     End Sub
 
-
     Private Sub checkMinimisetoTray_CheckedChanged(sender As Object, e As EventArgs) Handles checkMinimisetoTray.CheckedChanged
         If checkMinimisetoTray.Checked Then
             My.Settings.MinimisetoTray = True
@@ -74,7 +68,6 @@ Public Class Info
             My.Settings.MinimisetoTray = False
         End If
     End Sub
-
 
     Private Sub checkShowNotifications_CheckedChanged(sender As Object, e As EventArgs) Handles checkShowNotifications.CheckedChanged
         If checkShowNotifications.Checked Then
@@ -91,7 +84,6 @@ Public Class Info
             My.Settings.SkipNonCompressable = False
         End If
     End Sub
-
 
     Private Sub btn_options_Click(sender As Object, e As EventArgs) Handles btn_options.Click, btn_licenses.Click, btn_help.Click
 
@@ -158,4 +150,5 @@ Public Class Info
 
         e.Graphics.DrawLine(p, New Point(46, 220), New Point(sender.width - 46, 220))
     End Sub
+
 End Class

@@ -9,7 +9,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{179404BE-643E-452C-B689-0C4DE78FF801}</ProjectGuid>
+    <ProjectGuid>{A5B085D5-A866-0ADD-34D1-C6338518CCA1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <StartupObject>CompactGUI.My.MyApplication</StartupObject>
     <RootNamespace>CompactGUI</RootNamespace>
@@ -36,6 +36,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.vb</DefaultItemExcludes>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,6 +79,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Ookii.Dialogs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.WindowsForms.1.0\lib\net35\Ookii.Dialogs.dll</HintPath>
       <Private>False</Private>
@@ -110,102 +113,109 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Compact.vb">
+    <Compile Include="My Project\MyNamespace.Dynamic.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.1.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.2.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.3.Designer.cs" />
+    <Compile Include="ApplicationEvents.cs" />
+    <Compile Include="Compact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Compact.Designer.vb">
-      <DependentUpon>Compact.vb</DependentUpon>
+    <Compile Include="Compact.Designer.cs">
+      <DependentUpon>Compact.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomControls.vb">
+    <Compile Include="CustomControls.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CommonActions.vb" />
-    <Compile Include="RunCompact.vb">
+    <Compile Include="CommonActions.cs" />
+    <Compile Include="RunCompact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShutdownDialog.Designer.vb">
-      <DependentUpon>ShutdownDialog.vb</DependentUpon>
+    <Compile Include="ShutdownDialog.Designer.cs">
+      <DependentUpon>ShutdownDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShutdownDialog.vb">
+    <Compile Include="ShutdownDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VersionCheck.vb" />
-    <Compile Include="WikiPopup.Designer.vb">
-      <DependentUpon>WikiPopup.vb</DependentUpon>
+    <Compile Include="VersionCheck.cs" />
+    <Compile Include="WikiPopup.Designer.cs">
+      <DependentUpon>WikiPopup.cs</DependentUpon>
     </Compile>
-    <Compile Include="WikiPopup.vb">
+    <Compile Include="WikiPopup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Info.Designer.vb">
-      <DependentUpon>Info.vb</DependentUpon>
+    <Compile Include="Info.Designer.cs">
+      <DependentUpon>Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="Info.vb">
+    <Compile Include="Info.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
+    <Compile Include="My Project\AssemblyInfo.cs" />
+    <Compile Include="My Project\Application.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
+    <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
+    <Compile Include="My Project\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RCMenu.vb" />
-    <Compile Include="Transitions.vb" />
-    <Compile Include="WikiHandler.vb" />
-    <Compile Include="WikiSubmission.Designer.vb">
-      <DependentUpon>WikiSubmission.vb</DependentUpon>
+    <Compile Include="RCMenu.cs" />
+    <Compile Include="Transitions.cs" />
+    <Compile Include="WikiHandler.cs" />
+    <Compile Include="WikiSubmission.Designer.cs">
+      <DependentUpon>WikiSubmission.cs</DependentUpon>
     </Compile>
-    <Compile Include="WikiSubmission.vb">
+    <Compile Include="WikiSubmission.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Compact.resx">
-      <DependentUpon>Compact.vb</DependentUpon>
+      <DependentUpon>Compact.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ShutdownDialog.resx">
-      <DependentUpon>ShutdownDialog.vb</DependentUpon>
+      <DependentUpon>ShutdownDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WikiPopup.resx">
-      <DependentUpon>WikiPopup.vb</DependentUpon>
+      <DependentUpon>WikiPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Info.resx">
-      <DependentUpon>Info.vb</DependentUpon>
+      <DependentUpon>Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CompactGUI.My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WikiSubmission.resx">
-      <DependentUpon>WikiSubmission.vb</DependentUpon>
+      <DependentUpon>WikiSubmission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="My Project\app.manifest">
       <SubType>Designer</SubType>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>CompactGUI.My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -238,7 +248,7 @@
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\vb\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\vb\Microsoft.NetFramework.VisualBasic.Analyzers.dll" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>

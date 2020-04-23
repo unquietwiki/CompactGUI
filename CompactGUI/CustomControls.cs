@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections;
+using System.IO;
+using System.Windows.Forms;
+
+namespace CompactGUI
+{
+    public class FileFolderDialog : CommonDialog
+    {
+        public OpenFileDialog Dg { get; set; } = new OpenFileDialog();
+
+        public new DialogResult ShowDialog()
+        {
+            return ShowDialog(null);
+        }
+
+        public new DialogResult ShowDialog(IWin32Window owner)
+        {
+            {
+                OpenFileDialog withBlock = Dg;
+                withBlock.ValidateNames = false;
+                withBlock.CheckFileExists = false;
+                withBlock.CheckPathExists = true;
+                withBlock.Multiselect = true;
+                withBlock.FileName = "#Folder";
+                withBlock.Title = "Select Folder or Files";
+                withBlock.Filter = "Folder|#Folder|All Files(*.*)|*.*";
+            }
+
+            if (owner is null)
+            {
+                return Dg.ShowDialog();
+            }
+            else
+            {
+                return Dg.ShowDialog(owner);
+            }
+        }
+
+        public string SelectedPath
+        {
+            get
+            {
+                if (Dg.FileName.EndsWith("#Folder"))
+                {
+                    return Path.GetDirectoryName(Dg.FileName);
+                }
+                else if (File.Exists(Dg.FileName) == true)
+                {
+                    return Dg.FileName;
+                }
+                else
+                {
+                    return Path.GetDirectoryName(Dg.FileName);
+                }
+            }
+
+            set
+            {
+                if (value is object && !string.IsNullOrEmpty(value))
+                {
+                    Dg.FileName = value;
+                }
+            }
+        }
+
+        public ArrayList MultipleFiles
+        {
+            get
+            {
+                if (Dg.FileNames is object && Dg.FileNames.Length > 1)
+                {
+                    ArrayList sb = new ArrayList();
+                    foreach (string fileName in Dg.FileNames)
+                    {
+                        if (File.Exists(fileName))
+                        {
+                            sb.Add(fileName);
+                        }
+                    }
+
+                    return sb;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public override void Reset()
+        {
+            Dg.Reset();
+        }
+
+        protected override bool RunDialog(IntPtr hwndOwner)
+        {
+            return true;
+        }
+    }
+
+    public class GraphicsPanel : Panel
+    {
+        private const int WS_EX_COMPOSITED = 0x2000000;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= WS_EX_COMPOSITED;
+                return cp;
+            }
+        }
+
+        public GraphicsPanel()
+        {
+            DoubleBuffered = true;
+        }
+    }
+}

@@ -12,13 +12,7 @@ Partial Class Compact
         ActionBegun(TargetMode)
     End Sub
 
-
-
-
     Dim compactArgs As String
-
-
-
 
     Private Sub RunCompact(desiredFile As String)
 
@@ -50,9 +44,6 @@ Partial Class Compact
 
     End Sub
 
-
-
-
     Private Sub RunCompact_ProcessGen(passthroughArgs As String, fileTarget As String)
         MyProcess = New Process
         With MyProcess.StartInfo
@@ -74,9 +65,6 @@ Partial Class Compact
         MyProcess.BeginErrorReadLine()
         MyProcess.BeginOutputReadLine()
     End Sub
-
-
-
 
     Private Function getEncoding() As Encoding
         Dim CPGet = New Process
@@ -101,8 +89,5 @@ Partial Class Compact
         CPGet.WaitForExit()
         Return Encoding.GetEncoding(CPa)
     End Function
-
-
-
 
 End Class

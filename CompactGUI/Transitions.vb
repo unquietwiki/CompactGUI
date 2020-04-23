@@ -11,7 +11,6 @@
     Shared FadeTickCumulation
     Shared FadeTimer As New Timer
 
-
     ''' <summary>
     ''' Fades the target form into or out of view
     ''' </summary>
@@ -65,7 +64,6 @@
 
 End Class
 
-
 Class UnfurlTransition
 
     Shared UnfurlObj As Control
@@ -98,7 +96,6 @@ Class UnfurlTransition
         End If
     End Sub
 
-
     Shared Sub UnfurlTimer_Tick(sender As Object, e As EventArgs)
         If UnfurlObj.Width < UnfurlEndWidth + Bounds And UnfurlObj.Width > UnfurlEndWidth - Bounds Then
             UnfurlTimer.Stop()
@@ -116,7 +113,6 @@ Class UnfurlTransition
             UnfurlObj.Width += UnfurlTickcount
         End If
     End Sub
-
 
 End Class
 
@@ -137,7 +133,6 @@ Public Class PaintPercentageTransition
         PaintTimer.Start()
     End Sub
 
-
     Shared Sub t_tick(sender As Object, e As EventArgs)
 
         If callpercentstep >= T Then
@@ -153,7 +148,5 @@ Public Class PaintPercentageTransition
             TargetControl.Update()
         End If
     End Sub
-
-
 
 End Class

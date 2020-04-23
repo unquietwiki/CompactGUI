@@ -1,16 +1,11 @@
-﻿Imports System.Windows.Forms
-
-Public Class ShutdownDialog
-
-
+﻿Public Class ShutdownDialog
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         Me.DialogResult = System.Windows.Forms.DialogResult.Abort
-        shutdownTimer.Stop
+        shutdownTimer.Stop()
         FadeTransition.FadeForm(Me, 0.96, 0, 300, True)
         'Me.Close()
     End Sub
-
 
     Private Sub Dialog1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         shutdownTimer.Start()
@@ -25,6 +20,7 @@ Public Class ShutdownDialog
     End Sub
 
     Dim secCount As Integer = 9
+
     Private Sub shutdownTimer_Tick(sender As Object, e As EventArgs) Handles shutdownTimer.Tick
 
         Select Case SDProcIntent.Text
@@ -58,4 +54,5 @@ Public Class ShutdownDialog
 
         secCount -= 1
     End Sub
+
 End Class

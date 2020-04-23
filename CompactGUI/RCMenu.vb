@@ -4,7 +4,6 @@
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\software\CompactGUI", "Executable Path", IO.Directory.GetCurrentDirectory)
     End Sub
 
-
     Shared Sub WriteRCMenuRegistry()
 
         My.Computer.Registry.SetValue _
@@ -20,7 +19,6 @@
 
     End Sub
 
-
     Public Shared Sub DeleteRCMenuRegistry()
 
         My.Computer.Registry.CurrentUser.DeleteSubKey("Software\\Classes\\Directory\\shell\\CompactGUI\command")
@@ -30,7 +28,6 @@
         My.Settings.IsContextMenuEnabled = False
 
     End Sub
-
 
     Public Shared Sub RunAsAdmin()
         Dim startInfo As ProcessStartInfo = New ProcessStartInfo With {

@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -116,9 +116,9 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("dl_; gif; jpg; jpeg; bmp; png; wmf; mkv; mp4; wmv; avi; bik; flv; ogg; mpg; m2v; "& _ 
-            "m4v; vob; mp3; aac; wma; flac; zip; xap; rar; 7z; cab; lzx; docx; xlsx; pptx; vs"& _ 
-            "sx; vstx; onepkg")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("dl_; gif; jpg; jpeg; png; wmf; mkv; mp4; wmv; avi; bik; flv; ogg; mpg; m2v; m4v; "& _ 
+            "vob; mp3; aac; wma; flac; zip; xap; rar; 7z; cab; lzx; docx; xlsx; pptx; vssx; v"& _ 
+            "stx; onepkg")>  _
         Public Property NonCompressableList() As String
             Get
                 Return CType(Me("NonCompressableList"),String)

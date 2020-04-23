@@ -29,7 +29,6 @@ Public Class FileFolderDialog
         End If
     End Function
 
-
     Public Property SelectedPath() As String
         Get
 
@@ -48,7 +47,6 @@ Public Class FileFolderDialog
             End If
         End Set
     End Property
-
 
     Public ReadOnly Property MultipleFiles() As ArrayList
         Get
@@ -72,9 +70,8 @@ Public Class FileFolderDialog
     Protected Overrides Function RunDialog(hwndOwner As IntPtr) As Boolean
         Return True
     End Function
+
 End Class
-
-
 
 Public Class GraphicsPanel
     Inherits Panel
@@ -91,5 +88,5 @@ Public Class GraphicsPanel
     Public Sub New()
         Me.DoubleBuffered = True
     End Sub
-End Class
 
+End Class

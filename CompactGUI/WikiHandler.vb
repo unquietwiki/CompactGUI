@@ -1,5 +1,5 @@
-﻿Imports System.IO
-Imports System.Globalization
+﻿Imports System.Globalization
+Imports System.IO
 Imports System.Net
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -32,7 +32,6 @@ Class WikiHandler
                 My.Settings.ResultsDB = stre.ReadToEnd
                 My.Settings.ResultsDB_Date = Date.Now
                 InitialiseInputFromGithub()
-
             Catch ex As WebException
                 Compact.sb_lblGameIssues.Text = "! No Internet Connection"
                 Compact.sb_lblGameIssues.Visible = True
@@ -42,7 +41,6 @@ Class WikiHandler
                 Compact.wkPostSizeUnit.Location = New Point(Compact.wkPostSizeVal.Location.X + Compact.wkPostSizeVal.Size.Width, Compact.wkPostSizeVal.Location.Y)
                 Compact.sb_Panel.Show()
             End Try
-
         Else
             Console.WriteLine("Using Memory DB")
             ParseData()
@@ -72,9 +70,7 @@ Class WikiHandler
             allResults.Add(res)
         Next result
 
-
         Dim gcount As New List(Of Result)
-
 
         Dim matches As Integer = 0
         For Each r As Result In allResults
@@ -95,10 +91,8 @@ Class WikiHandler
             Next
         End If
 
-
         Dim ratioavg As Decimal = 1
         firstGame = 0
-
 
         PrepareTable()
 
@@ -108,7 +102,6 @@ Class WikiHandler
             ratioavg += Decimal.Parse(r.Ratio)
 
             Compact.sb_lblGameIssues.Visible = False   'Add check for game issues at later date
-
 
         Next
         Compact.sb_labelCompressed.Text = "Estimated Compressed"
@@ -141,7 +134,6 @@ Class WikiHandler
 
     End Sub
 
-
     Private Shared Sub PrepareTable()
         WikiPopup.GamesTable.Visible = False
         WikiPopup.GamesTable.Controls.Clear()
@@ -173,15 +165,14 @@ Class WikiHandler
 
     End Sub
 
-
     Shared firstGame As Integer = 0
+
     Private Shared Sub FillTable(ps As Result)
 
         If firstGame = 0 Then
             Compact.sb_FolderName.Text = ps.Name
             firstGame = 1
         End If
-
 
         Dim GName As New Label With {
         .Text = ps.Name, .ForeColor = Color.DimGray,
@@ -224,13 +215,8 @@ Class WikiHandler
 
     End Sub
 
-
-
-
     Shared folderSize
     Shared suffix
-
-
 
     Public Shared Sub localFolderParse(DIwDString As DirectoryInfo, rawPreSize As String)
 
@@ -261,9 +247,6 @@ Class WikiHandler
 
     End Sub
 
-
-
-
     Public Shared Sub showWikiRes()
 
         Dim w = WikiPopup.GamesTable.Width + 35
@@ -273,7 +256,7 @@ Class WikiHandler
         Dim screenpos As Point = Compact.PointToScreen _
             (New Point(Compact.seecompest.Location.X + 670, Compact.seecompest.Location.Y + 135))
 
-        'Checks to make sure the popup isn't going to go offscreen. 
+        'Checks to make sure the popup isn't going to go offscreen.
         If screenpos.X + w < sc_w Then
             WikiPopup.SetBounds(screenpos.X, screenpos.Y, w, h)
         Else
@@ -284,11 +267,7 @@ Class WikiHandler
 
     End Sub
 
-
-
 End Class
-
-
 
 Public Class Result
 

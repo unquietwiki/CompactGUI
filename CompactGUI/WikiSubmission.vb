@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Management
 Imports System.Runtime.InteropServices
-Imports System.Security.Policy
 Imports System.Text.RegularExpressions
 Imports System.Web
 
@@ -15,9 +14,6 @@ Public Class WikiSubmission
     Friend Shared CompMode_Submit As String
     Friend Shared BeforeSize_Submit As ULong
     Friend Shared AfterSize_Submit As ULong
-
-
-
 
     Private Sub WikiSubmission_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
         Dim rect As New Rectangle(0, 0, Panel1.Width - 1, Panel1.Height + 1)
@@ -54,7 +50,6 @@ Assignment:
 
     End Sub
 
-
     Private Function ParseACFFiles() As FileInfo
         Dim dI As DirectoryInfo = New DirectoryInfo(Compact.workingDir)
         If Directory.GetParent(dI.Parent.FullName) IsNot Nothing AndAlso Directory.GetParent(dI.Parent.FullName).Name = "steamapps" Then
@@ -74,7 +69,6 @@ Assignment:
         End If
 
     End Function
-
 
     Private Sub btn_NextPage_Click(sender As Object, e As EventArgs) Handles btn_NextPage.Click
         If TabControl1.SelectedTab Is Page1 Then
@@ -102,14 +96,11 @@ Assignment:
 
             Dim rx As New Regex("[\?&|%™®©]")
 
-
             If rx.Match(txtbox_Name.Text).Success Then
                 MsgBox("Name cannot contain '?', '&', '|', '%', '™', '®', or '©'")
-
             Else
 
                 PrepareSubmission()
-
 
             End If
 
@@ -117,9 +108,7 @@ Assignment:
             Me.Close()
         End If
 
-
     End Sub
-
 
     Private Sub PrepareSubmission()
         Dim alreadyExists As Boolean
@@ -133,14 +122,12 @@ Assignment:
             End If
         Next
 
-
         Name_Submit = HttpUtility.UrlPathEncode(txtbox_Name.Text.Trim())
         Folder_Submit = HttpUtility.UrlPathEncode(Folder_Submit)
         SteamID_Submit = txtbox_SteamID.Text
         UniqueID_Submit = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(getMacAddress()))
 
         FillDataCollection()
-
 
         If alreadyExists = False Then
             Dim URL_First As String = "https://docs.google.com/forms/d/e/1FAIpQLSfAzlQAhyPEueFyQiTEmpudcKaVLnpRPmzrIuBZxnR8f7PjPg/formResponse?&ifq&entry.630201004=%3CCompactGUI%3E"
@@ -176,11 +163,6 @@ Assignment:
 
     End Sub
 
-
-
-
-
-
     Private Sub FillDataCollection()
 
         Dim output As String =
@@ -199,11 +181,7 @@ Size After: " & AfterSize_Submit
             ListView1.Items.Add(New ListViewItem(splitp))
         Next
 
-
     End Sub
-
-
-
 
     Public Function getMacAddress() As String
         Dim MacID As String = String.Empty
@@ -222,6 +200,7 @@ Size After: " & AfterSize_Submit
     End Sub
 
 #Region "Fancy Stuff"
+
     Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Const CS_DROPSHADOW = &H20000
@@ -232,30 +211,23 @@ Size After: " & AfterSize_Submit
         End Get
     End Property
 
-
     <DllImport("user32.dll")>
     Shared Function ReleaseCapture() As Boolean
     End Function
 
-
     <DllImport("user32.dll")>
     Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
     End Function
-
 
     Private Sub MoveForm()
         ReleaseCapture()
         SendMessage(Me.Handle, &HA1, 2, 0)
     End Sub
 
-
     Private Sub panel_topBar_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
     End Sub
 
 #End Region
-
-
-
 
 End Class

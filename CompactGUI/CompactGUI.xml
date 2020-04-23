@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompactGUI</name>
+    </assembly>
+    <members>
+        <member name="T:CompactGUI.My.Resources.Resources">
+            <summary>
+            A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.ResourceManager">
+            <summary>
+            Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.Culture">
+            <summary>
+            Overrides the current thread's CurrentUICulture property for all
+            resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.dsmask">
+            <summary>
+            Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.iconbright">
+            <summary>
+            Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.Ookii_Dialogs">
+            <summary>
+            Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="M:CompactGUI.FadeTransition.FadeForm(System.Windows.Forms.Form,System.Double,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Fades the target form into or out of view
+            </summary>
+            <param name="targetForm">Choose the target form</param>
+            <param name="startopacity">Set start opacity as a decimal between 0 and 1</param>
+            <param name="endopacity">Set end opacity as a decimal between 0 and 1</param>
+            <param name="duration">Set duration of transition in milliseconds</param>
+            <param name="closeonFinish"></param>
+        </member>
+    </members>
+</doc>

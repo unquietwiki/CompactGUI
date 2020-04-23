@@ -23,7 +23,6 @@
 
     End Sub
 
-
     Sub ActionBegun(Mode As String)
         With Compact
 
@@ -39,7 +38,6 @@
                     .sb_progresspercent.Visible = True
 
                     .sb_AnalysisPanel.Visible = True
-
 
                 Case "U"
                     .isActive = True
@@ -77,8 +75,6 @@
 
         End With
 
-
-
     End Sub
 
     Sub ActionCompleted(Mode As String, Optional AnalysisShowsFolderIsCompressed As Boolean = True)
@@ -107,7 +103,6 @@
                         .CompResultsPanel.Visible = True
                         .submitToWiki.Visible = True
                         .sb_ResultsPanel.Visible = True
-
                     Else
                         .sb_progresslabel.Text = "This Folder is Not Compressed"
                         .btnUncompress.Visible = False
@@ -124,8 +119,5 @@
         End With
 
     End Sub
-
-
-
 
 End Module
