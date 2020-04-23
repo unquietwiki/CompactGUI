@@ -42,36 +42,36 @@ namespace CompactGUI
             _Panel1 = new Panel();
             _Panel1.Paint += new PaintEventHandler(WikiSubmission_Paint);
             _Panel1.MouseDown += new MouseEventHandler(Panel_topBar_MouseDown);
-            _lbl_Title = new Label();
-            _txtbox_Name = new TextBox();
-            _lbl_GameorProgram = new Label();
-            _lbl_SteamID = new Label();
-            _lbl_optional = new Label();
+            _LblTitle = new Label();
+            _TxtBoxName = new TextBox();
+            _LblGameorProgram = new Label();
+            _LblSteamID = new Label();
+            _Lbloptional = new Label();
             _ToolTip1 = new ToolTip(components);
-            _txtbox_SteamID = new NumericUpDown();
+            _TxtBoxSteamID = new NumericUpDown();
             _Label2 = new Label();
-            _btn_NextPage = new Button();
-            _btn_NextPage.Click += new EventHandler(Btn_NextPage_Click);
-            _btn_Cancel = new Button();
-            _btn_Cancel.Click += new EventHandler(Btn_Cancel_Click);
+            _BtnNextPage = new Button();
+            _BtnNextPage.Click += new EventHandler(Btn_NextPage_Click);
+            _BtnCancel = new Button();
+            _BtnCancel.Click += new EventHandler(Btn_Cancel_Click);
             _TabControl1 = new TabControl();
             _Page1 = new TabPage();
             _Radio_Program = new RadioButton();
             _Radio_Game = new RadioButton();
             _Label6 = new Label();
             _Page2 = new TabPage();
-            _panel_SteamID = new Panel();
+            _PanelSteamID = new Panel();
             _Page3 = new TabPage();
             _ListView1 = new ListView();
             _ColumnHeader1 = new ColumnHeader();
             _ColumnHeader2 = new ColumnHeader();
             _Panel2 = new Panel();
             _Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)_txtbox_SteamID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)_TxtBoxSteamID).BeginInit();
             _TabControl1.SuspendLayout();
             _Page1.SuspendLayout();
             _Page2.SuspendLayout();
-            _panel_SteamID.SuspendLayout();
+            _PanelSteamID.SuspendLayout();
             _Page3.SuspendLayout();
             _Panel2.SuspendLayout();
             SuspendLayout();
@@ -79,67 +79,67 @@ namespace CompactGUI
             // Panel1
             // 
             _Panel1.BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
-            _Panel1.Controls.Add(_lbl_Title);
+            _Panel1.Controls.Add(_LblTitle);
             _Panel1.Dock = DockStyle.Top;
             _Panel1.Location = new Point(0, 0);
             _Panel1.Name = "Panel1";
             _Panel1.Size = new Size(590, 60);
             _Panel1.TabIndex = 0;
             // 
-            // lbl_Title
+            // LblTitle
             // 
-            _lbl_Title.AutoSize = true;
-            _lbl_Title.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, Conversions.ToByte(0));
-            _lbl_Title.ForeColor = Color.White;
-            _lbl_Title.Location = new Point(12, 18);
-            _lbl_Title.Name = "lbl_Title";
-            _lbl_Title.Size = new Size(140, 30);
-            _lbl_Title.TabIndex = 0;
-            _lbl_Title.Text = "Submit Result";
+            _LblTitle.AutoSize = true;
+            _LblTitle.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, Conversions.ToByte(0));
+            _LblTitle.ForeColor = Color.White;
+            _LblTitle.Location = new Point(12, 18);
+            _LblTitle.Name = "LblTitle";
+            _LblTitle.Size = new Size(140, 30);
+            _LblTitle.TabIndex = 0;
+            _LblTitle.Text = "Submit Result";
             // 
-            // txtbox_Name
+            // TxtBoxName
             // 
-            _txtbox_Name.Font = new Font("Segoe UI", 10.0F);
-            _txtbox_Name.Location = new Point(198, 47);
-            _txtbox_Name.MaxLength = 100;
-            _txtbox_Name.Name = "txtbox_Name";
-            _txtbox_Name.Size = new Size(233, 25);
-            _txtbox_Name.TabIndex = 1;
-            _ToolTip1.SetToolTip(_txtbox_Name, resources.GetString("txtbox_Name.ToolTip"));
+            _TxtBoxName.Font = new Font("Segoe UI", 10.0F);
+            _TxtBoxName.Location = new Point(198, 47);
+            _TxtBoxName.MaxLength = 100;
+            _TxtBoxName.Name = "TxtBoxName";
+            _TxtBoxName.Size = new Size(233, 25);
+            _TxtBoxName.TabIndex = 1;
+            _ToolTip1.SetToolTip(_TxtBoxName, resources.GetString("TxtBoxName.ToolTip"));
             // 
-            // lbl_GameorProgram
+            // LblGameorProgram
             // 
-            _lbl_GameorProgram.AutoSize = true;
-            _lbl_GameorProgram.Font = new Font("Segoe UI", 11.0F);
-            _lbl_GameorProgram.Location = new Point(37, 48);
-            _lbl_GameorProgram.Name = "lbl_GameorProgram";
-            _lbl_GameorProgram.Size = new Size(95, 20);
-            _lbl_GameorProgram.TabIndex = 2;
-            _lbl_GameorProgram.Text = "Game Name:";
-            _ToolTip1.SetToolTip(_lbl_GameorProgram, resources.GetString("lbl_GameorProgram.ToolTip"));
+            _LblGameorProgram.AutoSize = true;
+            _LblGameorProgram.Font = new Font("Segoe UI", 11.0F);
+            _LblGameorProgram.Location = new Point(37, 48);
+            _LblGameorProgram.Name = "LblGameorProgram";
+            _LblGameorProgram.Size = new Size(95, 20);
+            _LblGameorProgram.TabIndex = 2;
+            _LblGameorProgram.Text = "Game Name:";
+            _ToolTip1.SetToolTip(_LblGameorProgram, resources.GetString("LblGameorProgram.ToolTip"));
             // 
-            // lbl_SteamID
+            // LblSteamID
             // 
-            _lbl_SteamID.AutoSize = true;
-            _lbl_SteamID.Font = new Font("Segoe UI", 11.0F);
-            _lbl_SteamID.Location = new Point(41, 20);
-            _lbl_SteamID.Name = "lbl_SteamID";
-            _lbl_SteamID.Size = new Size(73, 20);
-            _lbl_SteamID.TabIndex = 2;
-            _lbl_SteamID.Text = "Steam ID:";
-            _ToolTip1.SetToolTip(_lbl_SteamID, resources.GetString("lbl_SteamID.ToolTip"));
+            _LblSteamID.AutoSize = true;
+            _LblSteamID.Font = new Font("Segoe UI", 11.0F);
+            _LblSteamID.Location = new Point(41, 20);
+            _LblSteamID.Name = "LblSteamID";
+            _LblSteamID.Size = new Size(73, 20);
+            _LblSteamID.TabIndex = 2;
+            _LblSteamID.Text = "Steam ID:";
+            _ToolTip1.SetToolTip(_LblSteamID, resources.GetString("LblSteamID.ToolTip"));
             // 
-            // lbl_optional
+            // Lbloptional
             // 
-            _lbl_optional.AutoSize = true;
-            _lbl_optional.Font = new Font("Segoe UI", 8.0F);
-            _lbl_optional.ForeColor = Color.Maroon;
-            _lbl_optional.Location = new Point(419, 25);
-            _lbl_optional.Name = "lbl_optional";
-            _lbl_optional.Size = new Size(59, 13);
-            _lbl_optional.TabIndex = 2;
-            _lbl_optional.Text = "(Optional)";
-            _ToolTip1.SetToolTip(_lbl_optional, resources.GetString("lbl_optional.ToolTip"));
+            _Lbloptional.AutoSize = true;
+            _Lbloptional.Font = new Font("Segoe UI", 8.0F);
+            _Lbloptional.ForeColor = Color.Maroon;
+            _Lbloptional.Location = new Point(419, 25);
+            _Lbloptional.Name = "Lbloptional";
+            _Lbloptional.Size = new Size(59, 13);
+            _Lbloptional.TabIndex = 2;
+            _Lbloptional.Text = "(Optional)";
+            _ToolTip1.SetToolTip(_Lbloptional, resources.GetString("Lbloptional.ToolTip"));
             // 
             // ToolTip1
             // 
@@ -153,17 +153,17 @@ namespace CompactGUI
             _ToolTip1.ToolTipIcon = ToolTipIcon.Info;
             _ToolTip1.ToolTipTitle = "Help";
             // 
-            // txtbox_SteamID
+            // TxtBoxSteamID
             // 
-            _txtbox_SteamID.BackColor = Color.White;
-            _txtbox_SteamID.BorderStyle = BorderStyle.FixedSingle;
-            _txtbox_SteamID.Font = new Font("Segoe UI", 10.0F);
-            _txtbox_SteamID.Location = new Point(180, 20);
-            _txtbox_SteamID.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
-            _txtbox_SteamID.Name = "txtbox_SteamID";
-            _txtbox_SteamID.Size = new Size(233, 25);
-            _txtbox_SteamID.TabIndex = 4;
-            _ToolTip1.SetToolTip(_txtbox_SteamID, resources.GetString("txtbox_SteamID.ToolTip"));
+            _TxtBoxSteamID.BackColor = Color.White;
+            _TxtBoxSteamID.BorderStyle = BorderStyle.FixedSingle;
+            _TxtBoxSteamID.Font = new Font("Segoe UI", 10.0F);
+            _TxtBoxSteamID.Location = new Point(180, 20);
+            _TxtBoxSteamID.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
+            _TxtBoxSteamID.Name = "TxtBoxSteamID";
+            _TxtBoxSteamID.Size = new Size(233, 25);
+            _TxtBoxSteamID.TabIndex = 4;
+            _ToolTip1.SetToolTip(_TxtBoxSteamID, resources.GetString("TxtBoxSteamID.ToolTip"));
             // 
             // Label2
             // 
@@ -176,32 +176,32 @@ namespace CompactGUI
             _Label2.Text = "The following data has been sent. ";
             _ToolTip1.SetToolTip(_Label2, resources.GetString("Label2.ToolTip"));
             // 
-            // btn_NextPage
+            // BtnNextPage
             // 
-            _btn_NextPage.BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
-            _btn_NextPage.FlatStyle = FlatStyle.Flat;
-            _btn_NextPage.Font = new Font("Segoe UI", 10.0F);
-            _btn_NextPage.ForeColor = Color.White;
-            _btn_NextPage.Location = new Point(503, 5);
-            _btn_NextPage.Name = "btn_NextPage";
-            _btn_NextPage.Size = new Size(75, 32);
-            _btn_NextPage.TabIndex = 3;
-            _btn_NextPage.Text = "Next";
-            _btn_NextPage.UseVisualStyleBackColor = false;
+            _BtnNextPage.BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
+            _BtnNextPage.FlatStyle = FlatStyle.Flat;
+            _BtnNextPage.Font = new Font("Segoe UI", 10.0F);
+            _BtnNextPage.ForeColor = Color.White;
+            _BtnNextPage.Location = new Point(503, 5);
+            _BtnNextPage.Name = "BtnNextPage";
+            _BtnNextPage.Size = new Size(75, 32);
+            _BtnNextPage.TabIndex = 3;
+            _BtnNextPage.Text = "Next";
+            _BtnNextPage.UseVisualStyleBackColor = false;
             // 
-            // btn_Cancel
+            // BtnCancel
             // 
-            _btn_Cancel.BackColor = Color.Maroon;
-            _btn_Cancel.DialogResult = DialogResult.Cancel;
-            _btn_Cancel.FlatStyle = FlatStyle.Flat;
-            _btn_Cancel.Font = new Font("Segoe UI", 10.0F);
-            _btn_Cancel.ForeColor = Color.White;
-            _btn_Cancel.Location = new Point(420, 5);
-            _btn_Cancel.Name = "btn_Cancel";
-            _btn_Cancel.Size = new Size(75, 32);
-            _btn_Cancel.TabIndex = 3;
-            _btn_Cancel.Text = "Cancel";
-            _btn_Cancel.UseVisualStyleBackColor = false;
+            _BtnCancel.BackColor = Color.Maroon;
+            _BtnCancel.DialogResult = DialogResult.Cancel;
+            _BtnCancel.FlatStyle = FlatStyle.Flat;
+            _BtnCancel.Font = new Font("Segoe UI", 10.0F);
+            _BtnCancel.ForeColor = Color.White;
+            _BtnCancel.Location = new Point(420, 5);
+            _BtnCancel.Name = "BtnCancel";
+            _BtnCancel.Size = new Size(75, 32);
+            _BtnCancel.TabIndex = 3;
+            _BtnCancel.Text = "Cancel";
+            _BtnCancel.UseVisualStyleBackColor = false;
             // 
             // TabControl1
             // 
@@ -263,9 +263,9 @@ namespace CompactGUI
             // 
             // Page2
             // 
-            _Page2.Controls.Add(_panel_SteamID);
-            _Page2.Controls.Add(_txtbox_Name);
-            _Page2.Controls.Add(_lbl_GameorProgram);
+            _Page2.Controls.Add(_PanelSteamID);
+            _Page2.Controls.Add(_TxtBoxName);
+            _Page2.Controls.Add(_LblGameorProgram);
             _Page2.Location = new Point(4, 22);
             _Page2.Name = "Page2";
             _Page2.Padding = new Padding(3);
@@ -274,15 +274,15 @@ namespace CompactGUI
             _Page2.Text = "Page2";
             _Page2.UseVisualStyleBackColor = true;
             // 
-            // panel_SteamID
+            // PanelSteamID
             // 
-            _panel_SteamID.Controls.Add(_txtbox_SteamID);
-            _panel_SteamID.Controls.Add(_lbl_SteamID);
-            _panel_SteamID.Controls.Add(_lbl_optional);
-            _panel_SteamID.Location = new Point(18, 74);
-            _panel_SteamID.Name = "panel_SteamID";
-            _panel_SteamID.Size = new Size(490, 60);
-            _panel_SteamID.TabIndex = 3;
+            _PanelSteamID.Controls.Add(_TxtBoxSteamID);
+            _PanelSteamID.Controls.Add(_LblSteamID);
+            _PanelSteamID.Controls.Add(_Lbloptional);
+            _PanelSteamID.Location = new Point(18, 74);
+            _PanelSteamID.Name = "PanelSteamID";
+            _PanelSteamID.Size = new Size(490, 60);
+            _PanelSteamID.TabIndex = 3;
             // 
             // Page3
             // 
@@ -323,8 +323,8 @@ namespace CompactGUI
             // Panel2
             // 
             _Panel2.BackColor = Color.White;
-            _Panel2.Controls.Add(_btn_NextPage);
-            _Panel2.Controls.Add(_btn_Cancel);
+            _Panel2.Controls.Add(_BtnNextPage);
+            _Panel2.Controls.Add(_BtnCancel);
             _Panel2.Dock = DockStyle.Bottom;
             _Panel2.Location = new Point(0, 244);
             _Panel2.Name = "Panel2";
@@ -333,11 +333,11 @@ namespace CompactGUI
             // 
             // WikiSubmission
             // 
-            AcceptButton = _btn_NextPage;
+            AcceptButton = _BtnNextPage;
             AutoScaleDimensions = new SizeF(6.0F, 13.0F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
-            CancelButton = _btn_Cancel;
+            CancelButton = _BtnCancel;
             ClientSize = new Size(590, 293);
             Controls.Add(_Panel1);
             Controls.Add(_Panel2);
@@ -349,14 +349,14 @@ namespace CompactGUI
             Text = "WikiSubmission";
             _Panel1.ResumeLayout(false);
             _Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)_txtbox_SteamID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)_TxtBoxSteamID).EndInit();
             _TabControl1.ResumeLayout(false);
             _Page1.ResumeLayout(false);
             _Page1.PerformLayout();
             _Page2.ResumeLayout(false);
             _Page2.PerformLayout();
-            _panel_SteamID.ResumeLayout(false);
-            _panel_SteamID.PerformLayout();
+            _PanelSteamID.ResumeLayout(false);
+            _PanelSteamID.PerformLayout();
             _Page3.ResumeLayout(false);
             _Page3.PerformLayout();
             _Panel2.ResumeLayout(false);
@@ -391,121 +391,121 @@ namespace CompactGUI
             }
         }
 
-        private Label _lbl_Title;
+        private Label _LblTitle;
 
-        internal Label lbl_Title
+        internal Label LblTitle
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _lbl_Title;
+                return _LblTitle;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_lbl_Title != null)
+                if (_LblTitle != null)
                 {
                 }
 
-                _lbl_Title = value;
-                if (_lbl_Title != null)
+                _LblTitle = value;
+                if (_LblTitle != null)
                 {
                 }
             }
         }
 
-        private TextBox _txtbox_Name;
+        private TextBox _TxtBoxName;
 
-        internal TextBox txtbox_Name
+        internal TextBox TxtBoxName
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _txtbox_Name;
+                return _TxtBoxName;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_txtbox_Name != null)
+                if (_TxtBoxName != null)
                 {
                 }
 
-                _txtbox_Name = value;
-                if (_txtbox_Name != null)
+                _TxtBoxName = value;
+                if (_TxtBoxName != null)
                 {
                 }
             }
         }
 
-        private Label _lbl_GameorProgram;
+        private Label _LblGameorProgram;
 
-        internal Label lbl_GameorProgram
+        internal Label LblGameorProgram
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _lbl_GameorProgram;
+                return _LblGameorProgram;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_lbl_GameorProgram != null)
+                if (_LblGameorProgram != null)
                 {
                 }
 
-                _lbl_GameorProgram = value;
-                if (_lbl_GameorProgram != null)
+                _LblGameorProgram = value;
+                if (_LblGameorProgram != null)
                 {
                 }
             }
         }
 
-        private Label _lbl_SteamID;
+        private Label _LblSteamID;
 
-        internal Label lbl_SteamID
+        internal Label LblSteamID
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _lbl_SteamID;
+                return _LblSteamID;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_lbl_SteamID != null)
+                if (_LblSteamID != null)
                 {
                 }
 
-                _lbl_SteamID = value;
-                if (_lbl_SteamID != null)
+                _LblSteamID = value;
+                if (_LblSteamID != null)
                 {
                 }
             }
         }
 
-        private Label _lbl_optional;
+        private Label _Lbloptional;
 
-        internal Label lbl_optional
+        internal Label Lbloptional
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _lbl_optional;
+                return _Lbloptional;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_lbl_optional != null)
+                if (_Lbloptional != null)
                 {
                 }
 
-                _lbl_optional = value;
-                if (_lbl_optional != null)
+                _Lbloptional = value;
+                if (_Lbloptional != null)
                 {
                 }
             }
@@ -535,54 +535,54 @@ namespace CompactGUI
             }
         }
 
-        private Button _btn_NextPage;
+        private Button _BtnNextPage;
 
-        internal Button btn_NextPage
+        internal Button BtnNextPage
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_NextPage;
+                return _BtnNextPage;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_NextPage != null)
+                if (_BtnNextPage != null)
                 {
-                    _btn_NextPage.Click -= Btn_NextPage_Click;
+                    _BtnNextPage.Click -= Btn_NextPage_Click;
                 }
 
-                _btn_NextPage = value;
-                if (_btn_NextPage != null)
+                _BtnNextPage = value;
+                if (_BtnNextPage != null)
                 {
-                    _btn_NextPage.Click += Btn_NextPage_Click;
+                    _BtnNextPage.Click += Btn_NextPage_Click;
                 }
             }
         }
 
-        private Button _btn_Cancel;
+        private Button _BtnCancel;
 
-        internal Button btn_Cancel
+        internal Button BtnCancel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_Cancel;
+                return _BtnCancel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_Cancel != null)
+                if (_BtnCancel != null)
                 {
-                    _btn_Cancel.Click -= Btn_Cancel_Click;
+                    _BtnCancel.Click -= Btn_Cancel_Click;
                 }
 
-                _btn_Cancel = value;
-                if (_btn_Cancel != null)
+                _BtnCancel = value;
+                if (_BtnCancel != null)
                 {
-                    _btn_Cancel.Click += Btn_Cancel_Click;
+                    _BtnCancel.Click += Btn_Cancel_Click;
                 }
             }
         }
@@ -779,49 +779,49 @@ namespace CompactGUI
             }
         }
 
-        private Panel _panel_SteamID;
+        private Panel _PanelSteamID;
 
-        internal Panel panel_SteamID
+        internal Panel PanelSteamID
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _panel_SteamID;
+                return _PanelSteamID;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_panel_SteamID != null)
+                if (_PanelSteamID != null)
                 {
                 }
 
-                _panel_SteamID = value;
-                if (_panel_SteamID != null)
+                _PanelSteamID = value;
+                if (_PanelSteamID != null)
                 {
                 }
             }
         }
 
-        private NumericUpDown _txtbox_SteamID;
+        private NumericUpDown _TxtBoxSteamID;
 
-        internal NumericUpDown txtbox_SteamID
+        internal NumericUpDown TxtBoxSteamID
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _txtbox_SteamID;
+                return _TxtBoxSteamID;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_txtbox_SteamID != null)
+                if (_TxtBoxSteamID != null)
                 {
                 }
 
-                _txtbox_SteamID = value;
-                if (_txtbox_SteamID != null)
+                _TxtBoxSteamID = value;
+                if (_TxtBoxSteamID != null)
                 {
                 }
             }

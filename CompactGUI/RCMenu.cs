@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     internal class RCMenu
@@ -28,14 +30,13 @@ namespace CompactGUI
 
         public static void RunAsAdmin()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo()
+            Process.Start(new ProcessStartInfo()
             {
                 UseShellExecute = true,
                 WorkingDirectory = Environment.CurrentDirectory,
                 FileName = Application.ExecutablePath,
                 Verb = "runas"
-            };
-            Process.Start(startInfo);
+            });
             Application.Exit();
         }
     }

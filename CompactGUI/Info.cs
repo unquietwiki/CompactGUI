@@ -7,14 +7,13 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class Info
     {
-        public Info()
-        {
-            InitializeComponent();
-        }
+        public Info() => InitializeComponent();
 
         /* TODO ERROR: Skipped RegionDirectiveTrivia */
 
@@ -68,7 +67,7 @@ namespace CompactGUI
 
         private void GithubLinks(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (sender == lbl_CheckUpdates)
+            if (sender == LblCheckUpdates)
             {
                 Process.Start("https://github.com/ImminentFate/CompactGUI/releases");
             }
@@ -131,19 +130,19 @@ namespace CompactGUI
         {
             switch (true)
             {
-                case object _ when sender == btn_options:
+                case object _ when sender == Btnoptions:
                     {
                         InfoTabControl.SelectedTab = Tab_Features;
                         break;
                     }
 
-                case object _ when sender == btn_licenses:
+                case object _ when sender == Btnlicenses:
                     {
                         InfoTabControl.SelectedTab = Tab_Licenses;
                         break;
                     }
 
-                case object _ when sender == btn_help:
+                case object _ when sender == Btnhelp:
                     {
                         InfoTabControl.SelectedTab = Tab_Help;
                         break;
@@ -194,25 +193,23 @@ namespace CompactGUI
 
         private void Btn_Paint(object sender, PaintEventArgs e)
         {
-            var senderNamed = (Button)sender;
+            Button senderNamed = (Button)sender;
             if (Operators.ConditionalCompareObjectEqual(senderNamed.BackColor, Color.FromArgb(255, 102, 121, 138), false))
             {
                 PointF[] trianglePtsArray = new[] { new PointF(Conversions.ToSingle(senderNamed.Width - 1), 10), new PointF(Conversions.ToSingle(senderNamed.Width - 1), Conversions.ToSingle(senderNamed.Height - 10)), new PointF(Conversions.ToSingle(senderNamed.Width - 10), Conversions.ToSingle(senderNamed.Height / 2)), new PointF(Conversions.ToSingle(senderNamed.Width - 1), 10) };
-                using (System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Alternate))
-                {
-                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                    gp.AddLines(trianglePtsArray);
-                    gp.CloseFigure();
-                    e.Graphics.FillPath(Brushes.White, gp);
-                }
+                using var gp = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Alternate);
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                gp.AddLines(trianglePtsArray);
+                gp.CloseFigure();
+                e.Graphics.FillPath(Brushes.White, gp);
                 e.Graphics.DrawLines(Pens.White, trianglePtsArray);
             }
         }
 
         private void Tab_Features_Paint(object sender, PaintEventArgs e)
         {
-            var senderNamed = (TabPage)sender;
-            using Pen p = new Pen(Color.LightGray);
+            TabPage senderNamed = (TabPage)sender;
+            using var p = new Pen(Color.LightGray);
             e.Graphics.DrawLine(p, new Point(46, 220), new Point(Conversions.ToInteger(senderNamed.Width - 46), 220));
         }
     }

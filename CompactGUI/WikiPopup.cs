@@ -1,14 +1,13 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class WikiPopup
     {
-        public WikiPopup()
-        {
-            InitializeComponent();
-        }
+        public WikiPopup() => InitializeComponent();
 
         protected override CreateParams CreateParams
         {

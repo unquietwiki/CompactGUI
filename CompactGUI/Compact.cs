@@ -15,13 +15,15 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class Compact
     {
-        private static object version = "2.7.0";
+        private static object version = "3.0.0";
 
-        private Process MyProcess
+        private Process? MyProcess
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get => MyProcess1;
@@ -54,8 +56,8 @@ namespace CompactGUI
             }
         }
 
-        public Process MyProcess1 { get; set; }
-        public string CurrentMode1 { get; set; }
+        public Process? MyProcess1 { get; set; }
+        public string? CurrentMode1 { get; set; }
         public object OverrideCompressFolderButton { get; set; } = 0;
         public int DirectorysizeexceptionCount { get; set; } = 0;
         public static object Version { get => version; set => version = value; }
@@ -91,20 +93,20 @@ namespace CompactGUI
             LoadFromSettings();
             if ((dirChooser.Text ?? "") == "❯   Select Target Folder")
             {
-                panel_topBar.Height = Height - 1;
-                panel_topBar.Anchor += (int)AnchorStyles.Bottom;
+                PaneltopBar.Height = Height - 1;
+                PaneltopBar.Anchor += (int)AnchorStyles.Bottom;
                 {
                     Label withBlock = topbar_title;
                     withBlock.AutoSize = false;
                     withBlock.TextAlign = ContentAlignment.MiddleCenter;
                     withBlock.Font = new Font(topbar_title.Font.Name, 32, FontStyle.Regular);
-                    withBlock.Width = panel_topBar.Width;
+                    withBlock.Width = PaneltopBar.Width;
                     withBlock.Height = topbar_title.Font.Height;
-                    withBlock.Location = new Point(0, panel_topBar.Height / 2 - 150);
+                    withBlock.Location = new Point(0, PaneltopBar.Height / 2 - 150);
                     withBlock.Anchor += (int)AnchorStyles.Right;
                 }
 
-                topbar_dirchooserContainer.Location = new Point(44, panel_topBar.Height / 2 - 22);
+                topbar_dirchooserContainer.Location = new Point(44, PaneltopBar.Height / 2 - 22);
             }
 
             comboChooseShutdown.SelectedItem = comboChooseShutdown.Items[0];
@@ -123,7 +125,7 @@ namespace CompactGUI
         {
             if (IsActive1 == false & IsQueryMode1 == false)
             {
-                FileFolderDialog folderChoice = new FileFolderDialog();
+                var folderChoice = new FileFolderDialog();
                 folderChoice.ShowDialog();
                 if (Directory.Exists(Conversions.ToString(folderChoice.SelectedPath)))
                 {
@@ -145,21 +147,21 @@ namespace CompactGUI
             }
         }
 
-        private void SelectFolder(string selectedDir, string senderID)
+        private void SelectFolder(string selectedDir, string senderID = "")
         {
             Cursor.Current = Cursors.WaitCursor;
             OverrideCompressFolderButton = 0;
-            if (selectedDir.Contains(@"C:\Windows"))
+            if (selectedDir.Contains(System.Environment.SpecialFolder.Windows.ToString()))
             {
-                ThrowError(ERR_WINDOWSDIRNOTALLOWED);                                    // Makes sure you're not trying to compact the Windows directory. I should Regex this to catch all possible drives hey?
+                ThrowError(ERR_WINDOWSDIRNOTALLOWED);   // Makes sure you're not trying to compact the Windows directory.
             }
             else if (selectedDir.EndsWith(@":\"))
             {
                 ThrowError(ERR_WHOLEDRIVENOTALLOWED);
             }
-            else if (selectedDir.Length >= 3)                                                                                    // Makes sure the chosen folder isn't a null value or an exception
+            else if (selectedDir.Length >= 3)   // Makes sure the chosen folder isn't a null value or an exception
             {
-                DirectoryInfo DI_selectedDir = new DirectoryInfo(selectedDir);
+                var DI_selectedDir = new DirectoryInfo(selectedDir);
                 workingDir = DI_selectedDir.FullName.TrimEnd('\\', '/');
                 ListOfFiles.Clear();
                 AllFiles.Clear();
@@ -210,13 +212,15 @@ namespace CompactGUI
                     withBlock.Location = new Point(39, 20);
                 }
 
+                // FIXME
                 if (Conversions.ToBoolean(!Operators.ConditionalCompareObjectEqual(OverrideCompressFolderButton, 0, false)))
                 {
-                    btnCompress.Enabled = false;               // Used as a security measure to stop accidental compression of folders that should not be compressed - even though the compact.exe process will throw an error if you try, I'd prefer to catch it here anyway.
+                    // btnCompress.Enabled = false;    // Used as a security measure to stop accidental compression of folders that should not be compressed - even though the compact.exe process will throw an error if you try, I'd prefer to catch it here anyway.
                 }
             }
-            else if ((senderID ?? "") == "button")
+            else if (senderID.Contains("button"))
             {
+                _ = MessageBox.Show("No folder selected");
                 Console.Write("No folder selected");
             }
         }
@@ -225,7 +229,7 @@ namespace CompactGUI
 
         private void GetFilesToCompress(string targetDirectory, List<string> targetOutputList, bool LimitSelectedFiles)
         {
-            List<string> NonCompressableSet = new List<string>(Regex.Replace(My.Settings.Default.NonCompressableList, @"\s+", "").Split(';'));
+            var NonCompressableSet = new List<string>(Regex.Replace(My.Settings.Default.NonCompressableList, @"\s+", "").Split(';'));
             string[] fileEntries = Directory.GetFiles(targetDirectory);
             foreach (string fileName in fileEntries) // Process the list of files found in the directory.
             {
@@ -427,7 +431,7 @@ namespace CompactGUI
 
             conOut.Items.Insert(0, "File" + Strings.StrDup(conOutFileNamePadding - 4, " ") + Constants.vbTab + "Size" + Strings.StrDup(16, " ") + "Size on Disk");
             conOut.Items.Insert(1, "");
-            List<string> AnalyzedPoorlyCompressedFiles = new List<string>();
+            var AnalyzedPoorlyCompressedFiles = new List<string>();
             foreach (string fpath in AllFiles)
             {
                 Application.DoEvents();
@@ -536,10 +540,10 @@ namespace CompactGUI
 
         public static decimal GetFileSizeOnDisk(string file)
         {
-            FileInfo info = new FileInfo(file);
+            var info = new FileInfo(file);
             ulong blockSize = 0;
             uint clusterSize;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select BlockSize,NumberOfBlocks from Win32_Volume WHERE DriveLetter = '" + info.Directory.Root.FullName.TrimEnd('\\') + "'");
+            var searcher = new ManagementObjectSearcher("select BlockSize,NumberOfBlocks from Win32_Volume WHERE DriveLetter = '" + info.Directory.Root.FullName.TrimEnd('\\') + "'");
             foreach (ManagementObject vi in searcher.Get())
             {
                 blockSize = Conversions.ToULong(vi["BlockSize"]);
@@ -672,8 +676,8 @@ namespace CompactGUI
         {
             if (Interaction.MsgBox("Save console output?", MsgBoxStyle.YesNo) == MsgBoxResult.Yes)
             {
-                ArrayList reverseCon = new ArrayList();
-                StringBuilder sb = new StringBuilder();
+                var reverseCon = new ArrayList();
+                var sb = new StringBuilder();
                 foreach (string ln in conOut.Items)
                 {
                     reverseCon.Add(ln.Trim());
@@ -839,14 +843,15 @@ namespace CompactGUI
 
         private void ButtonCompress_Paint(object sender, PaintEventArgs e)
         {
-            Button btn = (Button)sender;
-            SolidBrush drawBrush = new SolidBrush(btn.ForeColor);
-            StringFormat sf = new StringFormat()
+            using var btn = (Button)sender;
+            using var solidBrush = new SolidBrush(btn.ForeColor);
+            using var sf = new StringFormat()
             {
                 Alignment = StringAlignment.Center,
                 LineAlignment = StringAlignment.Center
             };
             btnCompress.Text = string.Empty;
+            using var drawBrush = solidBrush;
             e.Graphics.DrawString("Compress Folder", btn.Font, drawBrush, e.ClipRectangle, sf);
             drawBrush.Dispose();
             sf.Dispose();
@@ -854,13 +859,13 @@ namespace CompactGUI
 
         private void Sb_AnalysisPanel_Paint(object sender, PaintEventArgs e)
         {
-            using Pen p = new Pen(Brushes.DimGray, 1);
+            using var p = new Pen(Brushes.DimGray, 1);
             e.Graphics.DrawLine(p, new Point(30, 0), new Point(303, 0));
         }
 
         private void Sb_ResultsPanel_Paint(object sender, PaintEventArgs e)
         {
-            using Pen dotted = new Pen(Brushes.ForestGreen, 1)
+            using var dotted = new Pen(Brushes.ForestGreen, 1)
             {
                 DashPattern = new float[] { 3, 3, 3, 3 }
             };
@@ -870,7 +875,7 @@ namespace CompactGUI
 
         private static decimal Callpercent;
 
-        public void Results_arc_Paint(object sender, PaintEventArgs e)
+        public void ResultsArcPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             DrawProgress(e.Graphics, new Rectangle(21, 21, 203, 203), Conversions.ToDecimal(PaintPercentageTransition.Callpercentstep), ColorTranslator.FromHtml("#3B668E"), ColorTranslator.FromHtml("#CFD8DC"));
@@ -878,40 +883,40 @@ namespace CompactGUI
 
         private void DrawProgress(Graphics g, Rectangle rect, decimal percentage, Color percColor, Color remColor)
         {
-            decimal progressAngle = 183 / (100 * percentage);
-            decimal remainderAngle = (185 * percentage) / Callpercent - progressAngle;
-            using Pen pen = new Pen(percColor, 41);
-            using Pen remainderPen = new Pen(remColor, 41);
-            using Font fnt = new Font("Segoe UI Light", 22);
-            using Font fnt2 = new Font("Segoe UI Light", 9);
-            using Font fnt3 = new Font("Segoe UI Light", 10);
-            using SolidBrush fb = new SolidBrush(Color.FromArgb(48, 67, 84));
-            g.DrawArc(remainderPen, rect, (float)progressAngle - 184, (float)remainderAngle);
-            g.DrawArc(pen, rect, -183, (float)progressAngle);
+            decimal progressAngle = (183 / 100 * (percentage));
+            // var remainderAngle = (185 * percentage / Callpercent) - progressAngle;
+            using var progressPen = new Pen(percColor, 41);
+            using var remainderPen = new Pen(remColor, 41);
+            using var fnt = new Font("Segoe UI Light", 22);
+            using var fnt2 = new Font("Segoe UI Light", 9);
+            using var fnt3 = new Font("Segoe UI Light", 10);
+            using var fb = new SolidBrush(Color.FromArgb(48, 67, 84));
+            g.DrawArc(remainderPen, rect, (float)progressAngle - 184, (float)((percentage / Callpercent) - progressAngle));
+            g.DrawArc(progressPen, rect, -183, (float)progressAngle);
             string perc = Math.Round(percentage, 0).ToString();
-            SizeF percSize = g.MeasureString(perc, fnt);
-            Point percPoint = new Point((int)(rect.Left + (rect.Width / 2) - (percSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (percSize.Height * 1.25)));
+            var percSize = g.MeasureString(perc, fnt);
+            var percPoint = new Point((int)(rect.Left + (rect.Width / 2) - (percSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (percSize.Height * 1.25)));
             g.DrawString(perc, fnt, fb, percPoint);
             string sign = "%";
-            Point signPoint = new Point((int)(percPoint.X + percSize.Width - 5), percPoint.Y + 10);
+            var signPoint = new Point((int)(percPoint.X + percSize.Width - 5), percPoint.Y + 10);
             g.DrawString(sign, fnt2, fb, signPoint);
             string lbl = "Reduction in size";
-            SizeF lblSize = g.MeasureString(lbl, fnt3);
-            Point lblPoint = new Point((int)(rect.Left + (rect.Width / 2) - (lblSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (lblSize.Height * 0.75)));
+            var lblSize = g.MeasureString(lbl, fnt3);
+            var lblPoint = new Point((int)(rect.Left + (rect.Width / 2) - (lblSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (lblSize.Height * 0.75)));
             g.DrawString(lbl, fnt3, fb, lblPoint);
         }
 
         private void CompResultsPanel_Paint(object sender, PaintEventArgs e)
         {
-            using Pen p = new Pen(Brushes.Silver, 1);
-            e.Graphics.DrawLine(p, new Point(12, CompResultsPanel.Height - 1), new Point(panel_console.Width - 12, CompResultsPanel.Height - 1));
+            using var p = new Pen(Brushes.Silver, 1);
+            e.Graphics.DrawLine(p, new Point(12, CompResultsPanel.Height - 1), new Point(Panelconsole.Width - 12, CompResultsPanel.Height - 1));
         }
 
         private void UpdateBanner_Paint(object sender, PaintEventArgs e)
         {
             int x = updateBanner.Width;
             int y = updateBanner.Height;
-            using SolidBrush brush = new SolidBrush(Color.FromArgb(255, 47, 66, 83));
+            using var brush = new SolidBrush(Color.FromArgb(255, 47, 66, 83));
             e.Graphics.FillPolygon(brush, new PointF[] { new Point(0, 0), new Point(0, y), new Point(y, y) });
             e.Graphics.FillPolygon(brush, new PointF[] { new Point(x, 0), new Point(x, y), new Point(x - y, y) });
         }
@@ -929,7 +934,7 @@ namespace CompactGUI
 
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
-            using Pen p = new Pen(Brushes.Silver, 1);
+            using var p = new Pen(Brushes.Silver, 1);
             e.Graphics.DrawLine(p, new Point(15, 0), new Point(Panel1.Width, 0));
         }
 
@@ -974,7 +979,7 @@ namespace CompactGUI
 
         /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 
-        private void Sb_lblGameIssues_Click(object sender, EventArgs e)
+        private void Sb_lblKnownIssues_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/ImminentFate/CompactGUI/wiki/Compression-Results:-Games");
         }

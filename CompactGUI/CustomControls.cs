@@ -3,16 +3,15 @@ using System.Collections;
 using System.IO;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public class FileFolderDialog : CommonDialog
     {
         public OpenFileDialog Dg { get; set; } = new OpenFileDialog();
 
-        public new DialogResult ShowDialog()
-        {
-            return ShowDialog(null);
-        }
+        public new DialogResult ShowDialog() => ShowDialog(Compact.ActiveForm);
 
         public new DialogResult ShowDialog(IWin32Window owner)
         {
@@ -64,13 +63,13 @@ namespace CompactGUI
             }
         }
 
-        public ArrayList MultipleFiles
+        public ArrayList? MultipleFiles
         {
             get
             {
                 if (Dg.FileNames is object && Dg.FileNames.Length > 1)
                 {
-                    ArrayList sb = new ArrayList();
+                    var sb = new ArrayList();
                     foreach (string fileName in Dg.FileNames)
                     {
                         if (File.Exists(fileName))
@@ -113,9 +112,6 @@ namespace CompactGUI
             }
         }
 
-        public GraphicsPanel()
-        {
-            DoubleBuffered = true;
-        }
+        public GraphicsPanel() => DoubleBuffered = true;
     }
 }

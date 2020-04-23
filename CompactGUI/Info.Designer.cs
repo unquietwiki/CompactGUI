@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.CompilerServices;
@@ -10,6 +11,8 @@ namespace CompactGUI
     [DesignerGenerated()]
     public partial class Info : Form
     {
+        // Required by the Windows Form Designer
+        private System.ComponentModel.IContainer components;
 
         // Form overrides dispose to clean up the component list.
         [DebuggerNonUserCode()]
@@ -28,9 +31,6 @@ namespace CompactGUI
             }
         }
 
-        // Required by the Windows Form Designer
-        private System.ComponentModel.IContainer components;
-
         // NOTE: The following procedure is required by the Windows Form Designer
         // It can be modified using the Windows Form Designer.  
         // Do not modify it using the code editor.
@@ -42,14 +42,14 @@ namespace CompactGUI
             this._Label2 = new System.Windows.Forms.Label();
             this._RichTextBox1 = new System.Windows.Forms.RichTextBox();
             this._semVersion = new System.Windows.Forms.Label();
-            this._lbl_CheckUpdates = new System.Windows.Forms.LinkLabel();
+            this._LblCheckUpdates = new System.Windows.Forms.LinkLabel();
             this._TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._checkMinimisetoTray = new System.Windows.Forms.CheckBox();
             this._checkEnableRCMenu = new System.Windows.Forms.CheckBox();
             this._Label3 = new System.Windows.Forms.Label();
             this._Label4 = new System.Windows.Forms.Label();
-            this._panel_header = new System.Windows.Forms.Panel();
-            this._btn_Mainexit = new System.Windows.Forms.Button();
+            this._Panelheader = new System.Windows.Forms.Panel();
+            this._BtnMainexit = new System.Windows.Forms.Button();
             this._Label5 = new System.Windows.Forms.Label();
             this._link_Github = new System.Windows.Forms.LinkLabel();
             this._InfoTabControl = new System.Windows.Forms.TabControl();
@@ -65,13 +65,13 @@ namespace CompactGUI
             this._Tab_Licenses = new System.Windows.Forms.TabPage();
             this._Tab_Help = new System.Windows.Forms.TabPage();
             this._Label6 = new System.Windows.Forms.Label();
-            this._btn_options = new System.Windows.Forms.Button();
+            this._Btnoptions = new System.Windows.Forms.Button();
             this._Panel1 = new System.Windows.Forms.Panel();
-            this._btn_help = new System.Windows.Forms.Button();
-            this._btn_licenses = new System.Windows.Forms.Button();
+            this._Btnhelp = new System.Windows.Forms.Button();
+            this._Btnlicenses = new System.Windows.Forms.Button();
             this._Panel2 = new System.Windows.Forms.Panel();
             this._TableLayoutPanel1.SuspendLayout();
-            this._panel_header.SuspendLayout();
+            this._Panelheader.SuspendLayout();
             this._InfoTabControl.SuspendLayout();
             this._Tab_Features.SuspendLayout();
             this._Tab_Licenses.SuspendLayout();
@@ -132,22 +132,22 @@ namespace CompactGUI
             this._semVersion.TabIndex = 3;
             this._semVersion.Text = "VERSION";
             // 
-            // _lbl_CheckUpdates
+            // _LblCheckUpdates
             // 
-            this._lbl_CheckUpdates.AutoSize = true;
-            this._lbl_CheckUpdates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
-            this._lbl_CheckUpdates.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._lbl_CheckUpdates.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this._lbl_CheckUpdates.LinkColor = System.Drawing.SystemColors.MenuHighlight;
-            this._lbl_CheckUpdates.Location = new System.Drawing.Point(84, 5);
-            this._lbl_CheckUpdates.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this._lbl_CheckUpdates.Name = "_lbl_CheckUpdates";
-            this._lbl_CheckUpdates.Size = new System.Drawing.Size(104, 13);
-            this._lbl_CheckUpdates.TabIndex = 4;
-            this._lbl_CheckUpdates.TabStop = true;
-            this._lbl_CheckUpdates.Text = "Check For Updates";
-            this._lbl_CheckUpdates.Visible = false;
-            this._lbl_CheckUpdates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinks);
+            this._LblCheckUpdates.AutoSize = true;
+            this._LblCheckUpdates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
+            this._LblCheckUpdates.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._LblCheckUpdates.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this._LblCheckUpdates.LinkColor = System.Drawing.SystemColors.MenuHighlight;
+            this._LblCheckUpdates.Location = new System.Drawing.Point(84, 5);
+            this._LblCheckUpdates.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this._LblCheckUpdates.Name = "_LblCheckUpdates";
+            this._LblCheckUpdates.Size = new System.Drawing.Size(104, 13);
+            this._LblCheckUpdates.TabIndex = 4;
+            this._LblCheckUpdates.TabStop = true;
+            this._LblCheckUpdates.Text = "Check For Updates";
+            this._LblCheckUpdates.Visible = false;
+            this._LblCheckUpdates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinks);
             // 
             // _TableLayoutPanel1
             // 
@@ -157,7 +157,7 @@ namespace CompactGUI
             this._TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this._TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this._TableLayoutPanel1.Controls.Add(this._semVersion, 0, 0);
-            this._TableLayoutPanel1.Controls.Add(this._lbl_CheckUpdates, 1, 0);
+            this._TableLayoutPanel1.Controls.Add(this._LblCheckUpdates, 1, 0);
             this._TableLayoutPanel1.Location = new System.Drawing.Point(147, 32);
             this._TableLayoutPanel1.Name = "_TableLayoutPanel1";
             this._TableLayoutPanel1.RowCount = 1;
@@ -215,39 +215,39 @@ namespace CompactGUI
             this._Label4.TabIndex = 8;
             this._Label4.Text = "CompactGUI";
             // 
-            // _panel_header
+            // _Panelheader
             // 
-            this._panel_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._Panelheader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._panel_header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
-            this._panel_header.Controls.Add(this._btn_Mainexit);
-            this._panel_header.Controls.Add(this._Label4);
-            this._panel_header.Controls.Add(this._TableLayoutPanel1);
-            this._panel_header.Location = new System.Drawing.Point(0, 0);
-            this._panel_header.Name = "_panel_header";
-            this._panel_header.Size = new System.Drawing.Size(840, 76);
-            this._panel_header.TabIndex = 9;
-            this._panel_header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_header_MouseDown);
+            this._Panelheader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
+            this._Panelheader.Controls.Add(this._BtnMainexit);
+            this._Panelheader.Controls.Add(this._Label4);
+            this._Panelheader.Controls.Add(this._TableLayoutPanel1);
+            this._Panelheader.Location = new System.Drawing.Point(0, 0);
+            this._Panelheader.Name = "_Panelheader";
+            this._Panelheader.Size = new System.Drawing.Size(840, 76);
+            this._Panelheader.TabIndex = 9;
+            this._Panelheader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_header_MouseDown);
             // 
-            // _btn_Mainexit
+            // _BtnMainexit
             // 
-            this._btn_Mainexit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btn_Mainexit.BackColor = System.Drawing.Color.Transparent;
-            this._btn_Mainexit.FlatAppearance.BorderSize = 0;
-            this._btn_Mainexit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this._btn_Mainexit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this._btn_Mainexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_Mainexit.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._btn_Mainexit.ForeColor = System.Drawing.Color.White;
-            this._btn_Mainexit.Location = new System.Drawing.Point(794, 0);
-            this._btn_Mainexit.Margin = new System.Windows.Forms.Padding(0);
-            this._btn_Mainexit.Name = "_btn_Mainexit";
-            this._btn_Mainexit.Size = new System.Drawing.Size(45, 30);
-            this._btn_Mainexit.TabIndex = 16;
-            this._btn_Mainexit.TabStop = false;
-            this._btn_Mainexit.Text = "✕";
-            this._btn_Mainexit.UseVisualStyleBackColor = false;
-            this._btn_Mainexit.Click += new System.EventHandler(this.Btn_Mainexit_Click);
+            this._BtnMainexit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._BtnMainexit.BackColor = System.Drawing.Color.Transparent;
+            this._BtnMainexit.FlatAppearance.BorderSize = 0;
+            this._BtnMainexit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this._BtnMainexit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this._BtnMainexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._BtnMainexit.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._BtnMainexit.ForeColor = System.Drawing.Color.White;
+            this._BtnMainexit.Location = new System.Drawing.Point(794, 0);
+            this._BtnMainexit.Margin = new System.Windows.Forms.Padding(0);
+            this._BtnMainexit.Name = "_BtnMainexit";
+            this._BtnMainexit.Size = new System.Drawing.Size(45, 30);
+            this._BtnMainexit.TabIndex = 16;
+            this._BtnMainexit.TabStop = false;
+            this._BtnMainexit.Text = "✕";
+            this._BtnMainexit.UseVisualStyleBackColor = false;
+            this._BtnMainexit.Click += new System.EventHandler(this.Btn_Mainexit_Click);
             // 
             // _Label5
             // 
@@ -445,97 +445,96 @@ namespace CompactGUI
             this._Label6.TabIndex = 1;
             this._Label6.Text = "Help";
             // 
-            // _btn_options
+            // _Btnoptions
             // 
-            this._btn_options.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._Btnoptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._btn_options.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_options.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._btn_options.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this._btn_options.FlatAppearance.BorderSize = 0;
-            this._btn_options.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_options.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_options.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this._btn_options.ForeColor = System.Drawing.Color.White;
-            this._btn_options.Location = new System.Drawing.Point(0, 0);
-            this._btn_options.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this._btn_options.Name = "_btn_options";
-            this._btn_options.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this._btn_options.Size = new System.Drawing.Size(145, 39);
-            this._btn_options.TabIndex = 24;
-            this._btn_options.Text = "Options";
-            this._btn_options.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._btn_options.UseVisualStyleBackColor = false;
-            this._btn_options.Click += new System.EventHandler(this.Btn_options_Click);
-            var paintEventHandler = new System.Windows.Forms.PaintEventHandler(Btn_Paint);
-            this._btn_options.Paint += paintEventHandler;
+            this._Btnoptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnoptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._Btnoptions.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this._Btnoptions.FlatAppearance.BorderSize = 0;
+            this._Btnoptions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnoptions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnoptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._Btnoptions.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this._Btnoptions.ForeColor = System.Drawing.Color.White;
+            this._Btnoptions.Location = new System.Drawing.Point(0, 0);
+            this._Btnoptions.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this._Btnoptions.Name = "_Btnoptions";
+            this._Btnoptions.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this._Btnoptions.Size = new System.Drawing.Size(145, 39);
+            this._Btnoptions.TabIndex = 24;
+            this._Btnoptions.Text = "Options";
+            this._Btnoptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._Btnoptions.UseVisualStyleBackColor = false;
+            this._Btnoptions.Click += new System.EventHandler(this.Btn_options_Click);
+            this._Btnoptions.Paint += new System.Windows.Forms.PaintEventHandler(Btn_Paint);
             // 
             // _Panel1
             // 
             this._Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this._Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this._Panel1.Controls.Add(this._btn_help);
-            this._Panel1.Controls.Add(this._btn_licenses);
-            this._Panel1.Controls.Add(this._btn_options);
+            this._Panel1.Controls.Add(this._Btnhelp);
+            this._Panel1.Controls.Add(this._Btnlicenses);
+            this._Panel1.Controls.Add(this._Btnoptions);
             this._Panel1.Location = new System.Drawing.Point(0, 75);
             this._Panel1.Name = "_Panel1";
             this._Panel1.Size = new System.Drawing.Size(143, 521);
             this._Panel1.TabIndex = 11;
             // 
-            // _btn_help
+            // _Btnhelp
             // 
-            this._btn_help.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._Btnhelp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._btn_help.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this._btn_help.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this._btn_help.FlatAppearance.BorderSize = 0;
-            this._btn_help.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_help.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_help.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this._btn_help.ForeColor = System.Drawing.Color.White;
-            this._btn_help.Location = new System.Drawing.Point(0, 80);
-            this._btn_help.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this._btn_help.Name = "_btn_help";
-            this._btn_help.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this._btn_help.Size = new System.Drawing.Size(145, 39);
-            this._btn_help.TabIndex = 24;
-            this._btn_help.Text = "Help";
-            this._btn_help.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._btn_help.UseVisualStyleBackColor = false;
-            this._btn_help.Click += new System.EventHandler(this.Btn_options_Click);
-            this._btn_help.Paint += paintEventHandler;
+            this._Btnhelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this._Btnhelp.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this._Btnhelp.FlatAppearance.BorderSize = 0;
+            this._Btnhelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnhelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnhelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._Btnhelp.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this._Btnhelp.ForeColor = System.Drawing.Color.White;
+            this._Btnhelp.Location = new System.Drawing.Point(0, 80);
+            this._Btnhelp.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this._Btnhelp.Name = "_Btnhelp";
+            this._Btnhelp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this._Btnhelp.Size = new System.Drawing.Size(145, 39);
+            this._Btnhelp.TabIndex = 24;
+            this._Btnhelp.Text = "Help";
+            this._Btnhelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._Btnhelp.UseVisualStyleBackColor = false;
+            this._Btnhelp.Click += new System.EventHandler(this.Btn_options_Click);
+            this._Btnhelp.Paint += new System.Windows.Forms.PaintEventHandler(Btn_Paint);
             // 
-            // _btn_licenses
+            // _Btnlicenses
             // 
-            this._btn_licenses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._Btnlicenses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._btn_licenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this._btn_licenses.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this._btn_licenses.FlatAppearance.BorderSize = 0;
-            this._btn_licenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_licenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btn_licenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btn_licenses.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this._btn_licenses.ForeColor = System.Drawing.Color.White;
-            this._btn_licenses.Location = new System.Drawing.Point(0, 40);
-            this._btn_licenses.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this._btn_licenses.Name = "_btn_licenses";
-            this._btn_licenses.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this._btn_licenses.Size = new System.Drawing.Size(145, 39);
-            this._btn_licenses.TabIndex = 24;
-            this._btn_licenses.Text = "External Licenses";
-            this._btn_licenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._btn_licenses.UseVisualStyleBackColor = false;
-            this._btn_licenses.Click += new System.EventHandler(this.Btn_options_Click);
-            this._btn_licenses.Paint += paintEventHandler;
+            this._Btnlicenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this._Btnlicenses.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this._Btnlicenses.FlatAppearance.BorderSize = 0;
+            this._Btnlicenses.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnlicenses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._Btnlicenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._Btnlicenses.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this._Btnlicenses.ForeColor = System.Drawing.Color.White;
+            this._Btnlicenses.Location = new System.Drawing.Point(0, 40);
+            this._Btnlicenses.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this._Btnlicenses.Name = "_Btnlicenses";
+            this._Btnlicenses.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this._Btnlicenses.Size = new System.Drawing.Size(145, 39);
+            this._Btnlicenses.TabIndex = 24;
+            this._Btnlicenses.Text = "External Licenses";
+            this._Btnlicenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._Btnlicenses.UseVisualStyleBackColor = false;
+            this._Btnlicenses.Click += new System.EventHandler(this.Btn_options_Click);
+            this._Btnlicenses.Paint += new System.Windows.Forms.PaintEventHandler(Btn_Paint);
             // 
             // _Panel2
             // 
             this._Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._Panel2.Controls.Add(this._panel_header);
+            this._Panel2.Controls.Add(this._Panelheader);
             this._Panel2.Controls.Add(this._Panel1);
             this._Panel2.Controls.Add(this._InfoTabControl);
             this._Panel2.Cursor = System.Windows.Forms.Cursors.Default;
@@ -559,8 +558,8 @@ namespace CompactGUI
             this.Load += new System.EventHandler(this.Info_Load);
             this._TableLayoutPanel1.ResumeLayout(false);
             this._TableLayoutPanel1.PerformLayout();
-            this._panel_header.ResumeLayout(false);
-            this._panel_header.PerformLayout();
+            this._Panelheader.ResumeLayout(false);
+            this._Panelheader.PerformLayout();
             this._InfoTabControl.ResumeLayout(false);
             this._Tab_Features.ResumeLayout(false);
             this._Tab_Features.PerformLayout();
@@ -670,28 +669,28 @@ namespace CompactGUI
             }
         }
 
-        private LinkLabel _lbl_CheckUpdates;
+        private LinkLabel _LblCheckUpdates;
 
-        internal LinkLabel lbl_CheckUpdates
+        internal LinkLabel LblCheckUpdates
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _lbl_CheckUpdates;
+                return _LblCheckUpdates;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_lbl_CheckUpdates != null)
+                if (_LblCheckUpdates != null)
                 {
-                    _lbl_CheckUpdates.LinkClicked -= GithubLinks;
+                    _LblCheckUpdates.LinkClicked -= GithubLinks;
                 }
 
-                _lbl_CheckUpdates = value;
-                if (_lbl_CheckUpdates != null)
+                _LblCheckUpdates = value;
+                if (_LblCheckUpdates != null)
                 {
-                    _lbl_CheckUpdates.LinkClicked += GithubLinks;
+                    _LblCheckUpdates.LinkClicked += GithubLinks;
                 }
             }
         }
@@ -794,28 +793,28 @@ namespace CompactGUI
             }
         }
 
-        private Panel _panel_header;
+        private Panel _Panelheader;
 
-        internal Panel panel_header
+        internal Panel Panelheader
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _panel_header;
+                return _Panelheader;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_panel_header != null)
+                if (_Panelheader != null)
                 {
-                    _panel_header.MouseDown -= Panel_header_MouseDown;
+                    _Panelheader.MouseDown -= Panel_header_MouseDown;
                 }
 
-                _panel_header = value;
-                if (_panel_header != null)
+                _Panelheader = value;
+                if (_Panelheader != null)
                 {
-                    _panel_header.MouseDown += Panel_header_MouseDown;
+                    _Panelheader.MouseDown += Panel_header_MouseDown;
                 }
             }
         }
@@ -1042,86 +1041,86 @@ namespace CompactGUI
             }
         }
 
-        private Button _btn_options;
+        private Button _Btnoptions;
 
-        internal Button btn_options
+        internal Button Btnoptions
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_options;
+                return _Btnoptions;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_options != null)
+                if (_Btnoptions != null)
                 {
-                    _btn_options.Click -= Btn_options_Click;
-                    _btn_options.Paint -= Btn_Paint;
+                    _Btnoptions.Click -= Btn_options_Click;
+                    _Btnoptions.Paint -= Btn_Paint;
                 }
 
-                _btn_options = value;
-                if (_btn_options != null)
+                _Btnoptions = value;
+                if (_Btnoptions != null)
                 {
-                    _btn_options.Click += Btn_options_Click;
-                    _btn_options.Paint += Btn_Paint;
+                    _Btnoptions.Click += Btn_options_Click;
+                    _Btnoptions.Paint += Btn_Paint;
                 }
             }
         }
 
-        private Button _btn_help;
+        private Button _Btnhelp;
 
-        internal Button btn_help
+        internal Button Btnhelp
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_help;
+                return _Btnhelp;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_help != null)
+                if (_Btnhelp != null)
                 {
-                    _btn_help.Click -= Btn_options_Click;
-                    _btn_help.Paint -= Btn_Paint;
+                    _Btnhelp.Click -= Btn_options_Click;
+                    _Btnhelp.Paint -= Btn_Paint;
                 }
 
-                _btn_help = value;
-                if (_btn_help != null)
+                _Btnhelp = value;
+                if (_Btnhelp != null)
                 {
-                    _btn_help.Click += Btn_options_Click;
-                    _btn_help.Paint += Btn_Paint;
+                    _Btnhelp.Click += Btn_options_Click;
+                    _Btnhelp.Paint += Btn_Paint;
                 }
             }
         }
 
-        private Button _btn_licenses;
+        private Button _Btnlicenses;
 
-        internal Button btn_licenses
+        internal Button Btnlicenses
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_licenses;
+                return _Btnlicenses;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_licenses != null)
+                if (_Btnlicenses != null)
                 {
-                    _btn_licenses.Click -= Btn_options_Click;
-                    _btn_licenses.Paint -= Btn_Paint;
+                    _Btnlicenses.Click -= Btn_options_Click;
+                    _Btnlicenses.Paint -= Btn_Paint;
                 }
 
-                _btn_licenses = value;
-                if (_btn_licenses != null)
+                _Btnlicenses = value;
+                if (_Btnlicenses != null)
                 {
-                    _btn_licenses.Click += Btn_options_Click;
-                    _btn_licenses.Paint += Btn_Paint;
+                    _Btnlicenses.Click += Btn_options_Click;
+                    _Btnlicenses.Paint += Btn_Paint;
                 }
             }
         }
@@ -1150,28 +1149,28 @@ namespace CompactGUI
             }
         }
 
-        private Button _btn_Mainexit;
+        private Button _BtnMainexit;
 
-        internal Button btn_Mainexit
+        internal Button BtnMainexit
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btn_Mainexit;
+                return _BtnMainexit;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btn_Mainexit != null)
+                if (_BtnMainexit != null)
                 {
-                    _btn_Mainexit.Click -= Btn_Mainexit_Click;
+                    _BtnMainexit.Click -= Btn_Mainexit_Click;
                 }
 
-                _btn_Mainexit = value;
-                if (_btn_Mainexit != null)
+                _BtnMainexit = value;
+                if (_BtnMainexit != null)
                 {
-                    _btn_Mainexit.Click += Btn_Mainexit_Click;
+                    _BtnMainexit.Click += Btn_Mainexit_Click;
                 }
             }
         }
@@ -1375,5 +1374,7 @@ namespace CompactGUI
                 }
             }
         }
+
+        public IContainer Components { get => components; set => components = value; }
     }
 }

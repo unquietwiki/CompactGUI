@@ -18,8 +18,8 @@ namespace CompactGUI
                     {
                         My.MyProject.Forms.Compact.updateBanner.Visible = true;
                         My.MyProject.Forms.Compact.dlUpdateLink.Text = "Update Available: Click to download " + Xml_VersionStr;
-                        My.MyProject.Forms.Info.lbl_CheckUpdates.Text = "Update to " + Xml_VersionStr;
-                        My.MyProject.Forms.Info.lbl_CheckUpdates.Visible = true;
+                        My.MyProject.Forms.Info.LblCheckUpdates.Text = "Update to " + Xml_VersionStr;
+                        My.MyProject.Forms.Info.LblCheckUpdates.Visible = true;
                     }
                 }
             }

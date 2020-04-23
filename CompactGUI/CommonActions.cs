@@ -4,6 +4,9 @@ namespace CompactGUI
 {
     internal static class CommmonActions
     {
+
+        // FIXME: can't compress new files for some reason
+
         public static void PrepareforCompact()
         {
             {

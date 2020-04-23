@@ -1,5 +1,7 @@
 ﻿using System;
 
+#nullable enable
+
 namespace CompactGUI.My
 {
     // The following events are available for MyApplication:
@@ -15,9 +17,9 @@ namespace CompactGUI.My
             AppDomain.CurrentDomain.AssemblyResolve += ResolveAssemblies;
         }
 
-        private System.Reflection.Assembly ResolveAssemblies(object sender, ResolveEventArgs e)
+        private System.Reflection.Assembly? ResolveAssemblies(object sender, ResolveEventArgs e)
         {
-            System.Reflection.AssemblyName desiredAssembly = new System.Reflection.AssemblyName(e.Name);
+            var desiredAssembly = new System.Reflection.AssemblyName(e.Name);
             if ((desiredAssembly.Name ?? "") == "Ookii.Dialogs")
             {
                 return System.Reflection.Assembly.Load(Resources.Resources.Ookii_Dialogs);

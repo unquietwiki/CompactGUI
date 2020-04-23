@@ -4,16 +4,15 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class Compact
     {
-        public Compact()
-        {
-            InitializeComponent();
-        }
+        public Compact() => InitializeComponent();
 
-        private Encoding CP;
+        private Encoding? CP;
 
         private void CreateProcess(string TargetMode)
         {
@@ -27,7 +26,7 @@ namespace CompactGUI
             CommmonActions.ActionBegun(TargetMode);
         }
 
-        private string compactArgs;
+        private string? compactArgs;
 
         private void RunCompact(string desiredFile)
         {
@@ -112,7 +111,7 @@ namespace CompactGUI
 
         private Encoding GetEncoding()
         {
-            using Process CPGet = new Process();
+            using var CPGet = new Process();
             ProcessStartInfo withBlock = CPGet.StartInfo;
             withBlock.FileName = "cmd.exe";
             withBlock.Arguments = "/c chcp";
@@ -125,8 +124,8 @@ namespace CompactGUI
             withBlock.RedirectStandardOutput = true;
             withBlock.RedirectStandardError = true;
             CPGet.Start();
-            string Res = CPGet.StandardOutput.ReadLine();
-            int CPa = int.Parse(Regex.Replace(Res, @"[^\d]", ""));
+            var Res = CPGet.StandardOutput.ReadLine();
+            var CPa = int.Parse(Regex.Replace(Res, @"[^\d]", ""));
             CPGet.StandardInput.WriteLine("exit");
             CPGet.StandardInput.Flush();
             CPGet.WaitForExit();

@@ -9,36 +9,34 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class WikiSubmission
     {
-        public WikiSubmission()
-        {
-            InitializeComponent();
-        }
+        public WikiSubmission() => InitializeComponent();
 
-        internal static string Name_Submit;
+        internal static string? Name_Submit;
         internal static string SteamID_Submit = 0.ToString();
-        internal static string Type_Submit;
-        private string UniqueID_Submit;
-        private static string folder_Submit;
-        private static string compMode_Submit;
-        internal static ulong BeforeSize_Submit;
-        internal static ulong AfterSize_Submit;
+        internal static string? Type_Submit;
+        internal string? UniqueID_Submit;
+        internal static string? folder_Submit;
+        internal static string? compMode_Submit;
+        internal static ulong? BeforeSize_Submit;
+        internal static ulong? AfterSize_Submit;
 
         private void WikiSubmission_Paint(object sender, PaintEventArgs e)
         {
-            Rectangle rect = new Rectangle(0, 0, Panel1.Width - 1, Panel1.Height + 1);
-            using Pen pen = new Pen(Color.White);
-            e.Graphics.DrawRectangle(pen, rect);
+            using var pen = new Pen(Color.White);
+            e.Graphics.DrawRectangle(pen, new Rectangle(0, 0, Panel1.Width - 1, Panel1.Height + 1));
         }
 
         private void ParseforSteamData()
         {
             int steamID = 0;
             string steamName = "";
-            FileInfo targetACFFile = GetParseACFFiles();
+            FileInfo? targetACFFile = GetParseACFFiles();
             if (targetACFFile is object)
             {
                 string[] ACFText = File.ReadAllText(targetACFFile.FullName).Split(new[] { Constants.vbCrLf, Constants.vbCr, Constants.vbLf }, StringSplitOptions.RemoveEmptyEntries);
@@ -60,15 +58,15 @@ namespace CompactGUI
 
             Assignment:
             ;
-            Regex rx = new Regex(@"[\?&|%™®©]");
-            txtbox_Name.Text = rx.Replace(steamName, "");
-            txtbox_SteamID.Value = steamID;
+            var rx = new Regex(@"[\?&|%™®©]");
+            TxtBoxName.Text = rx.Replace(steamName, "");
+            TxtBoxSteamID.Value = steamID;
         }
 
-        private static FileInfo GetParseACFFiles()
+        private static FileInfo? GetParseACFFiles()
         {
-            DirectoryInfo dI = new DirectoryInfo(My.MyProject.Forms.Compact.workingDir);
-            if (Directory.GetParent(dI.Parent.FullName) is object && (Directory.GetParent(dI.Parent.FullName).Name ?? "") == "steamapps")
+            var dI = new DirectoryInfo(My.MyProject.Forms.Compact.workingDir);
+            if (Directory.GetParent(dI.Parent.FullName) is object && (Directory.GetParent(dI.Parent.FullName).Name ?? "").Contains("steamapps"))
             {
                 foreach (FileInfo f in Directory.GetParent(dI.Parent.FullName).GetFiles())
                 {
@@ -98,22 +96,22 @@ namespace CompactGUI
                 {
                     ParseforSteamData();
                     Type_Submit = "Game";
-                    panel_SteamID.Visible = true;
-                    lbl_GameorProgram.Text = "Game Name:";
+                    PanelSteamID.Visible = true;
+                    LblGameorProgram.Text = "Game Name:";
                     TabControl1.SelectedTab = Page2;
                 }
                 else if (Radio_Program.Checked)
                 {
                     Type_Submit = "Program";
-                    panel_SteamID.Visible = false;
-                    lbl_GameorProgram.Text = "Program Name:";
+                    PanelSteamID.Visible = false;
+                    LblGameorProgram.Text = "Program Name:";
                     TabControl1.SelectedTab = Page2;
                 }
             }
             else if (TabControl1.SelectedTab == Page2)
             {
-                Regex rx = new Regex(@"[\?&|%™®©]");
-                if (rx.Match(txtbox_Name.Text).Success)
+                var rx = new Regex(@"[\?&|%™®©]");
+                if (rx.Match(TxtBoxName.Text).Success)
                 {
                     Interaction.MsgBox("Name cannot contain '?', '&', '|', '%', '™', '®', or '©'");
                 }
@@ -133,7 +131,7 @@ namespace CompactGUI
             bool alreadyExists = default;
             foreach (Result res in WikiHandler.allResults)
             {
-                if (Conversions.ToInteger(txtbox_SteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (txtbox_Name.Text.Trim() ?? "") == (res.Name ?? ""))
+                if (Conversions.ToInteger(TxtBoxSteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (TxtBoxName.Text.Trim() ?? "") == (res.Name ?? ""))
                 {
                     if ((CompMode_Submit ?? "") == (res.Algorithm ?? ""))
                     {
@@ -145,9 +143,9 @@ namespace CompactGUI
                 }
             }
 
-            Name_Submit = HttpUtility.UrlPathEncode(txtbox_Name.Text.Trim());
+            Name_Submit = HttpUtility.UrlPathEncode(TxtBoxName.Text.Trim());
             Folder_Submit = HttpUtility.UrlPathEncode(Folder_Submit);
-            SteamID_Submit = txtbox_SteamID.Text;
+            SteamID_Submit = TxtBoxSteamID.Text;
             UniqueID_Submit = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(GetMacAddress()));
             FillDataCollection();
             if (alreadyExists == false)
@@ -155,7 +153,7 @@ namespace CompactGUI
                 string URL_First = "https://docs.google.com/forms/d/e/1FAIpQLSfAzlQAhyPEueFyQiTEmpudcKaVLnpRPmzrIuBZxnR8f7PjPg/formResponse?&ifq&entry.630201004=%3CCompactGUI%3E";
                 string URL_Last = "&submit=Submit";
                 string URL_All = URL_First + UniqueID_Submit + "%7C" + Type_Submit + "%7C" + Name_Submit + "%7C" + Folder_Submit + "%7C" + SteamID_Submit + "%7C" + CompMode_Submit + "%7C" + BeforeSize_Submit + "%7C" + AfterSize_Submit + URL_Last;
-                lbl_Title.Text = "Sending Results";
+                LblTitle.Text = "Sending Results";
                 Panel1.Refresh();
                 SendPageRequest(URL_All);
             }
@@ -163,22 +161,18 @@ namespace CompactGUI
             {
             }
 
-            lbl_Title.Text = "Results Sent";
+            LblTitle.Text = "Results Sent";
             TabControl1.SelectedTab = Page3;
-            btn_NextPage.Text = "Close";
-            btn_Cancel.Visible = false;
+            BtnNextPage.Text = "Close";
+            BtnCancel.Visible = false;
         }
 
-        private void SendPageRequest(string URL, System.Net.WebProxy proxy = null)
+        private void SendPageRequest(string URL)
         {
+            //TODO: migrate to https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netframework-4.8
             try
             {
                 System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(URL);
-                if (proxy is object)
-                {
-                    webReq.Proxy = proxy;
-                }
-
                 using System.Net.HttpWebResponse webResp = (System.Net.HttpWebResponse)webReq.GetResponse();
                 // Get the response, then close it as we don't actually need anything but to send the request.
             }
@@ -208,15 +202,13 @@ Size After: " + AfterSize_Submit;
 
         public static string GetMacAddress()
         {
-            using (ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration"))
+            using var mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            var moc = mc.GetInstances();
+            foreach (var mo in moc)
             {
-                ManagementObjectCollection moc = mc.GetInstances();
-                foreach (ManagementObject mo in moc)
+                if ((string.Empty ?? "") == (string.Empty ?? "") & Conversions.ToBoolean(mo.Properties["IPEnabled"].Value) == true)
                 {
-                    if ((string.Empty ?? "") == (string.Empty ?? "") & Conversions.ToBoolean(mo.Properties["IPEnabled"].Value) == true)
-                    {
-                        _ = mo.Properties["MacAddress"].Value.ToString();
-                    }
+                    _ = mo.Properties["MacAddress"].Value.ToString();
                 }
             }
             return string.Empty;
@@ -241,8 +233,8 @@ Size After: " + AfterSize_Submit;
             }
         }
 
-        internal static string Folder_Submit { get => folder_Submit; set => folder_Submit = value; }
-        internal static string CompMode_Submit { get => compMode_Submit; set => compMode_Submit = value; }
+        internal static string? Folder_Submit { get => folder_Submit; set => folder_Submit = value; }
+        internal static string? CompMode_Submit { get => compMode_Submit; set => compMode_Submit = value; }
 
         [DllImport("user32.dll")]
         private static extern bool ReleaseCapture();

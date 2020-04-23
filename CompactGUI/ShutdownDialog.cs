@@ -2,14 +2,13 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
+#nullable enable
+
 namespace CompactGUI
 {
     public partial class ShutdownDialog
     {
-        public ShutdownDialog()
-        {
-            InitializeComponent();
-        }
+        public ShutdownDialog() => InitializeComponent();
 
         private void OK_Button_Click(object sender, EventArgs e)
         {
