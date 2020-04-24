@@ -80,7 +80,7 @@ namespace CompactGUI.My {
             "stx; onepkg")]
         public string NonCompressableList {
             get {
-                return ((string)(this["NonCompressableList"]));
+                return (Convert.ToString(this["NonCompressableList"]));
             }
             set {
                 this["NonCompressableList"] = value;
@@ -104,7 +104,7 @@ namespace CompactGUI.My {
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ResultsDB {
             get {
-                return ((string)(this["ResultsDB"]));
+                return (Convert.ToString(this["ResultsDB"]));
             }
             set {
                 this["ResultsDB"] = value;

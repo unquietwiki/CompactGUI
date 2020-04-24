@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿using System;
 using System.Globalization;
 using System.Net;
 using System.Xml.Linq;
@@ -14,7 +14,8 @@ namespace CompactGUI
                 XDocument versionDoc = XDocument.Load("https://raw.githubusercontent.com/ImminentFate/CompactGUI/master/Version.xml");
                 if (versionDoc.ToString() != default)
                 {
-                    if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(XMLParse(versionDoc, version), true, false)))
+                    //TODO: make sure this works
+                    if (Convert.ToBoolean(XMLParse(versionDoc, version),Compact.culture))
                     {
                         My.MyProject.Forms.Compact.updateBanner.Visible = true;
                         My.MyProject.Forms.Compact.dlUpdateLink.Text = "Update Available: Click to download " + Xml_VersionStr;
@@ -40,14 +41,14 @@ namespace CompactGUI
         {
             XElement info = versionDoc.Root;
             Xml_MajorVer = float.Parse(info.Element("VersionMajor").Value, CultureInfo.InvariantCulture);
-            Xml_MinorVer = Conversions.ToInteger(info.Element("VersionMinor").Value);
+            Xml_MinorVer = Convert.ToInt32(info.Element("VersionMinor").Value, Compact.culture);
             Xml_VersionStr = info.Element("VersionStr").Value;
             Xml_ChocoVStr = info.Element("ChocolateyVStr").Value;
-            Xml_IsPrerelease = Conversions.ToBoolean(info.Element("IsPrerelease").Value);
+            Xml_IsPrerelease = Convert.ToBoolean(info.Element("IsPrerelease").Value, Compact.culture);
             Xml_Changes = info.Element("Changes").Value.Split('|');
             Xml_Fixes = info.Element("Fixes").Value.Split('|');
-            float exe_MajorVer = float.Parse(version.Substring(0, version.LastIndexOf(".")), CultureInfo.InvariantCulture);
-            int exe_MinorVer = Conversions.ToInteger(version.Substring(version.LastIndexOf(".") + 1));
+            float exe_MajorVer = float.Parse(version.Substring(0, version.LastIndexOf(".", StringComparison.CurrentCultureIgnoreCase)), CultureInfo.InvariantCulture);
+            int exe_MinorVer = Convert.ToInt32(version.Substring(version.LastIndexOf(".", StringComparison.CurrentCultureIgnoreCase) + 1), Compact.culture);
             if (Xml_MajorVer > exe_MajorVer)
             {
                 return true;

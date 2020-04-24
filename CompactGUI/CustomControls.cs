@@ -40,7 +40,7 @@ namespace CompactGUI
         {
             get
             {
-                if (Dg.FileName.EndsWith("#Folder"))
+                if (Dg.FileName.EndsWith("#Folder", StringComparison.CurrentCultureIgnoreCase))
                 {
                     return Path.GetDirectoryName(Dg.FileName);
                 }

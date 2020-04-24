@@ -20,7 +20,7 @@ namespace CompactGUI.My
         private System.Reflection.Assembly? ResolveAssemblies(object sender, ResolveEventArgs e)
         {
             var desiredAssembly = new System.Reflection.AssemblyName(e.Name);
-            if ((desiredAssembly.Name ?? "") == "Ookii.Dialogs")
+            if (desiredAssembly.Name.Contains("Ookii.Dialogs"))
             {
                 return System.Reflection.Assembly.Load(Resources.Resources.Ookii_Dialogs);
             }

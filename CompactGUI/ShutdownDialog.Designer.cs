@@ -72,7 +72,7 @@ namespace CompactGUI
             _OK_Button.FlatAppearance.BorderColor = Color.DarkGray;
             _OK_Button.FlatStyle = FlatStyle.Flat;
             _OK_Button.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, Conversions.ToByte(0));
-            _OK_Button.ForeColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(64)), Conversions.ToInteger(Conversions.ToByte(64)), Conversions.ToInteger(Conversions.ToByte(64)));
+            _OK_Button.ForeColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(64)), Convert.ToInt32(Conversions.ToByte(64)), Convert.ToInt32(Conversions.ToByte(64)));
             _OK_Button.Location = new Point(118, 7);
             _OK_Button.Name = "OK_Button";
             _OK_Button.Size = new Size(67, 26);
@@ -97,7 +97,7 @@ namespace CompactGUI
             // SDProgText
             // 
             _SDProgText.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, Conversions.ToByte(0));
-            _SDProgText.ForeColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(64)), Conversions.ToInteger(Conversions.ToByte(64)), Conversions.ToInteger(Conversions.ToByte(64)));
+            _SDProgText.ForeColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(64)), Convert.ToInt32(Conversions.ToByte(64)), Convert.ToInt32(Conversions.ToByte(64)));
             _SDProgText.Location = new Point(3, 34);
             _SDProgText.Name = "SDProgText";
             _SDProgText.Size = new Size(304, 25);

@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -43,7 +42,7 @@ namespace CompactGUI
                 Modifier1 = 50;
             }
 
-            FadeTimer1.Interval = Conversions.ToInteger(Modifier1);
+            FadeTimer1.Interval = Convert.ToInt32(Modifier1);
             FadeObj1 = targetForm;
             FadeObj1.Opacity = startopacity;
             FadeStartOp1 = startopacity;
@@ -68,17 +67,18 @@ namespace CompactGUI
 
         public static void FadeTimer_Tick(object sender, EventArgs e)
         {
-            if (Conversions.ToBoolean(FadeObj1.Opacity < FadeStopOp1 + Bounds1 & FadeObj1.Opacity > FadeStopOp1 - Bounds1))
+            if (Convert.ToBoolean(FadeObj1.Opacity < FadeStopOp1 + Bounds1 & FadeObj1.Opacity > FadeStopOp1 - Bounds1))
             {
                 FadeTimer1.Stop();
                 FadeObj1.Opacity = FadeStopOp1;
                 FadeTimer1.Tick -= FadeTimer_Tick;
-                if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(FadeObj1.Opacity, 0, false) & Operators.ConditionalCompareObjectEqual(FadeCloseOnFinish1, true, false)))
+                //TODO: make sure this works
+                if ((FadeObj1.Opacity) == 0 && (FadeCloseOnFinish1 == true))
                 {
                     FadeObj1.Close();
                 }
 
-                if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(FadeObj1.Opacity, 0, false) & Operators.ConditionalCompareObjectEqual(FadeCloseOnFinish1, false, false)))
+                if ((FadeObj1.Opacity) == 0 && (FadeCloseOnFinish1 == false))
                 {
                     FadeObj1.Hide();
                 }
@@ -100,7 +100,7 @@ namespace CompactGUI
         public static int UnfurlDuration1 { get; set; }
         public static Control UnfurlObj1 { get; set; }
 
-        public static Timer UnfurlTimer1 { get; } = new Timer() { Interval = Conversions.ToInteger(Modifier) };
+        public static Timer UnfurlTimer1 { get; } = new Timer() { Interval = Convert.ToInt32(Modifier) };
         public static decimal UnfurlTickcount1 { get; set; }
         public static decimal Bounds1 { get; set; }
 
@@ -115,11 +115,11 @@ namespace CompactGUI
                 UnfurlTickcount1 = (endwidth - startwidth) / (duration / Modifier);
                 if (endwidth - startwidth < 0)
                 {
-                    Bounds1 = Conversions.ToDecimal(-UnfurlTickcount1);
+                    Bounds1 = Convert.ToDecimal(-UnfurlTickcount1);
                 }
                 else
                 {
-                    Bounds1 = Conversions.ToDecimal(UnfurlTickcount1);
+                    Bounds1 = Convert.ToDecimal(UnfurlTickcount1);
                 }
 
                 UnfurlObj1.Width = startwidth;
@@ -177,7 +177,7 @@ namespace CompactGUI
 
         public static void Tick(object sender, EventArgs e)
         {
-            if (Conversions.ToBoolean(Callpercentstep >= T))
+            if (Convert.ToBoolean(Callpercentstep >= T))
             {
                 PaintTimer1.Stop();
                 Callpercentstep = T;

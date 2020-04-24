@@ -78,7 +78,7 @@ namespace CompactGUI
             // 
             // Panel1
             // 
-            _Panel1.BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
+            _Panel1.BackColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(47)), Convert.ToInt32(Conversions.ToByte(66)), Convert.ToInt32(Conversions.ToByte(83)));
             _Panel1.Controls.Add(_LblTitle);
             _Panel1.Dock = DockStyle.Top;
             _Panel1.Location = new Point(0, 0);
@@ -178,7 +178,7 @@ namespace CompactGUI
             // 
             // BtnNextPage
             // 
-            _BtnNextPage.BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
+            _BtnNextPage.BackColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(47)), Convert.ToInt32(Conversions.ToByte(66)), Convert.ToInt32(Conversions.ToByte(83)));
             _BtnNextPage.FlatStyle = FlatStyle.Flat;
             _BtnNextPage.Font = new Font("Segoe UI", 10.0F);
             _BtnNextPage.ForeColor = Color.White;
@@ -336,7 +336,7 @@ namespace CompactGUI
             AcceptButton = _BtnNextPage;
             AutoScaleDimensions = new SizeF(6.0F, 13.0F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(47)), Conversions.ToInteger(Conversions.ToByte(66)), Conversions.ToInteger(Conversions.ToByte(83)));
+            BackColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(47)), Convert.ToInt32(Conversions.ToByte(66)), Convert.ToInt32(Conversions.ToByte(83)));
             CancelButton = _BtnCancel;
             ClientSize = new Size(590, 293);
             Controls.Add(_Panel1);

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -105,7 +106,7 @@ namespace CompactGUI
             // 
             AutoScaleDimensions = new SizeF(6.0F, 13.0F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(Conversions.ToInteger(Conversions.ToByte(43)), Conversions.ToInteger(Conversions.ToByte(60)), Conversions.ToInteger(Conversions.ToByte(75)));
+            BackColor = Color.FromArgb(Convert.ToInt32(Conversions.ToByte(43)), Convert.ToInt32(Conversions.ToByte(60)), Convert.ToInt32(Conversions.ToByte(75)));
             ClientSize = new Size(430, 375);
             Controls.Add(_Panel1);
             FormBorderStyle = FormBorderStyle.None;

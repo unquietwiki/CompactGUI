@@ -3,18 +3,17 @@
 // See the LICENSE file in the project root for more information.
 
 // See Compiler::LoadXmlSolutionExtension
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace CompactGUI.My
 {
-    [Embedded()]
+    //[Embedded()]
     [DebuggerNonUserCode()]
     [System.Runtime.CompilerServices.CompilerGenerated()]
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
@@ -44,7 +43,7 @@ namespace CompactGUI.My
         public static string get_AttributeValue(IEnumerable<XElement> source, XName name)
         {
             foreach (XElement item in source)
-                return Conversions.ToString(item.Attribute(name));
+                return Convert.ToString(item.Attribute(name));
             return null;
         }
 
@@ -59,7 +58,7 @@ namespace CompactGUI.My
 
         public static string get_AttributeValue(XElement source, XName name)
         {
-            return Conversions.ToString(source.Attribute(name));
+            return Convert.ToString(source.Attribute(name));
         }
 
         public static void set_AttributeValue(XElement source, XName name, string value)

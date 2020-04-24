@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
+﻿using System;
 using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,15 +13,15 @@ namespace CompactGUI
 
         private Encoding? CP;
 
-        private void CreateProcess(string TargetMode)
+        private void CreateProcess(ActionMode TargetMode)
         {
             if (CP is null)
             {
                 CP = GetEncoding();
             }
 
-            RunCompact(Conversions.ToString(GetWorkingList()[0]));
-            outputbuffer.Add("Compressing: " + Constants.vbTab + GetWorkingList()[0]);
+            RunCompact(Convert.ToString(GetWorkingList()[0], Compact.culture));
+            outputbuffer.Add("Compressing: " + "\t" + GetWorkingList()[0]);
             CommmonActions.ActionBegun(TargetMode);
         }
 
@@ -30,7 +29,7 @@ namespace CompactGUI
 
         private void RunCompact(string desiredFile)
         {
-            if ((CurrentMode1 ?? "") == "compact")
+            if (CurrentMode.Equals(ActionMode.Compact))
             {
                 compactArgs = "/C /I";
 
@@ -67,9 +66,9 @@ namespace CompactGUI
 
                 RunCompact_ProcessGen(compactArgs, desiredFile);
             }
-            else if ((CurrentMode1 ?? "") == "uncompact")
+            else if (CurrentMode.Equals(ActionMode.UnCompact))
             {
-                outputbuffer.Add("Uncompressing: " + Constants.vbTab + desiredFile);
+                outputbuffer.Add("Uncompressing: " + "\t" + desiredFile);
                 compactArgs = "/U /EXE /I";
                 if (checkForceCompression.Checked == true)
                 {
@@ -125,7 +124,7 @@ namespace CompactGUI
             withBlock.RedirectStandardError = true;
             CPGet.Start();
             var Res = CPGet.StandardOutput.ReadLine();
-            var CPa = int.Parse(Regex.Replace(Res, @"[^\d]", ""));
+            var CPa = int.Parse(Regex.Replace(Res, @"[^\d]", ""), Compact.culture);
             CPGet.StandardInput.WriteLine("exit");
             CPGet.StandardInput.Flush();
             CPGet.WaitForExit();

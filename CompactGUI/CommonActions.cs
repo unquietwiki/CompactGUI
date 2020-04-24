@@ -4,7 +4,6 @@ namespace CompactGUI
 {
     internal static class CommmonActions
     {
-
         // FIXME: can't compress new files for some reason
 
         public static void PrepareforCompact()
@@ -26,16 +25,16 @@ namespace CompactGUI
             }
         }
 
-        public static void ActionBegun(string Mode)
+        public static void ActionBegun(Compact.ActionMode Mode)
         {
             {
                 Compact withBlock = My.MyProject.Forms.Compact;
                 switch (Mode)
                 {
-                    case "C":
+                    case Compact.ActionMode.Compact:
                         {
-                            withBlock.IsActive1 = true;
-                            withBlock.IsQueryMode1 = false;
+                            withBlock.IsActive = true;
+                            withBlock.IsQueryMode = false;
                             withBlock.btnCompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
                             withBlock.sb_progresslabel.Text = "Compressing, Please Wait";
@@ -44,10 +43,10 @@ namespace CompactGUI
                             break;
                         }
 
-                    case "U":
+                    case Compact.ActionMode.UnCompact:
                         {
-                            withBlock.IsActive1 = true;
-                            withBlock.IsQueryMode1 = false;
+                            withBlock.IsActive = true;
+                            withBlock.IsQueryMode = false;
                             withBlock.btnUncompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
                             withBlock.sb_progresslabel.Text = "Uncompressing...";
@@ -57,9 +56,9 @@ namespace CompactGUI
                             break;
                         }
 
-                    case "A":
+                    case Compact.ActionMode.Analyze:
                         {
-                            withBlock.IsQueryMode1 = true;
+                            withBlock.IsQueryMode = true;
                             withBlock.btnCompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
                             withBlock.sb_progresslabel.Text = "Analyzing...";
@@ -78,24 +77,22 @@ namespace CompactGUI
             }
         }
 
-        public static void ActionCompleted(string Mode, bool AnalysisShowsFolderIsCompressed = true)
+        public static void ActionCompleted(Compact.ActionMode Mode, bool AnalysisShowsFolderIsCompressed = true)
         {
             {
                 Compact withBlock = My.MyProject.Forms.Compact;
                 switch (Mode)
                 {
-                    case "C":
+                    case Compact.ActionMode.Compact:
                         {
-                            withBlock.returnArrow.Visible = true;
                             withBlock.btnAnalyze.Enabled = true;
                             withBlock.btnUncompress.Visible = true;
-                            withBlock.IsActive1 = false;
+                            withBlock.IsActive = false;
                             break;
                         }
 
-                    case "U":
+                    case Compact.ActionMode.UnCompact:
                         {
-                            withBlock.returnArrow.Visible = true;
                             withBlock.btnAnalyze.Enabled = true;
                             withBlock.btnUncompress.Visible = false;
                             withBlock.sb_ResultsPanel.Visible = false;
@@ -103,7 +100,7 @@ namespace CompactGUI
                             break;
                         }
 
-                    case "A":
+                    case Compact.ActionMode.Analyze:
                         {
                             if (AnalysisShowsFolderIsCompressed)
                             {
@@ -120,15 +117,15 @@ namespace CompactGUI
                                 withBlock.btnUncompress.Visible = false;
                             }
 
-                            withBlock.returnArrow.Visible = true;
-                            withBlock.IsQueryMode1 = false;
+                            withBlock.IsQueryMode = false;
                             break;
                         }
                 }
 
+                withBlock.returnArrow.Visible = true;
                 withBlock.TableLayoutPanel4.Location = new Point(7, 54);
                 withBlock.TableLayoutPanel4.Height = withBlock.TableLayoutPanel4.Height - 30;
-                withBlock.IsActive1 = false;
+                withBlock.IsActive = false;
                 withBlock.GetWorkingList().Clear();
             }
         }

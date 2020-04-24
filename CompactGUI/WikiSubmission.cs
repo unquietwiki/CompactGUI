@@ -1,10 +1,7 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Management;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
@@ -18,7 +15,7 @@ namespace CompactGUI
         public WikiSubmission() => InitializeComponent();
 
         internal static string? Name_Submit;
-        internal static string SteamID_Submit = 0.ToString();
+        internal static string SteamID_Submit = "0";
         internal static string? Type_Submit;
         internal string? UniqueID_Submit;
         internal static string? folder_Submit;
@@ -39,18 +36,18 @@ namespace CompactGUI
             FileInfo? targetACFFile = GetParseACFFiles();
             if (targetACFFile is object)
             {
-                string[] ACFText = File.ReadAllText(targetACFFile.FullName).Split(new[] { Constants.vbCrLf, Constants.vbCr, Constants.vbLf }, StringSplitOptions.RemoveEmptyEntries);
+                string[] ACFText = File.ReadAllText(targetACFFile.FullName).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string l in ACFText)
                 {
                     string lf = l.TrimStart();
-                    if (lf.StartsWith("\"" + "appid" + "\""))
+                    if (lf.StartsWith("\"" + "appid" + "\"", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        steamID = Conversions.ToInteger(lf.Substring(lf.LastIndexOf(Constants.vbTab) + 1).Replace("\"", ""));
+                        steamID = Convert.ToInt32(lf.Substring(lf.LastIndexOf("\t", StringComparison.CurrentCultureIgnoreCase) + 1).Replace("\"", ""), Compact.culture);
                     }
 
-                    if (lf.StartsWith("\"" + "name" + "\""))
+                    if (lf.StartsWith("\"" + "name" + "\"", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        steamName = lf.Substring(lf.LastIndexOf(Constants.vbTab) + 1).Replace("\"", "");
+                        steamName = lf.Substring(lf.LastIndexOf("\t", StringComparison.CurrentCultureIgnoreCase) + 1).Replace("\"", "");
                         goto Assignment;
                     }
                 }
@@ -70,13 +67,13 @@ namespace CompactGUI
             {
                 foreach (FileInfo f in Directory.GetParent(dI.Parent.FullName).GetFiles())
                 {
-                    if ((f.Extension ?? "") == ".acf")
+                    if (f.Extension.Contains(".acf"))
                     {
-                        string[] ACFText = File.ReadAllText(f.FullName).Split(new[] { Constants.vbCrLf, Constants.vbCr, Constants.vbLf }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] ACFText = File.ReadAllText(f.FullName).Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (string l in ACFText)
                         {
                             string lf = l.TrimStart();
-                            if (lf.StartsWith("\"" + "installdir" + "\"") && (Folder_Submit ?? "") == (lf.Substring(lf.LastIndexOf(Constants.vbTab) + 1).Replace("\"", "") ?? ""))
+                            if (lf.StartsWith("\"" + "installdir" + "\"", StringComparison.CurrentCultureIgnoreCase) && (Folder_Submit ?? "") == (lf.Substring(lf.LastIndexOf("\t", StringComparison.CurrentCultureIgnoreCase) + 1).Replace("\"", "") ?? ""))
                             {
                                 return f;
                             }
@@ -113,7 +110,7 @@ namespace CompactGUI
                 var rx = new Regex(@"[\?&|%™®©]");
                 if (rx.Match(TxtBoxName.Text).Success)
                 {
-                    Interaction.MsgBox("Name cannot contain '?', '&', '|', '%', '™', '®', or '©'");
+                    MessageBox.Show("Name cannot contain '?', '&', '|', '%', '™', '®', or '©'");
                 }
                 else
                 {
@@ -131,7 +128,7 @@ namespace CompactGUI
             bool alreadyExists = default;
             foreach (Result res in WikiHandler.allResults)
             {
-                if (Conversions.ToInteger(TxtBoxSteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (TxtBoxName.Text.Trim() ?? "") == (res.Name ?? ""))
+                if (Convert.ToInt32(TxtBoxSteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (TxtBoxName.Text.Trim() ?? "") == (res.Name ?? ""))
                 {
                     if ((CompMode_Submit ?? "") == (res.Algorithm ?? ""))
                     {
@@ -178,7 +175,7 @@ namespace CompactGUI
             }
             catch (System.Net.WebException)
             {
-                Interaction.MsgBox("An internet connection could not be established. Please try again later.");
+                MessageBox.Show("An internet connection could not be established. Please try again later.");
                 Close();
             }
         }
@@ -192,7 +189,7 @@ Folder: " + HttpUtility.UrlDecode(Folder_Submit) + @"
 Compression Mode: " + CompMode_Submit + @"
 Size Before: " + BeforeSize_Submit + @"
 Size After: " + AfterSize_Submit;
-            string[] ite = output.Split(Conversions.ToChar(Constants.vbCrLf));
+            string[] ite = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
             foreach (string i in ite)
             {
                 string[] splitp = i.Split(new char[] { ':' }, 2);
@@ -206,7 +203,7 @@ Size After: " + AfterSize_Submit;
             var moc = mc.GetInstances();
             foreach (var mo in moc)
             {
-                if ((string.Empty ?? "") == (string.Empty ?? "") & Conversions.ToBoolean(mo.Properties["IPEnabled"].Value) == true)
+                if ((string.Empty ?? "") == (string.Empty ?? "") & (bool)(mo.Properties["IPEnabled"].Value) == true)
                 {
                     _ = mo.Properties["MacAddress"].Value.ToString();
                 }
@@ -236,16 +233,10 @@ Size After: " + AfterSize_Submit;
         internal static string? Folder_Submit { get => folder_Submit; set => folder_Submit = value; }
         internal static string? CompMode_Submit { get => compMode_Submit; set => compMode_Submit = value; }
 
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
         private void MoveForm()
         {
-            ReleaseCapture();
-            _ = SendMessage(Handle, 0xA1, 2, 0);
+            NativeMethods.ReleaseCapture();
+            _ = NativeMethods.SendMessage(Handle, 0xA1, 2, 0);
         }
 
         private void Panel_topBar_MouseDown(object sender, MouseEventArgs e)

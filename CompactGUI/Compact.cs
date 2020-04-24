@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -57,14 +54,21 @@ namespace CompactGUI
         }
 
         public Process? MyProcess1 { get; set; }
-        public string? CurrentMode1 { get; set; }
-        public object OverrideCompressFolderButton { get; set; } = 0;
-        public int DirectorysizeexceptionCount { get; set; } = 0;
-        public static object Version { get => version; set => version = value; }
-        public bool IsQueryMode { get => IsQueryMode1; set => IsQueryMode1 = value; }
-        public bool IsActive { get => IsActive1; set => IsActive1 = value; }
-
+        internal ActionMode CurrentMode { get; set; }
+        internal object OverrideCompressFolderButton { get; set; } = 0;
+        internal int DirectorysizeexceptionCount { get; set; } = 0;
+        internal static object Version { get => version; set => version = value; }
         private List<string> workingList = new List<string>();
+        internal List<string> ListOfFiles { get; } = new List<string>();
+        internal List<string> AllFiles { get; } = new List<string>();
+        internal List<string> TreeData { get; } = new List<string>();
+        internal bool IsQueryMode = false;
+        internal bool IsActive = false;
+        private decimal intervaltime;
+        private readonly ArrayList outputbuffer = new ArrayList();
+        private ulong newFolderSize;
+        private ulong oldFolderSize;
+        internal string workingDir = "";
 
         public List<string> GetWorkingList()
         {
@@ -76,22 +80,11 @@ namespace CompactGUI
             workingList = value;
         }
 
-        public List<string> ListOfFiles { get; } = new List<string>();
-        public List<string> AllFiles { get; } = new List<string>();
-        public List<string> TreeData { get; } = new List<string>();
-        public bool IsQueryMode1 { get; set; } = false;
-        public bool IsActive1 { get; set; } = false;
-
-        private decimal intervaltime;
-        private readonly ArrayList outputbuffer = new ArrayList();
-        private ulong newFolderSize;
-        private ulong oldFolderSize;
-        internal string workingDir = "";
 
         private void Compact_Load(object sender, EventArgs e)
         {
             LoadFromSettings();
-            if ((dirChooser.Text ?? "") == "❯   Select Target Folder")
+            if (dirChooser.Text.Contains("Select Target Folder"))
             {
                 PaneltopBar.Height = Height - 1;
                 PaneltopBar.Anchor += (int)AnchorStyles.Bottom;
@@ -111,7 +104,7 @@ namespace CompactGUI
 
             comboChooseShutdown.SelectedItem = comboChooseShutdown.Items[0];
             RCMenu.WriteLocRegistry();
-            VersionCheck.VC(Conversions.ToString(version));
+            VersionCheck.VC(Convert.ToString(version,culture));
             foreach (string arg in My.MyProject.Application.CommandLineArgs)
             {
                 if (Directory.Exists(arg))
@@ -123,23 +116,23 @@ namespace CompactGUI
 
         private void SelectFolderToCompress(object sender, EventArgs e)
         {
-            if (IsActive1 == false & IsQueryMode1 == false)
+            if (IsActive == false & IsQueryMode == false)
             {
                 var folderChoice = new FileFolderDialog();
                 folderChoice.ShowDialog();
-                if (Directory.Exists(Conversions.ToString(folderChoice.SelectedPath)))
+                if (Directory.Exists(Convert.ToString(folderChoice.SelectedPath, Compact.culture)))
                 {
-                    SelectFolder(Conversions.ToString(folderChoice.SelectedPath), "button");
+                    SelectFolder(Convert.ToString(folderChoice.SelectedPath, Compact.culture), "button");
                 }
-                else if (File.Exists(Conversions.ToString(folderChoice.SelectedPath)))
+                else if (File.Exists(Convert.ToString(folderChoice.SelectedPath, Compact.culture)))
                 {
                     if (folderChoice.MultipleFiles is object)
                     {
-                        Interaction.MsgBox("Multiple Files Selected");
+                        MessageBox.Show("Multiple Files Selected");
                     }
                     else
                     {
-                        Interaction.MsgBox("File selected");
+                        MessageBox.Show("File selected");
                     }
                 }
 
@@ -155,7 +148,7 @@ namespace CompactGUI
             {
                 ThrowError(ERR_WINDOWSDIRNOTALLOWED);   // Makes sure you're not trying to compact the Windows directory.
             }
-            else if (selectedDir.EndsWith(@":\"))
+            else if (selectedDir.EndsWith(@":\", StringComparison.CurrentCultureIgnoreCase))
             {
                 ThrowError(ERR_WHOLEDRIVENOTALLOWED);
             }
@@ -170,7 +163,7 @@ namespace CompactGUI
                 DirectorysizeexceptionCount = 0;
                 if (DI_selectedDir.Name.Length > 0)
                 {
-                    sb_FolderName.Text = Strings.StrConv(DI_selectedDir.Name, VbStrConv.ProperCase);
+                    sb_FolderName.Text = culture.TextInfo.ToTitleCase(DI_selectedDir.FullName);
                 }
 
                 if (Directory.GetParent(DI_selectedDir.Parent.FullName) is object)
@@ -186,13 +179,14 @@ namespace CompactGUI
                     dirChooser.Text = "❯ " + DI_selectedDir.Parent.Name.Replace(@":\", " ❯ ") + DI_selectedDir.Name;
                 }
 
-                oldFolderSize = Conversions.ToULong(DirectorySize(DI_selectedDir, true));
-                string oldFolderSize_Formatted = GetOutputSize(Conversions.ToLong(oldFolderSize), true);
+                oldFolderSize = Convert.ToUInt64(DirectorySize(DI_selectedDir, true));
+                string oldFolderSize_Formatted = GetOutputSize(Convert.ToInt64(oldFolderSize), true);
                 GetFilesToCompress(workingDir, ListOfFiles, My.Settings.Default.SkipNonCompressable);
                 foreach (string fileName in ListOfFiles)
                 {
                     string fN_Listable = fileName.Replace(workingDir, "").Replace(@"\", " ❯ ");
-                    if (fN_Listable.Count(x => Conversions.ToString(x) == "❯") == 1)
+                    //TODO: verify this works right
+                    if (fN_Listable.Count(x => Convert.ToString(x,culture) == "❯") == 1)
                     {
                         fN_Listable = fN_Listable.Replace(" ❯ ", "");
                     }
@@ -212,11 +206,6 @@ namespace CompactGUI
                     withBlock.Location = new Point(39, 20);
                 }
 
-                // FIXME
-                if (Conversions.ToBoolean(!Operators.ConditionalCompareObjectEqual(OverrideCompressFolderButton, 0, false)))
-                {
-                    // btnCompress.Enabled = false;    // Used as a security measure to stop accidental compression of folders that should not be compressed - even though the compact.exe process will throw an error if you try, I'd prefer to catch it here anyway.
-                }
             }
             else if (senderID.Contains("button"))
             {
@@ -263,29 +252,29 @@ namespace CompactGUI
         {
             conOut.Items.Clear();
             SetWorkingList(new List<string>(ListOfFiles));
-            if (Conversions.ToBoolean(GetWorkingList().Count > 0))
+            if (Convert.ToBoolean(GetWorkingList().Count > 0))
             {
-                CurrentMode1 = "compact";
-                CreateProcess("C");
+                CurrentMode = ActionMode.Compact;
+                CreateProcess(CurrentMode);
             }
             else
             {
-                Interaction.MsgBox("There are no compressable files in this folder. Check the CompactGUI settings to see if you have chosen to ignore certain files from being compressed.");
+                MessageBox.Show("There are no compressable files in this folder. Check the CompactGUI settings to see if you have chosen to ignore certain files from being compressed.");
             }
         }
 
         private void BtnUncompress_Click(object sender, EventArgs e)             // Handles uncompressing. For now, uncompressing can only be done through the program only to revert a compression that's just been done.
         {
-            CommmonActions.ActionBegun("U");
+            CurrentMode = ActionMode.UnCompact;
+            CommmonActions.ActionBegun(CurrentMode);
             FileIndex = 0;
-            CurrentMode1 = "uncompact";
             SetWorkingList(new List<string>(AllFiles));
-            RunCompact(Conversions.ToString(GetWorkingList()[0]));
+            RunCompact(Convert.ToString(GetWorkingList()[0], Compact.culture));
         }
 
         private void OutputBufferDelegate()
         {
-            if (Math.Round(Conversions.ToDouble(intervaltime) + 0.1, 2) < Math.Round(DateTime.Now.TimeOfDay.TotalSeconds, 2))      // Buffers incoming strings, then outputs them to the listbox every 0.1s
+            if (Math.Round(Convert.ToDouble(intervaltime) + 0.1, 2) < Math.Round(DateTime.Now.TimeOfDay.TotalSeconds, 2))      // Buffers incoming strings, then outputs them to the listbox every 0.1s
             {
                 base.Invoke(new Action(() =>
                 {
@@ -296,7 +285,7 @@ namespace CompactGUI
                     }
 
                     outputbuffer.Clear();
-                    intervaltime = Conversions.ToDecimal(DateTime.Now.TimeOfDay.TotalSeconds);
+                    intervaltime = Convert.ToDecimal(DateTime.Now.TimeOfDay.TotalSeconds);
                     conOut.EndUpdate();
                 }));
             }
@@ -306,11 +295,11 @@ namespace CompactGUI
         {
             OutputBufferDelegate();
             FileIndex += 1;
-            if (!Conversions.ToBoolean(FileIndex < GetWorkingList().Count & GetWorkingList().Count > 1))
+            if (!Convert.ToBoolean(FileIndex < GetWorkingList().Count & GetWorkingList().Count > 1))
             {
                 Console.WriteLine("Done");
                 System.Threading.Thread.Sleep(100);
-                outputbuffer.Add("Completed:" + Constants.vbTab + "Processed " + ListOfFiles.Count + " files");
+                outputbuffer.Add("Completed:" + "\t" + "Processed " + ListOfFiles.Count + " files");
                 foreach (string str in outputbuffer)
                 {
                     AppendOutputText(str);
@@ -322,15 +311,15 @@ namespace CompactGUI
             }
             else
             {
-                if (GetWorkingList()[FileIndex].ToString().Contains(workingDir))
+                if (GetWorkingList()[FileIndex].ToString(Compact.culture).Contains(workingDir))
                 {
-                    outputbuffer.Add("Compressing: " + Constants.vbTab + GetWorkingList()[FileIndex]);
-                    RunCompact(Conversions.ToString(GetWorkingList()[FileIndex]));
+                    outputbuffer.Add("Compressing: " + "\t" + GetWorkingList()[FileIndex]);
+                    RunCompact(Convert.ToString(GetWorkingList()[FileIndex], Compact.culture));
                 }
                 else
                 {
-                    Interaction.MsgBox("A file that is not contained within your selected folder has been queued for compression. To prevent damage to your system, the program will halt." + Constants.vbCrLf + "The file in question is: " + GetWorkingList()[FileIndex]);
-                    IsActive1 = false;
+                    MessageBox.Show("A file that is not contained within your selected folder has been queued for compression. To prevent damage to your system, the program will halt." + Environment.NewLine + "The file in question is: " + GetWorkingList()[FileIndex]);
+                    IsActive = false;
                     base.Invoke(new Action(() => Close()));
                 }
             }
@@ -340,12 +329,12 @@ namespace CompactGUI
         {
             for (int v = 1, loopTo = SxSCount; v <= loopTo; v++)
             {
-                if (Conversions.ToBoolean(FileIndex >= GetWorkingList().Count))
+                if (Convert.ToBoolean(FileIndex >= GetWorkingList().Count))
                 {
                     break;
                 }
 
-                RunCompact(Conversions.ToString(GetWorkingList()[FileIndex]));
+                RunCompact(Convert.ToString(GetWorkingList()[FileIndex], Compact.culture));
                 v += 1;
             }
         }
@@ -355,27 +344,27 @@ namespace CompactGUI
             _ = base.Invoke(new Action(() =>
               {
                   conOut.Items.Insert(0, text);
-                  sb_progressbar.Width = Conversions.ToInteger(FileIndex / GetWorkingList().Count * 301);
-                  sb_progresspercent.Text = Conversions.ToString(Math.Round((double)(FileIndex / GetWorkingList().Count * 100), 0) + "%");
+                  sb_progressbar.Width = Convert.ToInt32(FileIndex / GetWorkingList().Count * 301);
+                  sb_progresspercent.Text = Convert.ToString(Math.Round((double)(FileIndex / GetWorkingList().Count * 100), 0) + "%", Compact.culture);
               }));
         }
 
         private void CompactProcessCompleted()
         {
-            if ((CurrentMode1 ?? "") == "compact")
+            if (CurrentMode.Equals(ActionMode.Compact))
             {
-                CommmonActions.ActionCompleted("C");
+                CommmonActions.ActionCompleted(ActionMode.Compact);
                 CalculateSaving();
             }
-            else if ((CurrentMode1 ?? "") == "uncompact")
+            else if (CurrentMode.Equals(ActionMode.UnCompact))
             {
-                CommmonActions.ActionCompleted("U");
+                CommmonActions.ActionCompleted(ActionMode.UnCompact);
                 sb_compressedSizeVisual.Height = 113;
                 wkPostSizeVal.Text = "?";
                 wkPostSizeUnit.Text = "";
             }
 
-            if (checkShutdownOnCompletion.Checked & !IsQueryMode1)
+            if (checkShutdownOnCompletion.Checked & !IsQueryMode)
             {
                 My.MyProject.Forms.ShutdownDialog.SDProcIntent.Text = comboChooseShutdown.Text;
                 FadeTransition.FadeForm(My.MyProject.Forms.ShutdownDialog, 0, Convert.ToDouble(0.98M), 300, true);
@@ -389,9 +378,9 @@ namespace CompactGUI
 
         private void MyForm_Closing(object sender, FormClosingEventArgs e)
         {
-            if (IsActive1 == true)
+            if (IsActive == true)
             {
-                if (MessageBox.Show("Are you sure you want to exit?" + Constants.vbCrLf + Constants.vbCrLf + "Quitting now will finish compressing the current file, then quit safely." + Constants.vbCrLf + Constants.vbCrLf + "If you do decide to quit now, you can resume compression by repeating the process later." + Constants.vbCrLf + "Click Yes to continue exiting the program.", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to exit?" + Environment.NewLine + Environment.NewLine + "Quitting now will finish compressing the current file, then quit safely." + Environment.NewLine + Environment.NewLine + "If you do decide to quit now, you can resume compression by repeating the process later." + Environment.NewLine + "Click Yes to continue exiting the program.", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
 
                 {
                     e.Cancel = true;
@@ -413,7 +402,7 @@ namespace CompactGUI
 
         private void CalculateSaving()   // Calculations for all the relevant information after compression is completed. All the data is parsed from the console ouput using basic strings, but because that occurs on a different thread, information is stored to variables first (The Status Monitors at the top) then those values are used.
         {
-            CommmonActions.ActionBegun("A");
+            CommmonActions.ActionBegun(ActionMode.Analyze);
             int numberFilesCompressed = 0;
             ulong SizeAfterCompression = default;
             ulong SizeBeforeCompression = oldFolderSize;
@@ -428,21 +417,21 @@ namespace CompactGUI
                     conOutFileNamePadding = fl.Length;
                 }
             }
-
-            conOut.Items.Insert(0, "File" + Strings.StrDup(conOutFileNamePadding - 4, " ") + Constants.vbTab + "Size" + Strings.StrDup(16, " ") + "Size on Disk");
+            
+            conOut.Items.Insert(0, "File" + new String(Convert.ToChar(" ", Compact.culture), conOutFileNamePadding - 4) + "\t" + "Size" + new String(Convert.ToChar(" ", Compact.culture), 16) + "Size on Disk");
             conOut.Items.Insert(1, "");
             var AnalyzedPoorlyCompressedFiles = new List<string>();
             foreach (string fpath in AllFiles)
             {
                 Application.DoEvents();
-                ulong compval = Conversions.ToULong(GetFileSizeOnDisk(fpath));
-                ulong rawval = Conversions.ToULong(new FileInfo(fpath).Length);
+                ulong compval = Convert.ToUInt64(GetFileSizeOnDisk(fpath));
+                ulong rawval = Convert.ToUInt64(new FileInfo(fpath).Length);
                 if (rawval > FourGB)
                 {
-                    int Mod4K = (int)(Conversions.ToLong(rawval) / FourGB);
-                    if (compval < 1.1 * Conversions.ToDouble(rawval - Mod4K * FourGB))   // Checks if the compressed file is smaller than the adjustment consideration @ 4GB (with a 10% leeway)
+                    int Mod4K = (int)(Convert.ToInt64(rawval) / FourGB);
+                    if (compval < 1.1 * Convert.ToDouble(rawval - Mod4K * FourGB))   // Checks if the compressed file is smaller than the adjustment consideration @ 4GB (with a 10% leeway)
                     {
-                        compval = Conversions.ToULong(Mod4K * FourGB + compval);
+                        compval = Convert.ToUInt64(Mod4K * FourGB + compval);
                     }
                 }
 
@@ -455,11 +444,11 @@ namespace CompactGUI
                     AnalyzedPoorlyCompressedFiles.Add(new FileInfo(fpath).Extension);
                 }
 
-                string fpath_Output = fpath + Strings.StrDup(conOutFileNamePadding - fpath.Length, " ");
-                string compval_fmt = GetOutputSize(Conversions.ToLong(compval), true);
-                string rawval_fmt = GetOutputSize(Conversions.ToLong(rawval), true);
-                outputbuffer.Add(fpath_Output + Constants.vbTab + "Size: " + rawval_fmt + Strings.StrDup(14 - rawval_fmt.Length, " ") + "Size on Disk: " + compval_fmt);
-                if (Math.Round(Conversions.ToDouble(intervaltime) + 0.2, 2) < Math.Round(DateTime.Now.TimeOfDay.TotalSeconds, 2))      // Buffers incoming strings, then outputs them to the listbox every 0.1s
+                string fpath_Output = fpath + new String(Convert.ToChar(" ", Compact.culture), conOutFileNamePadding - fpath.Length);
+                string compval_fmt = GetOutputSize(Convert.ToInt64(compval), true);
+                string rawval_fmt = GetOutputSize(Convert.ToInt64(rawval), true);
+                outputbuffer.Add(fpath_Output + "\t" + "Size: " + rawval_fmt + new String(Convert.ToChar(" ", Compact.culture), 14 - rawval_fmt.Length) + "Size on Disk: " + compval_fmt);
+                if (Math.Round(Convert.ToDouble(intervaltime) + 0.2, 2) < Math.Round(DateTime.Now.TimeOfDay.TotalSeconds, 2))      // Buffers incoming strings, then outputs them to the listbox every 0.1s
                 {
                     base.Invoke(new Action(() =>
                     {
@@ -470,7 +459,7 @@ namespace CompactGUI
                         }
 
                         outputbuffer.Clear();
-                        intervaltime = Conversions.ToDecimal(DateTime.Now.TimeOfDay.TotalSeconds);
+                        intervaltime = Convert.ToDecimal(DateTime.Now.TimeOfDay.TotalSeconds);
                         conOut.EndUpdate();
                     }));
                 }
@@ -478,7 +467,7 @@ namespace CompactGUI
                 TreeData.Add(fpath + "|" + rawval + "|" + compval);
                 SizeAfterCompression += compval;
                 progressVal += 1 / (AllFiles.Count * 100);
-                sb_progressbar.Width = (int)(Conversions.ToDouble(progressVal) * 3.01);
+                sb_progressbar.Width = (int)(Convert.ToDouble(progressVal) * 3.01);
                 sb_progresspercent.Text = Math.Round(progressVal, 0) + "%";
             }
 
@@ -491,36 +480,36 @@ namespace CompactGUI
             Console.WriteLine("Poorly Compressed Extensions:");
             foreach (IGrouping<string, string> grp in groups)
             {
-                Console.WriteLine(Constants.vbTab + grp.ElementAtOrDefault(0) + ": " + grp.Count() + "/" + AllFiles.Where(value => (new FileInfo(value).Extension ?? "") == (grp.ElementAtOrDefault(0) ?? "")).Count());
+                Console.WriteLine("\t" + grp.ElementAtOrDefault(0) + ": " + grp.Count() + "/" + AllFiles.Where(value => (new FileInfo(value).Extension ?? "") == (grp.ElementAtOrDefault(0) ?? "")).Count());
             }
 
             newFolderSize = SizeAfterCompression;
-            if (Conversions.ToLong(SizeBeforeCompression) - Conversions.ToLong(SizeAfterCompression) < 0 & IsQueryMode1 == true) // Checks if the Folder is NOT compressed
+            if (Convert.ToInt64(SizeBeforeCompression) - Convert.ToInt64(SizeAfterCompression) < 0 & IsQueryMode == true) // Checks if the Folder is NOT compressed
             {
-                CommmonActions.ActionCompleted("A", false);
+                CommmonActions.ActionCompleted(ActionMode.Analyze, false);
             }
             else
             {
-                origSizeLabel.Text = GetOutputSize(Conversions.ToLong(SizeBeforeCompression), true);
-                string PrintOutSize = GetOutputSize(Conversions.ToLong(SizeBeforeCompression) - (Conversions.ToLong(SizeBeforeCompression) - Conversions.ToLong(SizeAfterCompression)), true);
+                origSizeLabel.Text = GetOutputSize(Convert.ToInt64(SizeBeforeCompression), true);
+                string PrintOutSize = GetOutputSize(Convert.ToInt64(SizeBeforeCompression) - (Convert.ToInt64(SizeBeforeCompression) - Convert.ToInt64(SizeAfterCompression)), true);
                 compressedSizeLabel.Text = PrintOutSize;
                 wkPostSizeVal.Text = PrintOutSize.Split(' ')[0]; // SPLITTING ON A SPACE COULD LEAD TO FORMATTING BUGS WITH CULTURES
                 wkPostSizeUnit.Text = PrintOutSize.Split(' ')[1];
                 Size wkPostSizeVal_Len = TextRenderer.MeasureText(wkPostSizeVal.Text, wkPostSizeVal.Font);
                 wkPostSizeUnit.Location = new Point(wkPostSizeVal.Location.X + wkPostSizeVal.Size.Width / 2 + (wkPostSizeVal_Len.Width / 2 - 8), wkPostSizeVal.Location.Y + 16);
                 double compRatio = Math.Round((double)(SizeBeforeCompression / SizeAfterCompression), 1);
-                spaceSavedLabel.Text = GetOutputSize(Conversions.ToLong(SizeBeforeCompression - SizeAfterCompression), true) + " Saved";
+                spaceSavedLabel.Text = GetOutputSize(Convert.ToInt64(SizeBeforeCompression - SizeAfterCompression), true) + " Saved";
                 labelFilesCompressed.Text = numberFilesCompressed + " / " + AllFiles.Count + " files compressed";
                 help_resultsFilesCompressed.Location = new Point(labelFilesCompressed.Location.X + labelFilesCompressed.Width + 2, labelFilesCompressed.Location.Y + 1);
                 try
                 {
-                    compressedSizeVisual.Width = Conversions.ToInteger(320 / compRatio);
-                    sb_compressedSizeVisual.Height = Conversions.ToInteger(113 / compRatio);
+                    compressedSizeVisual.Width = Convert.ToInt32(320 / compRatio);
+                    sb_compressedSizeVisual.Height = Convert.ToInt32(113 / compRatio);
                     sb_compressedSizeVisual.Location = new Point(sb_compressedSizeVisual.Location.X, 5 + 113 - sb_compressedSizeVisual.Height);
-                    Callpercent = Conversions.ToDecimal(1 - (SizeAfterCompression / SizeBeforeCompression)) * 100;
+                    Callpercent = Convert.ToDecimal(1 - (SizeAfterCompression / SizeBeforeCompression)) * 100;
                     if (My.Settings.Default.ShowNotifications)
                     {
-                        TrayIcon.ShowBalloonTip(1, "Compressed: " + sb_FolderName.Text, Constants.vbCrLf + "▸ " + spaceSavedLabel.Text + Constants.vbCrLf + "▸ " + Math.Round(Callpercent, 1) + "% Smaller", ToolTipIcon.None);
+                        TrayIcon.ShowBalloonTip(1, "Compressed: " + sb_FolderName.Text, Environment.NewLine + "▸ " + spaceSavedLabel.Text + Environment.NewLine + "▸ " + Math.Round(Callpercent, 1) + "% Smaller", ToolTipIcon.None);
                     }
                 }
                 catch (OverflowException)
@@ -530,12 +519,12 @@ namespace CompactGUI
                 }
 
                 outputbuffer.Clear();
-                CommmonActions.ActionCompleted("A", true);
-                Callpercent = Conversions.ToDecimal(1 - (SizeAfterCompression / SizeBeforeCompression)) * 100;
+                CommmonActions.ActionCompleted(ActionMode.Analyze, true);
+                Callpercent = Convert.ToDecimal(1 - (SizeAfterCompression / SizeBeforeCompression)) * 100;
                 PaintPercentageTransition.PaintTarget(results_arc, (float)Callpercent, 5);
             }
 
-            IsQueryMode1 = false;
+            IsQueryMode = false;
         }
 
         public static decimal GetFileSizeOnDisk(string file)
@@ -546,22 +535,19 @@ namespace CompactGUI
             var searcher = new ManagementObjectSearcher("select BlockSize,NumberOfBlocks from Win32_Volume WHERE DriveLetter = '" + info.Directory.Root.FullName.TrimEnd('\\') + "'");
             foreach (ManagementObject vi in searcher.Get())
             {
-                blockSize = Conversions.ToULong(vi["BlockSize"]);
+                blockSize = Convert.ToUInt64(vi["BlockSize"], Compact.culture);
                 break;
             }
 
             searcher.Dispose();
-            clusterSize = Conversions.ToUInteger(blockSize);
-            uint losize = GetCompressedFileSizeW(file, lpFileSizeHigh: out uint hosize);
-            long size = Conversions.ToLong(hosize) << 32 | losize;
+            clusterSize = Convert.ToUInt32(blockSize, Compact.culture);
+            uint losize = NativeMethods.GetCompressedFileSizeW(file, lpFileSizeHigh: out uint hosize);
+            long size = Convert.ToInt64(hosize) << 32 | losize;
             decimal bytes = ((size
                                        + clusterSize
                                        - 1) / clusterSize * clusterSize);
-            return Conversions.ToDecimal(bytes);
+            return Convert.ToDecimal(bytes);
         }
-
-        [DllImport("kernel32.dll")]
-        private static extern uint GetCompressedFileSizeW([In()][MarshalAs(UnmanagedType.LPWStr)] string lpFileName, [MarshalAs(UnmanagedType.U4)] out uint lpFileSizeHigh);
 
         public static string GetOutputSize(long byteCount, bool showSizeType = false)            // Function for converting from Bytes into various units
         {
@@ -576,11 +562,11 @@ namespace CompactGUI
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
             if (showSizeType == true)
             {
-                return (Math.Sign(byteCount) * num).ToString() + suf[place];
+                return (Math.Sign(byteCount) * num).ToString(Compact.culture) + suf[place];
             }
             else
             {
-                return (Math.Sign(byteCount) * num).ToString();
+                return (Math.Sign(byteCount) * num).ToString(Compact.culture);
             }
         }
 
@@ -599,7 +585,8 @@ namespace CompactGUI
             catch (UnauthorizedAccessException)
             {
                 DirectorysizeexceptionCount += 1;
-                if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(DirectorysizeexceptionCount, 1, false)))
+                //TODO: make sure this is the right comparison
+                if (DirectorysizeexceptionCount == 1)
                 {
                     OverrideCompressFolderButton = 1;
                     DirectorysizeexceptionCount += 1;
@@ -624,27 +611,27 @@ namespace CompactGUI
 
         public static string Between(string value, string a, string b)
         {
-            if (value.IndexOf(a) == -1)
+            if (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) == -1)
             {
                 return "";
             }
 
-            if (value.LastIndexOf(b) == -1)
+            if (value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase) == -1)
             {
                 return "";
             }
 
-            if (value.IndexOf(a) + a.Length >= value.LastIndexOf(b))
+            if (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length >= value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase))
             {
                 return "";
             }
 
-            return value.Substring(value.IndexOf(a) + a.Length, value.LastIndexOf(b) - (value.IndexOf(a) + a.Length));
+            return value.Substring(value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length, value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase) - (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length));
         }
 
         public static string Before(string value, string a)
         {
-            int posA = value.IndexOf(a);
+            int posA = value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase);
             if (posA == -1)
             {
                 return "";
@@ -655,7 +642,7 @@ namespace CompactGUI
 
         public static string After(string value, string a)
         {
-            int posA = value.LastIndexOf(a);
+            int posA = value.LastIndexOf(a, StringComparison.CurrentCultureIgnoreCase);
             if (posA == -1)
             {
                 return "";
@@ -674,7 +661,7 @@ namespace CompactGUI
 
         private void Saveconlog_Click(object sender, EventArgs e)
         {
-            if (Interaction.MsgBox("Save console output?", MsgBoxStyle.YesNo) == MsgBoxResult.Yes)
+            if (MessageBox.Show("Save console output?", null ,MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 var reverseCon = new ArrayList();
                 var sb = new StringBuilder();
@@ -684,15 +671,15 @@ namespace CompactGUI
                 }
 
                 reverseCon.Reverse();
-                sb.AppendLine("CompactGUI: Log at " + DateTime.Now + Constants.vbCrLf + Strings.StrDup(50, "/"));
+                sb.AppendLine("CompactGUI: Log at " + DateTime.Now + Environment.NewLine + new String(Convert.ToChar("/", Compact.culture),50));
                 foreach (string ln in reverseCon)
                 {
                     sb.AppendLine(ln);
                 }
 
-                sb.AppendLine("End Log at " + DateTime.Now + Constants.vbCrLf + Strings.StrDup(100, "/") + Constants.vbCrLf + Constants.vbCrLf);
+                sb.AppendLine("End Log at " + DateTime.Now + Environment.NewLine + new String(Convert.ToChar("/", Compact.culture), 100) + Environment.NewLine + Environment.NewLine);
                 File.AppendAllText(Application.StartupPath + @"\CompactGUILog.txt", sb.ToString(), Encoding.UTF8);
-                Interaction.MsgBox("Saved log to " + Application.StartupPath + @"\CompactGUILog.txt");
+                MessageBox.Show("Saved log to " + Application.StartupPath + @"\CompactGUILog.txt");
                 Process.Start(Application.StartupPath + @"\CompactGUILog.txt");
             }
         }
@@ -785,16 +772,10 @@ namespace CompactGUI
 
         /* TODO ERROR: Skipped RegionDirectiveTrivia */
 
-        [DllImport("user32.dll")]
-        private static extern bool ReleaseCapture();
-
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
         private void MoveForm()
         {
-            ReleaseCapture();
-            _ = SendMessage(Handle, 0xA1, 2, 0);
+            NativeMethods.ReleaseCapture();
+            _ = NativeMethods.SendMessage(Handle, 0xA1, 2, 0);
         }
 
         private void Panel_topBar_MouseDown(object sender, MouseEventArgs e)
@@ -878,7 +859,7 @@ namespace CompactGUI
         public void ResultsArcPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            DrawProgress(e.Graphics, new Rectangle(21, 21, 203, 203), Conversions.ToDecimal(PaintPercentageTransition.Callpercentstep), ColorTranslator.FromHtml("#3B668E"), ColorTranslator.FromHtml("#CFD8DC"));
+            DrawProgress(e.Graphics, new Rectangle(21, 21, 203, 203), Convert.ToDecimal(PaintPercentageTransition.Callpercentstep), ColorTranslator.FromHtml("#3B668E"), ColorTranslator.FromHtml("#CFD8DC"));
         }
 
         private void DrawProgress(Graphics g, Rectangle rect, decimal percentage, Color percColor, Color remColor)
@@ -893,7 +874,7 @@ namespace CompactGUI
             using var fb = new SolidBrush(Color.FromArgb(48, 67, 84));
             g.DrawArc(remainderPen, rect, (float)progressAngle - 184, (float)((percentage / Callpercent) - progressAngle));
             g.DrawArc(progressPen, rect, -183, (float)progressAngle);
-            string perc = Math.Round(percentage, 0).ToString();
+            string perc = Math.Round(percentage, 0).ToString(Compact.culture);
             var percSize = g.MeasureString(perc, fnt);
             var percPoint = new Point((int)(rect.Left + (rect.Width / 2) - (percSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (percSize.Height * 1.25)));
             g.DrawString(perc, fnt, fb, percPoint);
@@ -959,7 +940,8 @@ namespace CompactGUI
 
         private void HideWikiRes(object sender, EventArgs e)
         {
-            if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(isAlreadyFading, 0, false)))
+            //TODO: make sure this works
+            if (Convert.ToBoolean(isAlreadyFading, Compact.culture))
             {
                 FadeTransition.FadeForm(My.MyProject.Forms.WikiPopup, Convert.ToDouble(0.96M), 0, 200);
                 isAlreadyFading = 1;
@@ -987,9 +969,9 @@ namespace CompactGUI
         private void DirChooser_DragDrop(object sender, DragEventArgs e)
         {
             object dropVar = e.Data.GetData(DataFormats.FileDrop);
-            if (IsActive1 == false & IsQueryMode1 == false)
+            if (IsActive == false & IsQueryMode == false)
             {
-                SelectFolder(Conversions.ToString(dropVar), "button");
+                SelectFolder(Convert.ToString(dropVar, Compact.culture), "button");
             }
         }
 
@@ -998,11 +980,11 @@ namespace CompactGUI
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 object dropVar = e.Data.GetData(DataFormats.FileDrop);
-                if (Directory.Exists(Conversions.ToString(dropVar)))
+                if (Directory.Exists(Convert.ToString(dropVar, Compact.culture)))
                 {
                     e.Effect = DragDropEffects.Copy;
                 }
-                else if (File.Exists(Conversions.ToString(dropVar)))
+                else if (File.Exists(Convert.ToString(dropVar, Compact.culture)))
                 {
                     // For use in file handling
                 }
@@ -1031,19 +1013,19 @@ namespace CompactGUI
             {
                 case ERR_WHOLEDRIVENOTALLOWED:
                     {
-                        Interaction.MsgBox("Compressing an entire drive with this tool is not allowed");
+                        MessageBox.Show("Compressing an entire drive with this tool is not allowed");
                         break;
                     }
 
                 case ERR_WINDOWSDIRNOTALLOWED:
                     {
-                        Interaction.MsgBox("Compressing items in the Windows folder using this program " + "is not recommended. Please use the command line instead");
+                        MessageBox.Show("Compressing items in the Windows folder using this program " + "is not recommended. Please use the command line instead");
                         break;
                     }
 
                 case ERR_UNAUTHORISEDREQUIRESADMIN:
                     {
-                        if (MessageBox.Show("This directory contains a subfolder that you do not have permission to access. Please try running the program again as an Administrator." + Constants.vbCrLf + Constants.vbCrLf + "If the problem persists, the subfolder is most likely protected by the System, and by design this program will refuse to let you proceed." + Constants.vbCrLf + Constants.vbCrLf + "Would you like to restart the program as an Administrator?", "Permission Error", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                        if (MessageBox.Show("This directory contains a subfolder that you do not have permission to access. Please try running the program again as an Administrator." + Environment.NewLine + Environment.NewLine + "If the problem persists, the subfolder is most likely protected by the System, and by design this program will refuse to let you proceed." + Environment.NewLine + Environment.NewLine + "Would you like to restart the program as an Administrator?", "Permission Error", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                         {
                             RCMenu.RunAsAdmin();
                             Close();
@@ -1054,7 +1036,7 @@ namespace CompactGUI
 
                 case ERR_UNAUTHORISEDREQUIRESSYSTEM:
                     {
-                        Interaction.MsgBox("This directory contains a subfolder that you do not have permission To access." + Constants.vbCrLf + Constants.vbCrLf + "The subfolder is most likely protected by the System, and by design this program will refuse to let you proceed.");
+                        MessageBox.Show("This directory contains a subfolder that you do not have permission To access." + Environment.NewLine + Environment.NewLine + "The subfolder is most likely protected by the System, and by design this program will refuse to let you proceed.");
                         break;
                     }
             }

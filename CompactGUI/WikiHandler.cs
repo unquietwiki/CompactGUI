@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -89,9 +87,9 @@ namespace CompactGUI
                     var itemFolder = result.Element("itemFolder").Value;
                     var itemSteamID = result.Element("itemSteamID").Value;
                     var itemAlgorithm = result.Element("itemAlgorithm").Value;
-                    var itemBeforeSize = Conversions.ToULong(result.Element("itemBefore").Value);
-                    var itemAfterSize = Conversions.ToULong(result.Element("itemAfter").Value);
-                    var res = new Result(itemName, itemFolder, Conversions.ToInteger(itemSteamID), itemAlgorithm, itemBeforeSize, itemAfterSize);
+                    var itemBeforeSize = Convert.ToUInt64(result.Element("itemBefore").Value, Compact.culture);
+                    var itemAfterSize = Convert.ToUInt64(result.Element("itemAfter").Value, Compact.culture);
+                    var res = new Result(itemName, itemFolder, Convert.ToInt32(itemSteamID, Compact.culture), itemAlgorithm, itemBeforeSize, itemAfterSize);
                     allResults.Add(res);
                 }
 
@@ -99,19 +97,19 @@ namespace CompactGUI
                 int matches = 0;
                 foreach (Result r in allResults)
                 {
-                    if (r.Folder.Equals(workingname))
+                    if (r.Folder.Equals(workingname, StringComparison.CurrentCultureIgnoreCase))
                     {
                         gcount.Add(r);
                         matches += 1;
                     }
                 }
 
-                Console.WriteLine(Constants.vbCrLf);
+                Console.WriteLine(Environment.NewLine);
                 if (matches == 0)
                 {
                     foreach (Result r in allResults)
                     {
-                        if (workingname.Length > 2 && r.NameSanitized.StartsWith(workingname))
+                        if (workingname.Length > 2 && r.NameSanitized.StartsWith(workingname, StringComparison.CurrentCultureIgnoreCase))
                         {
                             gcount.Add(r);
                             matches += 1;
@@ -125,7 +123,7 @@ namespace CompactGUI
                 foreach (Result r in gcount)
                 {
                     FillTable(r);
-                    ratioavg += decimal.Parse(r.Ratio.ToString());
+                    ratioavg += decimal.Parse(r.Ratio.ToString(Compact.culture), Compact.culture);
                     My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = false;   // Add check for game issues at later date
                 }
 
@@ -133,8 +131,8 @@ namespace CompactGUI
                 if (gcount.Count != default)
                 {
                     ratioavg = (ratioavg - 1) / gcount.Count;
-                    My.MyProject.Forms.Compact.wkPostSizeVal.Text = Conversions.ToString(Math.Round(folderSize * ratioavg, 1));
-                    My.MyProject.Forms.Compact.wkPostSizeUnit.Text = Conversions.ToString(suffix);
+                    My.MyProject.Forms.Compact.wkPostSizeVal.Text = Convert.ToString(Math.Round(folderSize * ratioavg, 1), Compact.culture);
+                    My.MyProject.Forms.Compact.wkPostSizeUnit.Text = Convert.ToString(suffix, Compact.culture);
                     Size wkPostSizeVal_Len = TextRenderer.MeasureText(My.MyProject.Forms.Compact.wkPostSizeVal.Text, My.MyProject.Forms.Compact.wkPostSizeVal.Font);
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPostSizeVal.Location.X + My.MyProject.Forms.Compact.wkPostSizeVal.Size.Width / 2 + (wkPostSizeVal_Len.Width / 2 - 8), My.MyProject.Forms.Compact.wkPostSizeVal.Location.Y + 16);
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Visible = true;
@@ -215,7 +213,7 @@ namespace CompactGUI
                 };
                 using var GCompR = new Label()
                 {
-                    Text = ps.Ratio.ToString(),
+                    Text = ps.Ratio.ToString(Compact.culture),
                     ForeColor = Color.DimGray,
                     Dock = DockStyle.Right,
                     Font = new Font("Segoe UI", 10, FontStyle.Regular)
@@ -254,14 +252,14 @@ namespace CompactGUI
 
         public static void LocalFolderParse(DirectoryInfo DIwDString, string rawPreSize)
         {
-            string wnpatch = Regex.Replace(DIwDString.Name.ToString(), @"\s+", "").ToLower(CultureInfo.CurrentUICulture).Trim();
+            string wnpatch = Regex.Replace(DIwDString.Name.ToString(Compact.culture), @"\s+", "").ToLower(CultureInfo.CurrentUICulture).Trim();
             workingname = wnpatch;
-            folderSize = Math.Round(decimal.Parse(rawPreSize.Split(' ')[0]), 2);
+            folderSize = Math.Round(decimal.Parse(rawPreSize.Split(' ')[0], Compact.culture), 2);
             suffix = rawPreSize.Split(' ')[1];
             try
             {
-                My.MyProject.Forms.Compact.wkPreSizeVal.Text = Conversions.ToString(Math.Round(folderSize, 1));
-                My.MyProject.Forms.Compact.wkPreSizeUnit.Text = Conversions.ToString(suffix);
+                My.MyProject.Forms.Compact.wkPreSizeVal.Text = Convert.ToString(Math.Round(folderSize, 1), Compact.culture);
+                My.MyProject.Forms.Compact.wkPreSizeUnit.Text = Convert.ToString(suffix, Compact.culture);
                 Size wkPreSizeVal_Len = TextRenderer.MeasureText(My.MyProject.Forms.Compact.wkPreSizeVal.Text, My.MyProject.Forms.Compact.wkPreSizeVal.Font);
                 My.MyProject.Forms.Compact.wkPreSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPreSizeVal.Location.X + My.MyProject.Forms.Compact.wkPreSizeVal.Size.Width / 2 + (wkPreSizeVal_Len.Width / 2 - 8), My.MyProject.Forms.Compact.wkPreSizeVal.Location.Y + 16);
             }
@@ -322,10 +320,10 @@ namespace CompactGUI
             SteamID = stID;
             Algorithm = alg;
             BeforeSize = bef;
-            BeforeSizeFormatted = Compact.GetOutputSize(Conversions.ToLong(bef), true);
+            BeforeSizeFormatted = Compact.GetOutputSize(Convert.ToInt64(bef), true);
             AfterSize = aft;
-            AfterSizeFormatted = Compact.GetOutputSize(Conversions.ToLong(aft), true);
-            Ratio = Conversions.ToDecimal(Math.Round((double)(AfterSize / BeforeSize), 2));
+            AfterSizeFormatted = Compact.GetOutputSize(Convert.ToInt64(aft), true);
+            Ratio = Convert.ToDecimal(Math.Round((double)(AfterSize / BeforeSize), 2));
         }
     }
 }

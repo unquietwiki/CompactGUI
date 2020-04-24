@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -181,22 +179,20 @@ namespace CompactGUI
 
         private void PopulateNonCompressable()
         {
-            string[] NonCompressableFileTypes = My.Settings.Default.NonCompressableList.Replace(" ", "").Split(';');
             TxtBoxNonCompressable.Text = "";
-            foreach (string i in NonCompressableFileTypes)
+            foreach (string i in My.Settings.Default.NonCompressableList.Replace(" ", "").Split(';'))
             {
-                TxtBoxNonCompressable.Text += i + Constants.vbTab;
+                TxtBoxNonCompressable.Text += i + "\t";
             }
-
             TxtBoxNonCompressable.Text = TxtBoxNonCompressable.Text.Trim();
         }
 
         private void Btn_Paint(object sender, PaintEventArgs e)
         {
             Button senderNamed = (Button)sender;
-            if (Operators.ConditionalCompareObjectEqual(senderNamed.BackColor, Color.FromArgb(255, 102, 121, 138), false))
+            if (senderNamed.BackColor == Color.FromArgb(255, 102, 121, 138))
             {
-                PointF[] trianglePtsArray = new[] { new PointF(Conversions.ToSingle(senderNamed.Width - 1), 10), new PointF(Conversions.ToSingle(senderNamed.Width - 1), Conversions.ToSingle(senderNamed.Height - 10)), new PointF(Conversions.ToSingle(senderNamed.Width - 10), Conversions.ToSingle(senderNamed.Height / 2)), new PointF(Conversions.ToSingle(senderNamed.Width - 1), 10) };
+                PointF[] trianglePtsArray = new[] { new PointF(Convert.ToSingle(senderNamed.Width - 1), 10), new PointF(Convert.ToSingle(senderNamed.Width - 1), Convert.ToSingle(senderNamed.Height - 10)), new PointF(Convert.ToSingle(senderNamed.Width - 10), Convert.ToSingle(senderNamed.Height / 2)), new PointF(Convert.ToSingle(senderNamed.Width - 1), 10) };
                 using var gp = new System.Drawing.Drawing2D.GraphicsPath(System.Drawing.Drawing2D.FillMode.Alternate);
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 gp.AddLines(trianglePtsArray);
@@ -210,7 +206,7 @@ namespace CompactGUI
         {
             TabPage senderNamed = (TabPage)sender;
             using var p = new Pen(Color.LightGray);
-            e.Graphics.DrawLine(p, new Point(46, 220), new Point(Conversions.ToInteger(senderNamed.Width - 46), 220));
+            e.Graphics.DrawLine(p, new Point(46, 220), new Point(Convert.ToInt32(senderNamed.Width - 46), 220));
         }
     }
 }
