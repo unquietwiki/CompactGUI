@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompactGUI.My.Resources;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -16,56 +17,45 @@ namespace CompactGUI
     internal class WikiHandler
     {
         private static IEnumerable<XElement>? InputFromGitHub;
-        internal static List<Result> allResults = new List<Result>();
+        internal static List<Result>? allResults = new List<Result>();
         private static string workingname = "testdir";
         private static readonly string DBZipFileLoc = Path.GetTempPath() + "CompactGUI.zxm";
 
         private static void WikiParser()
         {
-            // FIXME: this needs debugging for the Console writes & null settings
-            // Console.WriteLine("Working Name: " + workingname);
-            // Console.WriteLine(DBZipFileLoc);
-            allResults.Clear();
-            // Console.WriteLine(My.Settings.Default.ResultsDB_Date);
-            try
+            // TODO: this needs debugging for the Console writes & null settings
+            Console.WriteLine("Working Name: " + workingname);
+            Console.WriteLine(DBZipFileLoc);
+            if (InputFromGitHub is null)
             {
-                if (InputFromGitHub is null && My.Settings.Default.ResultsDB is object && (DateTime.Now < My.Settings.Default.ResultsDB_Date.AddHours(12)))
+                if (allResults != null) allResults.Clear();
+                Console.WriteLine(Resources.StrDBFetch);
+                try
                 {
-                    // Console.WriteLine("Using existing DB");
+                    using var wc = new WebClient() { Encoding = Encoding.UTF8 };
+                    wc.DownloadFile("https://raw.githubusercontent.com/ImminentFate/CompactGUI/master/Wiki/Database.zip", DBZipFileLoc);
+                    using var x = System.IO.Compression.ZipFile.OpenRead(DBZipFileLoc);
+                    using var stre = new StreamReader(x.Entries[0].Open());
+                    My.Settings.Default.ResultsDB = stre.ReadToEnd();
+                    My.Settings.Default.ResultsDB_Date = DateTime.Now;
+                    Console.WriteLine(Resources.StrDBNew);
                     InitialiseInputFromGithub();
                 }
-                else if (InputFromGitHub is null)
+                catch (WebException)
                 {
-                    // Console.WriteLine("Fetching New DB");
-                    using var wc = new WebClient() { Encoding = Encoding.UTF8 };
-                    try
-                    {
-                        wc.DownloadFile("https://raw.githubusercontent.com/ImminentFate/CompactGUI/master/Wiki/Database.zip", DBZipFileLoc);
-                        using var x = System.IO.Compression.ZipFile.OpenRead(DBZipFileLoc);
-                        using var stre = new StreamReader(x.Entries[0].Open());
-                        My.Settings.Default.ResultsDB = stre.ReadToEnd();
-                        My.Settings.Default.ResultsDB_Date = DateTime.Now;
-                        InitialiseInputFromGithub();
-                    }
-                    catch (WebException)
-                    {
-                        My.MyProject.Forms.Compact.sb_lblGameIssues.Text = "! No Internet Connection";
-                        My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = true;
-                        My.MyProject.Forms.Compact.ToolTipFilesCompressed.SetToolTip(My.MyProject.Forms.Compact.sb_lblGameIssues, "");
-                        My.MyProject.Forms.Compact.wkPostSizeVal.Text = "?";
-                        My.MyProject.Forms.Compact.wkPostSizeUnit.Text = "";
-                        My.MyProject.Forms.Compact.wkPostSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPostSizeVal.Location.X + My.MyProject.Forms.Compact.wkPostSizeVal.Size.Width, My.MyProject.Forms.Compact.wkPostSizeVal.Location.Y);
-                        My.MyProject.Forms.Compact.sb_Panel.Show();
-                    }
-                }
-                else
-                {
-                    // Console.WriteLine("Using Memory DB");
-                    ParseData();
+                    My.MyProject.Forms.Compact.sb_lblGameIssues.Text = Resources.StrErrorInternet;
+                    My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = true;
+                    My.MyProject.Forms.Compact.ToolTipFilesCompressed.SetToolTip(My.MyProject.Forms.Compact.sb_lblGameIssues, "");
+                    My.MyProject.Forms.Compact.wkPostSizeVal.Text = Resources.StrQuestion;
+                    My.MyProject.Forms.Compact.wkPostSizeUnit.Text = "";
+                    My.MyProject.Forms.Compact.wkPostSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPostSizeVal.Location.X + My.MyProject.Forms.Compact.wkPostSizeVal.Size.Width, My.MyProject.Forms.Compact.wkPostSizeVal.Location.Y);
+                    My.MyProject.Forms.Compact.sb_Panel.Show();
                 }
             }
-            catch
+            else
             {
+                Console.WriteLine(Resources.StrDBExist);
+                ParseData();
             }
         }
 
@@ -79,7 +69,7 @@ namespace CompactGUI
 
         private static void ParseData()
         {
-            if (InputFromGitHub != null)
+            if ((InputFromGitHub != null) && (allResults != null))
             {
                 foreach (XElement? result in InputFromGitHub)
                 {
@@ -89,33 +79,32 @@ namespace CompactGUI
                     var itemAlgorithm = result.Element("itemAlgorithm").Value;
                     var itemBeforeSize = Convert.ToUInt64(result.Element("itemBefore").Value, Compact.culture);
                     var itemAfterSize = Convert.ToUInt64(result.Element("itemAfter").Value, Compact.culture);
-                    var res = new Result(itemName, itemFolder, Convert.ToInt32(itemSteamID, Compact.culture), itemAlgorithm, itemBeforeSize, itemAfterSize);
-                    allResults.Add(res);
+                    allResults.Add(new Result(itemName, itemFolder, Convert.ToInt32(itemSteamID, Compact.culture), itemAlgorithm, itemBeforeSize, itemAfterSize));
                 }
 
+                //FIXME: there was some weird looping here; tried to narrow it
                 var gcount = new List<Result>();
                 int matches = 0;
                 foreach (Result r in allResults)
                 {
-                    if (r.Folder.Equals(workingname, StringComparison.CurrentCultureIgnoreCase))
+                    if (r.Folder != null)
                     {
-                        gcount.Add(r);
-                        matches += 1;
-                    }
-                }
-
-                Console.WriteLine(Environment.NewLine);
-                if (matches == 0)
-                {
-                    foreach (Result r in allResults)
-                    {
-                        if (workingname.Length > 2 && r.NameSanitized.StartsWith(workingname, StringComparison.CurrentCultureIgnoreCase))
+                        if (r.Folder.Equals(workingname, StringComparison.CurrentCultureIgnoreCase))
                         {
                             gcount.Add(r);
                             matches += 1;
                         }
+                        if (matches == 0)
+                        {
+                            if (workingname.Length > 2 && r.NameSanitized.StartsWith(workingname, StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                gcount.Add(r);
+                                matches += 1;
+                            }
+                        }
                     }
                 }
+                Console.WriteLine(Environment.NewLine);
 
                 decimal ratioavg = 1;
                 firstGame = 0;
@@ -127,7 +116,7 @@ namespace CompactGUI
                     My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = false;   // Add check for game issues at later date
                 }
 
-                My.MyProject.Forms.Compact.sb_labelCompressed.Text = "Estimated Compressed";
+                My.MyProject.Forms.Compact.sb_labelCompressed.Text = Resources.StrEstComp;
                 if (gcount.Count != default)
                 {
                     ratioavg = (ratioavg - 1) / gcount.Count;
@@ -139,7 +128,7 @@ namespace CompactGUI
                 }
                 else
                 {
-                    My.MyProject.Forms.Compact.wkPostSizeVal.Text = "?";
+                    My.MyProject.Forms.Compact.wkPostSizeVal.Text = Resources.StrQuestion;
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Text = "";
                     Size wkPostSizeVal_Len = TextRenderer.MeasureText(My.MyProject.Forms.Compact.wkPostSizeVal.Text, My.MyProject.Forms.Compact.wkPostSizeVal.Font);
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPostSizeVal.Location.X + My.MyProject.Forms.Compact.wkPostSizeVal.Size.Width / 2 + (wkPostSizeVal_Len.Width / 2 - 8), My.MyProject.Forms.Compact.wkPostSizeVal.Location.Y + 16);
@@ -164,11 +153,11 @@ namespace CompactGUI
             My.MyProject.Forms.WikiPopup.GamesTable.Visible = false;
             My.MyProject.Forms.WikiPopup.GamesTable.Controls.Clear();
             My.MyProject.Forms.WikiPopup.GamesTable.RowCount = 0;
-            using var GName = new Label() { Text = "Game" };
-            using var GSizeU = new Label() { Text = "Before" };
-            using var GSizeC = new Label() { Text = "After" };
-            using var GCompR = new Label() { Text = "Ratio" };
-            using var GCompAlg = new Label() { Text = "Algorithm" };
+            using var GName = new Label() { Text = Resources.StrLblGame };
+            using var GSizeU = new Label() { Text = Resources.StrLblBefore };
+            using var GSizeC = new Label() { Text = Resources.StrLblAfter };
+            using var GCompR = new Label() { Text = Resources.StrLblRatio };
+            using var GCompAlg = new Label() { Text = Resources.StrLblAlgo };
             Console.WriteLine(My.MyProject.Forms.WikiPopup.GamesTable.RowCount);
             My.MyProject.Forms.WikiPopup.GamesTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
             My.MyProject.Forms.WikiPopup.GamesTable.RowCount += 1;
@@ -267,7 +256,7 @@ namespace CompactGUI
             // I still have no idea why this catch is needed but I'm scared to delete it
             catch (DivideByZeroException)
             {
-                My.MyProject.Forms.Compact.wkPreSizeVal.Text = "?";
+                My.MyProject.Forms.Compact.wkPreSizeVal.Text = Resources.StrQuestion;
                 My.MyProject.Forms.Compact.wkPreSizeUnit.Text = "";
                 Size wkPreSizeVal_Len = TextRenderer.MeasureText(My.MyProject.Forms.Compact.wkPreSizeVal.Text, My.MyProject.Forms.Compact.wkPreSizeVal.Font);
                 My.MyProject.Forms.Compact.wkPreSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPreSizeVal.Location.X + My.MyProject.Forms.Compact.wkPreSizeVal.Size.Width / 2 + (wkPreSizeVal_Len.Width / 2 - 8), My.MyProject.Forms.Compact.wkPreSizeVal.Location.Y + 16);
@@ -312,7 +301,7 @@ namespace CompactGUI
 
         public object AllData => Name + Folder + SteamID + Algorithm + AfterSize;
 
-        public Result(string nm, string fl, int stID, string alg, ulong bef, ulong aft)
+        internal Result(string nm, string fl, int stID, string alg, ulong bef, ulong aft)
         {
             Name = nm;
             NameSanitized = Regex.Replace(nm.ToLower(CultureInfo.CurrentUICulture), @"[^\p{L}a-zA-Z0-90]", "");

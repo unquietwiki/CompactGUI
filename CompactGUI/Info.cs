@@ -13,8 +13,6 @@ namespace CompactGUI
     {
         public Info() => InitializeComponent();
 
-        /* TODO ERROR: Skipped RegionDirectiveTrivia */
-
         [DllImport("user32.dll")]
         private static extern bool ReleaseCapture();
 
@@ -34,8 +32,6 @@ namespace CompactGUI
                 MoveForm();
             }
         }
-
-        /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 
         private void Info_Load(object sender, EventArgs e)
         {

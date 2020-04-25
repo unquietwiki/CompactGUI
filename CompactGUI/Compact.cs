@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CompactGUI.My.Resources;
 
 #nullable enable
 
@@ -18,8 +19,6 @@ namespace CompactGUI
 {
     public partial class Compact
     {
-        private static object version = "3.0.0";
-
         private Process? MyProcess
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -52,23 +51,6 @@ namespace CompactGUI
                 return cp;
             }
         }
-
-        public Process? MyProcess1 { get; set; }
-        internal ActionMode CurrentMode { get; set; }
-        internal object OverrideCompressFolderButton { get; set; } = 0;
-        internal int DirectorysizeexceptionCount { get; set; } = 0;
-        internal static object Version { get => version; set => version = value; }
-        private List<string> workingList = new List<string>();
-        internal List<string> ListOfFiles { get; } = new List<string>();
-        internal List<string> AllFiles { get; } = new List<string>();
-        internal List<string> TreeData { get; } = new List<string>();
-        internal bool IsQueryMode = false;
-        internal bool IsActive = false;
-        private decimal intervaltime;
-        private readonly ArrayList outputbuffer = new ArrayList();
-        private ulong newFolderSize;
-        private ulong oldFolderSize;
-        internal string workingDir = "";
 
         public List<string> GetWorkingList()
         {
@@ -104,7 +86,7 @@ namespace CompactGUI
 
             comboChooseShutdown.SelectedItem = comboChooseShutdown.Items[0];
             RCMenu.WriteLocRegistry();
-            VersionCheck.VC(Convert.ToString(version,culture));
+            VersionCheck.VC(Convert.ToString(version, culture));
             foreach (string arg in My.MyProject.Application.CommandLineArgs)
             {
                 if (Directory.Exists(arg))
@@ -128,11 +110,11 @@ namespace CompactGUI
                 {
                     if (folderChoice.MultipleFiles is object)
                     {
-                        MessageBox.Show("Multiple Files Selected");
+                        MessageBox.Show(Resources.StrFilesSelected);
                     }
                     else
                     {
-                        MessageBox.Show("File selected");
+                        MessageBox.Show(Resources.StrFileSelected);
                     }
                 }
 
@@ -146,11 +128,11 @@ namespace CompactGUI
             OverrideCompressFolderButton = 0;
             if (selectedDir.Contains(System.Environment.SpecialFolder.Windows.ToString()))
             {
-                ThrowError(ERR_WINDOWSDIRNOTALLOWED);   // Makes sure you're not trying to compact the Windows directory.
+                ThrowError(Errors.ERR_WINDOWSDIRNOTALLOWED);   // Makes sure you're not trying to compact the Windows directory.
             }
             else if (selectedDir.EndsWith(@":\", StringComparison.CurrentCultureIgnoreCase))
             {
-                ThrowError(ERR_WHOLEDRIVENOTALLOWED);
+                ThrowError(Errors.ERR_WHOLEDRIVENOTALLOWED);
             }
             else if (selectedDir.Length >= 3)   // Makes sure the chosen folder isn't a null value or an exception
             {
@@ -186,7 +168,7 @@ namespace CompactGUI
                 {
                     string fN_Listable = fileName.Replace(workingDir, "").Replace(@"\", " ❯ ");
                     //TODO: verify this works right
-                    if (fN_Listable.Count(x => Convert.ToString(x,culture) == "❯") == 1)
+                    if (fN_Listable.Count(x => Convert.ToString(x, culture) == "❯") == 1)
                     {
                         fN_Listable = fN_Listable.Replace(" ❯ ", "");
                     }
@@ -209,8 +191,8 @@ namespace CompactGUI
             }
             else if (senderID.Contains("button"))
             {
-                _ = MessageBox.Show("No folder selected");
-                Console.Write("No folder selected");
+                _ = MessageBox.Show(Resources.StrNotSelected);
+                Console.Write(Resources.StrNotSelected);
             }
         }
 
@@ -259,7 +241,7 @@ namespace CompactGUI
             }
             else
             {
-                MessageBox.Show("There are no compressable files in this folder. Check the CompactGUI settings to see if you have chosen to ignore certain files from being compressed.");
+                MessageBox.Show(Resources.StrCantComp);
             }
         }
 
@@ -297,7 +279,7 @@ namespace CompactGUI
             FileIndex += 1;
             if (!Convert.ToBoolean(FileIndex < GetWorkingList().Count & GetWorkingList().Count > 1))
             {
-                Console.WriteLine("Done");
+                Console.WriteLine(Resources.StrDone);
                 System.Threading.Thread.Sleep(100);
                 outputbuffer.Add("Completed:" + "\t" + "Processed " + ListOfFiles.Count + " files");
                 foreach (string str in outputbuffer)
@@ -360,7 +342,7 @@ namespace CompactGUI
             {
                 CommmonActions.ActionCompleted(ActionMode.UnCompact);
                 sb_compressedSizeVisual.Height = 113;
-                wkPostSizeVal.Text = "?";
+                wkPostSizeVal.Text = Resources.StrQuestion;
                 wkPostSizeUnit.Text = "";
             }
 
@@ -380,7 +362,7 @@ namespace CompactGUI
         {
             if (IsActive == true)
             {
-                if (MessageBox.Show("Are you sure you want to exit?" + Environment.NewLine + Environment.NewLine + "Quitting now will finish compressing the current file, then quit safely." + Environment.NewLine + Environment.NewLine + "If you do decide to quit now, you can resume compression by repeating the process later." + Environment.NewLine + "Click Yes to continue exiting the program.", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                if (MessageBox.Show(Resources.StrWarnClose, Resources.StrWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
 
                 {
                     e.Cancel = true;
@@ -417,7 +399,7 @@ namespace CompactGUI
                     conOutFileNamePadding = fl.Length;
                 }
             }
-            
+
             conOut.Items.Insert(0, "File" + new String(Convert.ToChar(" ", Compact.culture), conOutFileNamePadding - 4) + "\t" + "Size" + new String(Convert.ToChar(" ", Compact.culture), 16) + "Size on Disk");
             conOut.Items.Insert(1, "");
             var AnalyzedPoorlyCompressedFiles = new List<string>();
@@ -477,7 +459,7 @@ namespace CompactGUI
             }
 
             IEnumerable<IGrouping<string, string>> groups = AnalyzedPoorlyCompressedFiles.GroupBy(value => value);
-            Console.WriteLine("Poorly Compressed Extensions:");
+            Console.WriteLine(Resources.StrLblPoorlyComp);
             foreach (IGrouping<string, string> grp in groups)
             {
                 Console.WriteLine("\t" + grp.ElementAtOrDefault(0) + ": " + grp.Count() + "/" + AllFiles.Where(value => (new FileInfo(value).Extension ?? "") == (grp.ElementAtOrDefault(0) ?? "")).Count());
@@ -592,76 +574,23 @@ namespace CompactGUI
                     DirectorysizeexceptionCount += 1;
                     if (My.MyProject.User.IsInRole(Microsoft.VisualBasic.ApplicationServices.BuiltInRole.Administrator) == false)
                     {
-                        ThrowError(ERR_UNAUTHORISEDREQUIRESADMIN);
+                        ThrowError(Errors.ERR_UNAUTHORISEDREQUIRESADMIN);
                     }
                     else
                     {
-                        ThrowError(ERR_UNAUTHORISEDREQUIRESSYSTEM);
+                        ThrowError(Errors.ERR_UNAUTHORISEDREQUIRESSYSTEM);
                     }
                 }
             }
-            catch (Exception)
-            {
-            }
 
             return default;
-        }
-
-        // ///////EXTRA FUNCTIONS/////////////
-
-        public static string Between(string value, string a, string b)
-        {
-            if (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) == -1)
-            {
-                return "";
-            }
-
-            if (value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase) == -1)
-            {
-                return "";
-            }
-
-            if (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length >= value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase))
-            {
-                return "";
-            }
-
-            return value.Substring(value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length, value.LastIndexOf(b, StringComparison.CurrentCultureIgnoreCase) - (value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase) + a.Length));
-        }
-
-        public static string Before(string value, string a)
-        {
-            int posA = value.IndexOf(a, StringComparison.CurrentCultureIgnoreCase);
-            if (posA == -1)
-            {
-                return "";
-            }
-
-            return value.Substring(0, posA);
-        }
-
-        public static string After(string value, string a)
-        {
-            int posA = value.LastIndexOf(a, StringComparison.CurrentCultureIgnoreCase);
-            if (posA == -1)
-            {
-                return "";
-            }
-
-            int adjustedPosA = posA + a.Length;
-            if (adjustedPosA >= value.Length)
-            {
-                return "";
-            }
-
-            return value.Substring(adjustedPosA);
         }
 
         // ////////////////////TESTING////////////////////
 
         private void Saveconlog_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Save console output?", null ,MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Resources.StrSaveConsoleOutput, null, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 var reverseCon = new ArrayList();
                 var sb = new StringBuilder();
@@ -671,7 +600,7 @@ namespace CompactGUI
                 }
 
                 reverseCon.Reverse();
-                sb.AppendLine("CompactGUI: Log at " + DateTime.Now + Environment.NewLine + new String(Convert.ToChar("/", Compact.culture),50));
+                sb.AppendLine("CompactGUI: Log at " + DateTime.Now + Environment.NewLine + new String(Convert.ToChar("/", Compact.culture), 50));
                 foreach (string ln in reverseCon)
                 {
                     sb.AppendLine(ln);
@@ -716,7 +645,7 @@ namespace CompactGUI
             My.MyProject.Forms.WikiSubmission.Show();
         }
 
-        private void CompressX8_CheckedChanged(object sender, EventArgs e)
+        private void Compress_CheckedChanged(object sender, EventArgs e)
         {
             if (compressX4.Checked)
             {
@@ -741,8 +670,7 @@ namespace CompactGUI
 
         private void LoadFromSettings()
         {
-            int switchExpr = My.Settings.Default.SavedCompressionOption;
-            switch (switchExpr)
+            switch (My.Settings.Default.SavedCompressionOption)
             {
                 case 0:
                     {
@@ -769,8 +697,6 @@ namespace CompactGUI
                     }
             }
         }
-
-        /* TODO ERROR: Skipped RegionDirectiveTrivia */
 
         private void MoveForm()
         {
@@ -800,8 +726,6 @@ namespace CompactGUI
             }
         }
 
-        private bool isMaximised = false;
-
         private void Btn_Mainmax_Click(object sender, EventArgs e)
         {
             if (isMaximised == false)
@@ -818,9 +742,6 @@ namespace CompactGUI
                 isMaximised = false;
             }
         }
-
-        /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-        /* TODO ERROR: Skipped RegionDirectiveTrivia */
 
         private void ButtonCompress_Paint(object sender, PaintEventArgs e)
         {
@@ -856,7 +777,7 @@ namespace CompactGUI
 
         private static decimal Callpercent;
 
-        public void ResultsArcPaint(object sender, PaintEventArgs e)
+        internal void ResultsArcPaint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             DrawProgress(e.Graphics, new Rectangle(21, 21, 203, 203), Convert.ToDecimal(PaintPercentageTransition.Callpercentstep), ColorTranslator.FromHtml("#3B668E"), ColorTranslator.FromHtml("#CFD8DC"));
@@ -881,10 +802,9 @@ namespace CompactGUI
             string sign = "%";
             var signPoint = new Point((int)(percPoint.X + percSize.Width - 5), percPoint.Y + 10);
             g.DrawString(sign, fnt2, fb, signPoint);
-            string lbl = "Reduction in size";
-            var lblSize = g.MeasureString(lbl, fnt3);
+            var lblSize = g.MeasureString(Resources.StrLblSizeReduction, fnt3);
             var lblPoint = new Point((int)(rect.Left + (rect.Width / 2) - (lblSize.Width / 2)), (int)(rect.Top + (rect.Height / 2) - (lblSize.Height * 0.75)));
-            g.DrawString(lbl, fnt3, fb, lblPoint);
+            g.DrawString(Resources.StrLblSizeReduction, fnt3, fb, lblPoint);
         }
 
         private void CompResultsPanel_Paint(object sender, PaintEventArgs e)
@@ -929,22 +849,19 @@ namespace CompactGUI
             dirChooser.LinkColor = Color.White;
         }
 
-        private object isAlreadyFading = 2;
-
         private void Seecompest_MouseHover(object sender, EventArgs e)
         {
             topbar_title.Select();
             WikiHandler.ShowWikiRes();
-            isAlreadyFading = 0;
+            isAlreadyFading = false;
         }
 
         private void HideWikiRes(object sender, EventArgs e)
         {
-            //TODO: make sure this works
-            if (Convert.ToBoolean(isAlreadyFading, Compact.culture))
+            if (isAlreadyFading == false)
             {
                 FadeTransition.FadeForm(My.MyProject.Forms.WikiPopup, Convert.ToDouble(0.96M), 0, 200);
-                isAlreadyFading = 1;
+                isAlreadyFading = true;
             }
         }
 
@@ -958,8 +875,6 @@ namespace CompactGUI
             Button btn = (Button)sender;
             btn.ForeColor = btn.Enabled ? Color.White : Color.Silver;
         }
-
-        /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 
         private void Sb_lblKnownIssues_Click(object sender, EventArgs e)
         {
@@ -1001,48 +916,25 @@ namespace CompactGUI
             My.MyProject.Forms.Info.Show();
         }
 
-        /* TODO ERROR: Skipped RegionDirectiveTrivia */
-        private const int ERR_WINDOWSDIRNOTALLOWED = 515;
-        private const int ERR_WHOLEDRIVENOTALLOWED = 516;
-        private const int ERR_UNAUTHORISEDREQUIRESADMIN = 517;
-        private const int ERR_UNAUTHORISEDREQUIRESSYSTEM = 518;
-
-        private void ThrowError(int e)
+        private void ThrowError(Errors error)
         {
-            switch (e)
+            switch (error)
             {
-                case ERR_WHOLEDRIVENOTALLOWED:
-                    {
-                        MessageBox.Show("Compressing an entire drive with this tool is not allowed");
-                        break;
-                    }
-
-                case ERR_WINDOWSDIRNOTALLOWED:
-                    {
-                        MessageBox.Show("Compressing items in the Windows folder using this program " + "is not recommended. Please use the command line instead");
-                        break;
-                    }
-
-                case ERR_UNAUTHORISEDREQUIRESADMIN:
-                    {
-                        if (MessageBox.Show("This directory contains a subfolder that you do not have permission to access. Please try running the program again as an Administrator." + Environment.NewLine + Environment.NewLine + "If the problem persists, the subfolder is most likely protected by the System, and by design this program will refuse to let you proceed." + Environment.NewLine + Environment.NewLine + "Would you like to restart the program as an Administrator?", "Permission Error", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
-                        {
-                            RCMenu.RunAsAdmin();
-                            Close();
-                        }
-
-                        break;
-                    }
-
-                case ERR_UNAUTHORISEDREQUIRESSYSTEM:
-                    {
-                        MessageBox.Show("This directory contains a subfolder that you do not have permission To access." + Environment.NewLine + Environment.NewLine + "The subfolder is most likely protected by the System, and by design this program will refuse to let you proceed.");
-                        break;
-                    }
-            }
+                case Errors.ERR_WHOLEDRIVENOTALLOWED: MessageBox.Show(Resources.StrProhibitDrive); return;
+                case Errors.ERR_WINDOWSDIRNOTALLOWED: MessageBox.Show(Resources.StrProhibitWindows); return;
+                case Errors.ERR_UNAUTHORISEDREQUIRESADMIN: AskRunAdmin(); return;
+                case Errors.ERR_UNAUTHORISEDREQUIRESSYSTEM: MessageBox.Show("This directory contains a subfolder that you do not have permission To access." + Environment.NewLine + Environment.NewLine + "The subfolder is most likely protected by the System, and by design this program will refuse to let you proceed."); return;
+            };
         }
 
-        /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
+        private void AskRunAdmin()
+        {
+            if (MessageBox.Show(Resources.StrAskForAdmin, Resources.StrErrorPerm, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                RCMenu.RunAsAdmin();
+                Close();
+            }
+        }
 
         private void TrayIcon_BalloonTipClicked(object sender, EventArgs e)
         {

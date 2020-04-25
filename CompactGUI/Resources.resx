@@ -127,4 +127,141 @@
   <data name="dsmask" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\dsmask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StrWaitComp" xml:space="preserve">
+    <value>Compressing...</value>
+  </data>
+  <data name="StrEstComp" xml:space="preserve">
+    <value>Estimated Compressed</value>
+  </data>
+  <data name="StrAnalyze" xml:space="preserve">
+    <value>Analyzing...</value>
+  </data>
+  <data name="StrAskForAdmin" xml:space="preserve">
+    <value>"This directory contains a subfolder that you do not have permission to access. Please try running the program again as an Administrator."
+"If the problem persists, the subfolder is most likely protected by the System, and by design this program will refuse to let you proceed."
+"Would you like to restart the program as an Administrator?"</value>
+  </data>
+  <data name="StrBadChars" xml:space="preserve">
+    <value>Name cannot contain '?', '&amp;', '|', '%', '™', '®', or '©'</value>
+  </data>
+  <data name="StrCantComp" xml:space="preserve">
+    <value>Cannot compress files in folder. Please check program settings.</value>
+  </data>
+  <data name="StrClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="StrDeComp" xml:space="preserve">
+    <value>Decompressing...</value>
+  </data>
+  <data name="StrDone" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="StrErrorInternet" xml:space="preserve">
+    <value>Internet Connection Error</value>
+  </data>
+  <data name="StrErrorPerm" xml:space="preserve">
+    <value>Permissions Error</value>
+  </data>
+  <data name="StrFileSelected" xml:space="preserve">
+    <value>File selected</value>
+  </data>
+  <data name="StrFilesSelected" xml:space="preserve">
+    <value>Multiple files selected</value>
+  </data>
+  <data name="StrFinishDeComp" xml:space="preserve">
+    <value>Finished Decompressing</value>
+  </data>
+  <data name="StrHasComp" xml:space="preserve">
+    <value>Compressed files are present.</value>
+  </data>
+  <data name="StrHasNoComp" xml:space="preserve">
+    <value>This folder is not compressed.</value>
+  </data>
+  <data name="StrIsComp" xml:space="preserve">
+    <value>Compressed</value>
+  </data>
+  <data name="StrIsUnComp" xml:space="preserve">
+    <value>Uncompressed</value>
+  </data>
+  <data name="StrLblAfter" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="StrLblAlgo" xml:space="preserve">
+    <value>Algorithim</value>
+  </data>
+  <data name="StrLblBefore" xml:space="preserve">
+    <value>Before</value>
+  </data>
+  <data name="StrLblGame" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="StrLblGameName" xml:space="preserve">
+    <value>Game Name:</value>
+  </data>
+  <data name="StrLblPoorlyComp" xml:space="preserve">
+    <value>Poorly Compressed Extensions:</value>
+  </data>
+  <data name="StrLblProgName" xml:space="preserve">
+    <value>Program Name:</value>
+  </data>
+  <data name="StrLblRatio" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <data name="StrLblSendResults" xml:space="preserve">
+    <value>Sending results...</value>
+  </data>
+  <data name="StrLblSentResults" xml:space="preserve">
+    <value>Results Sent!</value>
+  </data>
+  <data name="StrLblSizeReduction" xml:space="preserve">
+    <value>Reduction in size</value>
+  </data>
+  <data name="StrNotSelected" xml:space="preserve">
+    <value>No folder selected</value>
+  </data>
+  <data name="StrProhibitDrive" xml:space="preserve">
+    <value>This program will not compress a whole drive!</value>
+  </data>
+  <data name="StrProhibitWindows" xml:space="preserve">
+    <value>This program will not compress the Windows directory!</value>
+  </data>
+  <data name="StrQuestion" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StrSaveConsoleOutput" xml:space="preserve">
+    <value>Save console output?</value>
+  </data>
+  <data name="StrWarnClose" xml:space="preserve">
+    <value>Are you sure you want to exit?
+Quitting now will finish compressing the current file, then quit safely.
+If you do decide to quit now, you can resume compression by repeating the process later.
+Click Yes to continue exiting the program.</value>
+  </data>
+  <data name="StrWarning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="StrDBExist" xml:space="preserve">
+    <value>Using existing game/prog database</value>
+  </data>
+  <data name="StrDBFetch" xml:space="preserve">
+    <value>Fetching game/prog database...</value>
+  </data>
+  <data name="StrDBNew" xml:space="preserve">
+    <value>Initializing game/prog database...</value>
+  </data>
+  <data name="StrFileDialogFilter" xml:space="preserve">
+    <value>Folder|#Folder|All Files(*.*)|*.*</value>
+  </data>
+  <data name="StrSelectFiles" xml:space="preserve">
+    <value>Select Folder or Files</value>
+  </data>
+  <data name="StrTimedRestart" xml:space="preserve">
+    <value>Restarting momentarily...</value>
+  </data>
+  <data name="StrTimedShutdown" xml:space="preserve">
+    <value>Shutting down momentarily...</value>
+  </data>
+  <data name="StrTimedSleep" xml:space="preserve">
+    <value>Sleeping momentarily...</value>
+  </data>
 </root>

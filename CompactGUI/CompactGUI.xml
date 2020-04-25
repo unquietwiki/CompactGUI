@@ -6,33 +6,258 @@
     <members>
         <member name="T:CompactGUI.My.Resources.Resources">
             <summary>
-            A strongly-typed resource class, for looking up localized strings, etc.
+              A strongly-typed resource class, for looking up localized strings, etc.
             </summary>
         </member>
         <member name="P:CompactGUI.My.Resources.Resources.ResourceManager">
             <summary>
-            Returns the cached ResourceManager instance used by this class.
+              Returns the cached ResourceManager instance used by this class.
             </summary>
         </member>
         <member name="P:CompactGUI.My.Resources.Resources.Culture">
             <summary>
-            Overrides the current thread's CurrentUICulture property for all
-            resource lookups using this strongly typed resource class.
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
             </summary>
         </member>
         <member name="P:CompactGUI.My.Resources.Resources.dsmask">
             <summary>
-            Looks up a localized resource of type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CompactGUI.My.Resources.Resources.iconbright">
             <summary>
-            Looks up a localized resource of type System.Drawing.Bitmap.
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CompactGUI.My.Resources.Resources.Ookii_Dialogs">
             <summary>
-            Looks up a localized resource of type System.Byte[].
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrAnalyze">
+            <summary>
+              Looks up a localized string similar to Analyzing....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrAskForAdmin">
+             <summary>
+               Looks up a localized string similar to &quot;This directory contains a subfolder that you do not have permission to access. Please try running the program again as an Administrator.&quot;
+            &quot;If the problem persists, the subfolder is most likely protected by the System, and by design this program will refuse to let you proceed.&quot;
+            &quot;Would you like to restart the program as an Administrator?&quot;.
+             </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrBadChars">
+            <summary>
+              Looks up a localized string similar to Name cannot contain &apos;?&apos;, &apos;&amp;&apos;, &apos;|&apos;, &apos;%&apos;, &apos;™&apos;, &apos;®&apos;, or &apos;©&apos;.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrCantComp">
+            <summary>
+              Looks up a localized string similar to Cannot compress files in folder. Please check program settings..
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrClose">
+            <summary>
+              Looks up a localized string similar to Close.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrDBExist">
+            <summary>
+              Looks up a localized string similar to Using existing game/prog database.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrDBFetch">
+            <summary>
+              Looks up a localized string similar to Fetching game/prog database....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrDBNew">
+            <summary>
+              Looks up a localized string similar to Initializing game/prog database....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrDeComp">
+            <summary>
+              Looks up a localized string similar to Decompressing....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrDone">
+            <summary>
+              Looks up a localized string similar to Done!.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrErrorInternet">
+            <summary>
+              Looks up a localized string similar to Internet Connection Error.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrErrorPerm">
+            <summary>
+              Looks up a localized string similar to Permissions Error.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrEstComp">
+            <summary>
+              Looks up a localized string similar to Estimated Compressed.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrFileDialogFilter">
+            <summary>
+              Looks up a localized string similar to Folder|#Folder|All Files(*.*)|*.*.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrFileSelected">
+            <summary>
+              Looks up a localized string similar to File selected.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrFilesSelected">
+            <summary>
+              Looks up a localized string similar to Multiple files selected.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrFinishDeComp">
+            <summary>
+              Looks up a localized string similar to Finished Decompressing.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrHasComp">
+            <summary>
+              Looks up a localized string similar to Compressed files are present..
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrHasNoComp">
+            <summary>
+              Looks up a localized string similar to This folder is not compressed..
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrIsComp">
+            <summary>
+              Looks up a localized string similar to Compressed.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrIsUnComp">
+            <summary>
+              Looks up a localized string similar to Uncompressed.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblAfter">
+            <summary>
+              Looks up a localized string similar to After.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblAlgo">
+            <summary>
+              Looks up a localized string similar to Algorithim.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblBefore">
+            <summary>
+              Looks up a localized string similar to Before.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblGame">
+            <summary>
+              Looks up a localized string similar to Game.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblGameName">
+            <summary>
+              Looks up a localized string similar to Game Name:.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblPoorlyComp">
+            <summary>
+              Looks up a localized string similar to Poorly Compressed Extensions:.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblProgName">
+            <summary>
+              Looks up a localized string similar to Program Name:.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblRatio">
+            <summary>
+              Looks up a localized string similar to Ratio.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblSendResults">
+            <summary>
+              Looks up a localized string similar to Sending results....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblSentResults">
+            <summary>
+              Looks up a localized string similar to Results Sent!.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrLblSizeReduction">
+            <summary>
+              Looks up a localized string similar to Reduction in size.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrNotSelected">
+            <summary>
+              Looks up a localized string similar to No folder selected.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrProhibitDrive">
+            <summary>
+              Looks up a localized string similar to This program will not compress a whole drive!.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrProhibitWindows">
+            <summary>
+              Looks up a localized string similar to This program will not compress the Windows directory!.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrQuestion">
+            <summary>
+              Looks up a localized string similar to ?.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrSaveConsoleOutput">
+            <summary>
+              Looks up a localized string similar to Save console output?.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrSelectFiles">
+            <summary>
+              Looks up a localized string similar to Select Folder or Files.
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrTimedRestart">
+            <summary>
+              Looks up a localized string similar to Restarting momentarily....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrTimedShutdown">
+            <summary>
+              Looks up a localized string similar to Shutting down momentarily....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrTimedSleep">
+            <summary>
+              Looks up a localized string similar to Sleeping momentarily....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrWaitComp">
+            <summary>
+              Looks up a localized string similar to Compressing....
+            </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrWarnClose">
+             <summary>
+               Looks up a localized string similar to Are you sure you want to exit?
+            Quitting now will finish compressing the current file, then quit safely.
+            If you do decide to quit now, you can resume compression by repeating the process later.
+            Click Yes to continue exiting the program..
+             </summary>
+        </member>
+        <member name="P:CompactGUI.My.Resources.Resources.StrWarning">
+            <summary>
+              Looks up a localized string similar to Warning!.
             </summary>
         </member>
         <member name="M:CompactGUI.FadeTransition.FadeForm(System.Windows.Forms.Form,System.Double,System.Double,System.Double,System.Boolean)">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompactGUI.My.Resources;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -26,19 +27,19 @@ namespace CompactGUI
             {
                 case "Shutdown":
                     {
-                        SDProgText.Text = "Shutting down in 10 seconds";
+                        SDProgText.Text = Resources.StrTimedShutdown;
                         break;
                     }
 
                 case "Restart":
                     {
-                        SDProgText.Text = "Restarting in 10 seconds";
+                        SDProgText.Text = Resources.StrTimedRestart;
                         break;
                     }
 
                 case "Sleep":
                     {
-                        SDProgText.Text = "Sleeping in 10 seconds";
+                        SDProgText.Text = Resources.StrTimedSleep;
                         break;
                     }
             }

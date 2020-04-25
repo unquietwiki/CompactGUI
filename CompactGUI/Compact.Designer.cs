@@ -425,7 +425,7 @@ namespace CompactGUI
             this._compressX4.Text = "XPRESS 4K";
             this._ToolTipFilesCompressed.SetToolTip(this._compressX4, "Fastest, Low Compression");
             this._compressX4.UseVisualStyleBackColor = true;
-            this._compressX4.Click += new System.EventHandler(this.CompressX8_CheckedChanged);
+            this._compressX4.Click += new System.EventHandler(this.Compress_CheckedChanged);
             // 
             // _compressLZX
             // 
@@ -439,7 +439,7 @@ namespace CompactGUI
             this._compressLZX.Text = "LZX ";
             this._ToolTipFilesCompressed.SetToolTip(this._compressLZX, "Slowest, Very High Compression (Not Recommended for Games/Programs)");
             this._compressLZX.UseVisualStyleBackColor = true;
-            this._compressLZX.Click += new System.EventHandler(this.CompressX8_CheckedChanged);
+            this._compressLZX.Click += new System.EventHandler(this.Compress_CheckedChanged);
             // 
             // _compressX8
             // 
@@ -455,7 +455,7 @@ namespace CompactGUI
             this._compressX8.Text = "XPRESS 8K";
             this._ToolTipFilesCompressed.SetToolTip(this._compressX8, "Fast, Medium Compression (Recommended)");
             this._compressX8.UseVisualStyleBackColor = true;
-            this._compressX8.Click += new System.EventHandler(this.CompressX8_CheckedChanged);
+            this._compressX8.Click += new System.EventHandler(this.Compress_CheckedChanged);
             // 
             // _compressX16
             // 
@@ -469,7 +469,7 @@ namespace CompactGUI
             this._compressX16.Text = "XPRESS 16K";
             this._ToolTipFilesCompressed.SetToolTip(this._compressX16, "Slow, High Compression");
             this._compressX16.UseVisualStyleBackColor = true;
-            this._compressX16.Click += new System.EventHandler(this.CompressX8_CheckedChanged);
+            this._compressX16.Click += new System.EventHandler(this.Compress_CheckedChanged);
             // 
             // _checkForceCompression
             // 
@@ -2186,13 +2186,13 @@ namespace CompactGUI
             {
                 if (_compressX4 != null)
                 {
-                    _compressX4.Click -= CompressX8_CheckedChanged;
+                    _compressX4.Click -= Compress_CheckedChanged;
                 }
 
                 _compressX4 = value;
                 if (_compressX4 != null)
                 {
-                    _compressX4.Click += CompressX8_CheckedChanged;
+                    _compressX4.Click += Compress_CheckedChanged;
                 }
             }
         }
@@ -2212,13 +2212,13 @@ namespace CompactGUI
             {
                 if (_compressLZX != null)
                 {
-                    _compressLZX.Click -= CompressX8_CheckedChanged;
+                    _compressLZX.Click -= Compress_CheckedChanged;
                 }
 
                 _compressLZX = value;
                 if (_compressLZX != null)
                 {
-                    _compressLZX.Click += CompressX8_CheckedChanged;
+                    _compressLZX.Click += Compress_CheckedChanged;
                 }
             }
         }
@@ -2238,13 +2238,13 @@ namespace CompactGUI
             {
                 if (_compressX8 != null)
                 {
-                    _compressX8.Click -= CompressX8_CheckedChanged;
+                    _compressX8.Click -= Compress_CheckedChanged;
                 }
 
                 _compressX8 = value;
                 if (_compressX8 != null)
                 {
-                    _compressX8.Click += CompressX8_CheckedChanged;
+                    _compressX8.Click += Compress_CheckedChanged;
                 }
             }
         }
@@ -2264,13 +2264,13 @@ namespace CompactGUI
             {
                 if (_compressX16 != null)
                 {
-                    _compressX16.Click -= CompressX8_CheckedChanged;
+                    _compressX16.Click -= Compress_CheckedChanged;
                 }
 
                 _compressX16 = value;
                 if (_compressX16 != null)
                 {
-                    _compressX16.Click += CompressX8_CheckedChanged;
+                    _compressX16.Click += Compress_CheckedChanged;
                 }
             }
         }

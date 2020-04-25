@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompactGUI.My.Resources;
+using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace CompactGUI
 
         public new DialogResult ShowDialog(IWin32Window owner)
         {
+            if(owner != null)
             {
                 OpenFileDialog withBlock = Dg;
                 withBlock.ValidateNames = false;
@@ -22,18 +24,10 @@ namespace CompactGUI
                 withBlock.CheckPathExists = true;
                 withBlock.Multiselect = true;
                 withBlock.FileName = "#Folder";
-                withBlock.Title = "Select Folder or Files";
-                withBlock.Filter = "Folder|#Folder|All Files(*.*)|*.*";
+                withBlock.Title = Resources.StrSelectFiles;
+                withBlock.Filter = Resources.StrFileDialogFilter;
             }
-
-            if (owner is null)
-            {
-                return Dg.ShowDialog();
-            }
-            else
-            {
-                return Dg.ShowDialog(owner);
-            }
+            return Dg.ShowDialog(owner ?? null);
         }
 
         public string SelectedPath

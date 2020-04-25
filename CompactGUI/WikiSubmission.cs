@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompactGUI.My.Resources;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Management;
@@ -94,14 +95,14 @@ namespace CompactGUI
                     ParseforSteamData();
                     Type_Submit = "Game";
                     PanelSteamID.Visible = true;
-                    LblGameorProgram.Text = "Game Name:";
+                    LblGameorProgram.Text = Resources.StrLblGameName;
                     TabControl1.SelectedTab = Page2;
                 }
                 else if (Radio_Program.Checked)
                 {
                     Type_Submit = "Program";
                     PanelSteamID.Visible = false;
-                    LblGameorProgram.Text = "Program Name:";
+                    LblGameorProgram.Text = Resources.StrLblProgName;
                     TabControl1.SelectedTab = Page2;
                 }
             }
@@ -110,7 +111,7 @@ namespace CompactGUI
                 var rx = new Regex(@"[\?&|%™®©]");
                 if (rx.Match(TxtBoxName.Text).Success)
                 {
-                    MessageBox.Show("Name cannot contain '?', '&', '|', '%', '™', '®', or '©'");
+                    MessageBox.Show(Resources.StrBadChars);
                 }
                 else
                 {
@@ -126,15 +127,18 @@ namespace CompactGUI
         private void PrepareSubmission()
         {
             bool alreadyExists = default;
-            foreach (Result res in WikiHandler.allResults)
+            if (WikiHandler.allResults != null)
             {
-                if (Convert.ToInt32(TxtBoxSteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (TxtBoxName.Text.Trim() ?? "") == (res.Name ?? ""))
+                foreach (Result res in WikiHandler.allResults)
                 {
-                    if ((CompMode_Submit ?? "") == (res.Algorithm ?? ""))
+                    if (Convert.ToInt32(TxtBoxSteamID.Value) == (res.SteamID == 0 ? 999999 : res.SteamID) || (Folder_Submit ?? "") == (res.Folder ?? "") || (TxtBoxName.Text.Trim() ?? "") == (res.Name ?? ""))
                     {
-                        if (BeforeSize_Submit >= res.BeforeSize * 0.92 && BeforeSize_Submit <= res.BeforeSize * 1.08)
+                        if ((CompMode_Submit ?? "") == (res.Algorithm ?? ""))
                         {
-                            alreadyExists = true;
+                            if (BeforeSize_Submit >= res.BeforeSize * 0.92 && BeforeSize_Submit <= res.BeforeSize * 1.08)
+                            {
+                                alreadyExists = true;
+                            }
                         }
                     }
                 }
@@ -150,7 +154,7 @@ namespace CompactGUI
                 string URL_First = "https://docs.google.com/forms/d/e/1FAIpQLSfAzlQAhyPEueFyQiTEmpudcKaVLnpRPmzrIuBZxnR8f7PjPg/formResponse?&ifq&entry.630201004=%3CCompactGUI%3E";
                 string URL_Last = "&submit=Submit";
                 string URL_All = URL_First + UniqueID_Submit + "%7C" + Type_Submit + "%7C" + Name_Submit + "%7C" + Folder_Submit + "%7C" + SteamID_Submit + "%7C" + CompMode_Submit + "%7C" + BeforeSize_Submit + "%7C" + AfterSize_Submit + URL_Last;
-                LblTitle.Text = "Sending Results";
+                LblTitle.Text = Resources.StrLblSendResults;
                 Panel1.Refresh();
                 SendPageRequest(URL_All);
             }
@@ -158,9 +162,9 @@ namespace CompactGUI
             {
             }
 
-            LblTitle.Text = "Results Sent";
+            LblTitle.Text = Resources.StrLblSentResults;
             TabControl1.SelectedTab = Page3;
-            BtnNextPage.Text = "Close";
+            BtnNextPage.Text = Resources.StrClose;
             BtnCancel.Visible = false;
         }
 
@@ -175,7 +179,7 @@ namespace CompactGUI
             }
             catch (System.Net.WebException)
             {
-                MessageBox.Show("An internet connection could not be established. Please try again later.");
+                MessageBox.Show(Resources.StrErrorInternet);
                 Close();
             }
         }
@@ -216,8 +220,6 @@ Size After: " + AfterSize_Submit;
             Close();
         }
 
-        /* TODO ERROR: Skipped RegionDirectiveTrivia */
-
         protected override CreateParams CreateParams
         {
             get
@@ -246,7 +248,5 @@ Size After: " + AfterSize_Submit;
                 MoveForm();
             }
         }
-
-        /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
     }
 }

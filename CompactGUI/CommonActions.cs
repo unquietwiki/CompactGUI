@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using CompactGUI.My.Resources;
+using System.Drawing;
 
 namespace CompactGUI
 {
@@ -21,7 +22,7 @@ namespace CompactGUI
                 withBlock.sb_AnalysisPanel.Visible = false;
                 withBlock.sb_ResultsPanel.Visible = false;
                 withBlock.TabControl1.SelectedTab = withBlock.InputPage;
-                withBlock.sb_labelCompressed.Text = "Estimated Compressed";
+                withBlock.sb_labelCompressed.Text = Resources.StrEstComp;
             }
         }
 
@@ -37,7 +38,7 @@ namespace CompactGUI
                             withBlock.IsQueryMode = false;
                             withBlock.btnCompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = "Compressing, Please Wait";
+                            withBlock.sb_progresslabel.Text = Resources.StrWaitComp;
                             withBlock.sb_progresspercent.Visible = true;
                             withBlock.sb_AnalysisPanel.Visible = true;
                             break;
@@ -49,7 +50,7 @@ namespace CompactGUI
                             withBlock.IsQueryMode = false;
                             withBlock.btnUncompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = "Uncompressing...";
+                            withBlock.sb_progresslabel.Text = Resources.StrDeComp;
                             withBlock.sb_progresspercent.Visible = true;
                             withBlock.CompResultsPanel.Visible = false;
                             withBlock.submitToWiki.Visible = false;
@@ -61,7 +62,7 @@ namespace CompactGUI
                             withBlock.IsQueryMode = true;
                             withBlock.btnCompress.Visible = false;
                             withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = "Analyzing...";
+                            withBlock.sb_progresslabel.Text = Resources.StrAnalyze;
                             withBlock.sb_progressbar.Width = 0;
                             withBlock.sb_Panel.Visible = true;
                             withBlock.sb_AnalysisPanel.Visible = true;
@@ -96,7 +97,7 @@ namespace CompactGUI
                             withBlock.btnAnalyze.Enabled = true;
                             withBlock.btnUncompress.Visible = false;
                             withBlock.sb_ResultsPanel.Visible = false;
-                            withBlock.sb_progresslabel.Text = "Finished Uncompressing";
+                            withBlock.sb_progresslabel.Text = Resources.StrFinishDeComp;
                             break;
                         }
 
@@ -104,8 +105,8 @@ namespace CompactGUI
                         {
                             if (AnalysisShowsFolderIsCompressed)
                             {
-                                withBlock.sb_progresslabel.Text = "This Folder Contains Compressed Files";
-                                withBlock.sb_labelCompressed.Text = "Compressed";
+                                withBlock.sb_progresslabel.Text = Resources.StrHasComp;
+                                withBlock.sb_labelCompressed.Text = Resources.StrIsComp;
                                 withBlock.btnUncompress.Visible = true;
                                 withBlock.CompResultsPanel.Visible = true;
                                 withBlock.submitToWiki.Visible = true;
@@ -113,7 +114,7 @@ namespace CompactGUI
                             }
                             else
                             {
-                                withBlock.sb_progresslabel.Text = "This Folder is Not Compressed";
+                                withBlock.sb_progresslabel.Text = Resources.StrHasNoComp;
                                 withBlock.btnUncompress.Visible = false;
                             }
 

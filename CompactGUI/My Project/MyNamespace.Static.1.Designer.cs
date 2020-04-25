@@ -6,22 +6,14 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
-/* TODO ERROR: Skipped IfDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
-/* TODO ERROR: Skipped IfDirectiveTrivia */
-/* TODO ERROR: Skipped DefineDirectiveTrivia *//* TODO ERROR: Skipped DefineDirectiveTrivia *//* TODO ERROR: Skipped DefineDirectiveTrivia *//* TODO ERROR: Skipped DefineDirectiveTrivia *//* TODO ERROR: Skipped DefineDirectiveTrivia */
-/* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
-/* TODO ERROR: Skipped IfDirectiveTrivia */
 namespace CompactGUI.My
 {
 
-    /* TODO ERROR: Skipped IfDirectiveTrivia */
     [System.CodeDom.Compiler.GeneratedCode("MyTemplate", "11.0.0.0")]
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 
-    /* TODO ERROR: Skipped IfDirectiveTrivia */
     internal partial class MyApplication : Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase
     {
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
         [STAThread()]
         [DebuggerHidden()]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -37,32 +29,23 @@ namespace CompactGUI.My
 
             MyProject.Application.Run(Args);
         }
-        /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
     }
 
-    /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-    /* TODO ERROR: Skipped IfDirectiveTrivia */
     [System.CodeDom.Compiler.GeneratedCode("MyTemplate", "11.0.0.0")]
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 
-    /* TODO ERROR: Skipped IfDirectiveTrivia */
     internal partial class MyComputer : Microsoft.VisualBasic.Devices.Computer
     {
-        /* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
         [DebuggerHidden()]
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public MyComputer() : base()
         {
         }
     }
-    /* TODO ERROR: Skipped EndIfDirectiveTrivia */
     [HideModuleName()]
     [System.CodeDom.Compiler.GeneratedCode("MyTemplate", "11.0.0.0")]
     internal static partial class MyProject
     {
-
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
         [System.ComponentModel.Design.HelpKeyword("My.Computer")]
         internal static MyComputer Computer
         {
@@ -74,8 +57,6 @@ namespace CompactGUI.My
         }
 
         private readonly static ThreadSafeObjectProvider<MyComputer> m_ComputerObjectProvider = new ThreadSafeObjectProvider<MyComputer>();
-        /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
         [System.ComponentModel.Design.HelpKeyword("My.Application")]
         internal static MyApplication Application
         {
@@ -87,8 +68,6 @@ namespace CompactGUI.My
         }
 
         private readonly static ThreadSafeObjectProvider<MyApplication> m_AppObjectProvider = new ThreadSafeObjectProvider<MyApplication>();
-        /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
         [System.ComponentModel.Design.HelpKeyword("My.User")]
         internal static Microsoft.VisualBasic.ApplicationServices.User User
         {
@@ -100,9 +79,6 @@ namespace CompactGUI.My
         }
 
         private readonly static ThreadSafeObjectProvider<Microsoft.VisualBasic.ApplicationServices.User> m_UserObjectProvider = new ThreadSafeObjectProvider<Microsoft.VisualBasic.ApplicationServices.User>();
-        /* TODO ERROR: Skipped ElifDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
-        /* TODO ERROR: Skipped DefineDirectiveTrivia */
         [System.ComponentModel.Design.HelpKeyword("My.Forms")]
         internal static MyForms Forms
         {
@@ -198,8 +174,6 @@ namespace CompactGUI.My
 
         private static ThreadSafeObjectProvider<MyForms> m_MyFormsObjectProvider = new ThreadSafeObjectProvider<MyForms>();
 
-        /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped IfDirectiveTrivia */
         [System.ComponentModel.Design.HelpKeyword("My.WebServices")]
         internal static MyWebServices WebServices
         {
@@ -269,15 +243,12 @@ namespace CompactGUI.My
         }
 
         private readonly static ThreadSafeObjectProvider<MyWebServices> m_MyWebServicesObjectProvider = new ThreadSafeObjectProvider<MyWebServices>();
-        /* TODO ERROR: Skipped EndIfDirectiveTrivia */
-        /* TODO ERROR: Skipped IfDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped EndIfDirectiveTrivia */
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Runtime.InteropServices.ComVisible(false)]
         internal sealed class ThreadSafeObjectProvider<T> where T : new()
         {
             internal T GetInstance
             {
-                /* TODO ERROR: Skipped IfDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElseDirectiveTrivia */
                 [DebuggerHidden()]
                 get
                 {
@@ -285,7 +256,6 @@ namespace CompactGUI.My
                         m_ThreadStaticValue = new T();
                     return m_ThreadStaticValue;
                 }
-                /* TODO ERROR: Skipped EndIfDirectiveTrivia */
             }
 
             [DebuggerHidden()]
@@ -294,12 +264,9 @@ namespace CompactGUI.My
             {
             }
 
-            /* TODO ERROR: Skipped IfDirectiveTrivia *//* TODO ERROR: Skipped DisabledTextTrivia *//* TODO ERROR: Skipped ElseDirectiveTrivia */
             [System.Runtime.CompilerServices.CompilerGenerated()]
             [ThreadStatic()]
             private static T m_ThreadStaticValue;
-            /* TODO ERROR: Skipped EndIfDirectiveTrivia */
         }
     }
 }
-/* TODO ERROR: Skipped EndIfDirectiveTrivia */
