@@ -138,8 +138,8 @@ namespace CompactGUI
                 if (UnfurlObj1 == My.MyProject.Forms.Compact.topbar_dirchooserContainer)
                 {
                     My.MyProject.Forms.Compact.btnAnalyze.Visible = true;
-                    My.MyProject.Forms.Compact.PaneltopBar.Anchor -= (int)AnchorStyles.Bottom;
-                    My.MyProject.Forms.Compact.PaneltopBar.Height = 135;
+                    My.MyProject.Forms.Compact.TopBarPanel.Anchor -= (int)AnchorStyles.Bottom;
+                    My.MyProject.Forms.Compact.TopBarPanel.Height = 135;
                     UnfurlObj1.Location = new Point(44, 69);
                 }
 

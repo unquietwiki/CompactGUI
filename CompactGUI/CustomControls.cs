@@ -16,7 +16,7 @@ namespace CompactGUI
 
         public new DialogResult ShowDialog(IWin32Window owner)
         {
-            if(owner != null)
+            if (owner != null)
             {
                 OpenFileDialog withBlock = Dg;
                 withBlock.ValidateNames = false;

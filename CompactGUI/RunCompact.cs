@@ -9,10 +9,6 @@ namespace CompactGUI
 {
     public partial class Compact
     {
-        public Compact() => InitializeComponent();
-
-        private Encoding? CP;
-
         private void CreateProcess(ActionMode TargetMode)
         {
             if (CP is null)
@@ -20,14 +16,12 @@ namespace CompactGUI
                 CP = GetEncoding();
             }
 
-            RunCompact(Convert.ToString(GetWorkingList()[0], Compact.culture));
+            RunCompact(Convert.ToString(GetWorkingList()[0], Compact.culture), ActionMode.Compact);
             outputbuffer.Add("Compressing: " + "\t" + GetWorkingList()[0]);
             CommmonActions.ActionBegun(TargetMode);
         }
 
-        private string? compactArgs;
-
-        private void RunCompact(string desiredFile)
+        private void RunCompact(string desiredFile, ActionMode CurrentMode)
         {
             if (CurrentMode.Equals(ActionMode.Compact))
             {

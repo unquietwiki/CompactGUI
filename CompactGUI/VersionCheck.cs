@@ -15,10 +15,10 @@ namespace CompactGUI
                 if (versionDoc.ToString() != default)
                 {
                     //TODO: make sure this works
-                    if (Convert.ToBoolean(XMLParse(versionDoc, version),Compact.culture))
+                    if (Convert.ToBoolean(XMLParse(versionDoc, version), Compact.culture))
                     {
                         My.MyProject.Forms.Compact.updateBanner.Visible = true;
-                        My.MyProject.Forms.Compact.dlUpdateLink.Text = "Update Available: Click to download " + Xml_VersionStr;
+                        My.MyProject.Forms.Compact.UpdateLink.Text = "Update Available: Click to download " + Xml_VersionStr;
                         My.MyProject.Forms.Info.LblCheckUpdates.Text = "Update to " + Xml_VersionStr;
                         My.MyProject.Forms.Info.LblCheckUpdates.Visible = true;
                     }

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Diagnostics;
-using System.Windows.Forms;
+using System.Globalization;
+using System.Text;
+
+#nullable enable
 
 namespace CompactGUI
 {
@@ -26,12 +28,13 @@ namespace CompactGUI
             ERR_UNAUTHORISEDREQUIRESSYSTEM
         }
 
+        public Compact() => InitializeComponent();
+
         private static object version = "3.0.0";
         static internal CultureInfo culture = CultureInfo.CurrentCulture;
         private bool isMaximised = false;
         private bool isAlreadyFading = false;
         public Process MyProcess1 { get; set; }
-        internal ActionMode CurrentMode { get; set; }
         internal object OverrideCompressFolderButton { get; set; } = 0;
         internal int DirectorysizeexceptionCount { get; set; } = 0;
         internal static object Version { get => version; set => version = value; }
@@ -46,6 +49,10 @@ namespace CompactGUI
         private ulong newFolderSize;
         private ulong oldFolderSize;
         internal string workingDir = "";
+        private Encoding? CP;
+        private string? compactArgs;
+        internal static bool isCompressed = false;
+        private int FileIndex = 0;
 
     }
 }

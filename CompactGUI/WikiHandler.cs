@@ -43,13 +43,13 @@ namespace CompactGUI
                 }
                 catch (WebException)
                 {
-                    My.MyProject.Forms.Compact.sb_lblGameIssues.Text = Resources.StrErrorInternet;
-                    My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = true;
-                    My.MyProject.Forms.Compact.ToolTipFilesCompressed.SetToolTip(My.MyProject.Forms.Compact.sb_lblGameIssues, "");
+                    My.MyProject.Forms.Compact.lblGameIssues.Text = Resources.StrErrorInternet;
+                    My.MyProject.Forms.Compact.lblGameIssues.Visible = true;
+                    My.MyProject.Forms.Compact.ToolTipFilesCompressed.SetToolTip(My.MyProject.Forms.Compact.lblGameIssues, "");
                     My.MyProject.Forms.Compact.wkPostSizeVal.Text = Resources.StrQuestion;
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Text = "";
                     My.MyProject.Forms.Compact.wkPostSizeUnit.Location = new Point(My.MyProject.Forms.Compact.wkPostSizeVal.Location.X + My.MyProject.Forms.Compact.wkPostSizeVal.Size.Width, My.MyProject.Forms.Compact.wkPostSizeVal.Location.Y);
-                    My.MyProject.Forms.Compact.sb_Panel.Show();
+                    My.MyProject.Forms.Compact.ActivityPanel.Show();
                 }
             }
             else
@@ -113,10 +113,10 @@ namespace CompactGUI
                 {
                     FillTable(r);
                     ratioavg += decimal.Parse(r.Ratio.ToString(Compact.culture), Compact.culture);
-                    My.MyProject.Forms.Compact.sb_lblGameIssues.Visible = false;   // Add check for game issues at later date
+                    My.MyProject.Forms.Compact.lblGameIssues.Visible = false;   // Add check for game issues at later date
                 }
 
-                My.MyProject.Forms.Compact.sb_labelCompressed.Text = Resources.StrEstComp;
+                My.MyProject.Forms.Compact.lblCompressed.Text = Resources.StrEstComp;
                 if (gcount.Count != default)
                 {
                     ratioavg = (ratioavg - 1) / gcount.Count;
@@ -144,7 +144,7 @@ namespace CompactGUI
                 }
 
                 My.MyProject.Forms.WikiPopup.GamesTable.Visible = true;
-                My.MyProject.Forms.Compact.sb_Panel.Show();
+                My.MyProject.Forms.Compact.ActivityPanel.Show();
             }
         }
 
@@ -181,7 +181,7 @@ namespace CompactGUI
         {
             if (firstGame == 0)
             {
-                My.MyProject.Forms.Compact.sb_FolderName.Text = ps.Name;
+                My.MyProject.Forms.Compact.lblFolderName.Text = ps.Name;
                 firstGame = 1;
             }
 

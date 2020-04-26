@@ -5,24 +5,19 @@ namespace CompactGUI
 {
     internal static class CommmonActions
     {
-        // FIXME: can't compress new files for some reason
-
         public static void PrepareforCompact()
         {
             {
                 Compact withBlock = My.MyProject.Forms.Compact;
-                withBlock.btnCompress.Visible = true;
-                withBlock.btnCompress.Enabled = true;
                 withBlock.btnAnalyze.Enabled = true;
-                withBlock.btnUncompress.Visible = false;
-                withBlock.returnArrow.Visible = false;
+                withBlock.btnReturn.Visible = false;
                 withBlock.checkShutdownOnCompletion.Checked = false;
                 withBlock.CompResultsPanel.Visible = false;
-                withBlock.submitToWiki.Visible = false;
-                withBlock.sb_AnalysisPanel.Visible = false;
+                withBlock.btnSubmitToWiki.Visible = false;
+                withBlock.AnalysisPanel.Visible = false;
                 withBlock.sb_ResultsPanel.Visible = false;
                 withBlock.TabControl1.SelectedTab = withBlock.InputPage;
-                withBlock.sb_labelCompressed.Text = Resources.StrEstComp;
+                withBlock.lblCompressed.Text = Resources.StrEstComp;
             }
         }
 
@@ -30,42 +25,38 @@ namespace CompactGUI
         {
             {
                 Compact withBlock = My.MyProject.Forms.Compact;
+
+                // Defaults
+                withBlock.IsActive = true;
+                withBlock.IsQueryMode = false;
+                withBlock.btnAnalyze.Enabled = false;
+                withBlock.lblProgressPercent.Visible = true;
+
+                // Adjustments
                 switch (Mode)
                 {
                     case Compact.ActionMode.Compact:
                         {
-                            withBlock.IsActive = true;
-                            withBlock.IsQueryMode = false;
-                            withBlock.btnCompress.Visible = false;
-                            withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = Resources.StrWaitComp;
-                            withBlock.sb_progresspercent.Visible = true;
-                            withBlock.sb_AnalysisPanel.Visible = true;
+                            withBlock.lblActivityProgress.Text = Resources.StrWaitComp;
+                            withBlock.AnalysisPanel.Visible = true;
                             break;
                         }
 
                     case Compact.ActionMode.UnCompact:
                         {
-                            withBlock.IsActive = true;
-                            withBlock.IsQueryMode = false;
-                            withBlock.btnUncompress.Visible = false;
-                            withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = Resources.StrDeComp;
-                            withBlock.sb_progresspercent.Visible = true;
+                            withBlock.lblActivityProgress.Text = Resources.StrDeComp;
                             withBlock.CompResultsPanel.Visible = false;
-                            withBlock.submitToWiki.Visible = false;
+                            withBlock.btnSubmitToWiki.Visible = false;
                             break;
                         }
 
                     case Compact.ActionMode.Analyze:
                         {
+                            withBlock.IsActive = false;
                             withBlock.IsQueryMode = true;
-                            withBlock.btnCompress.Visible = false;
-                            withBlock.btnAnalyze.Enabled = false;
-                            withBlock.sb_progresslabel.Text = Resources.StrAnalyze;
-                            withBlock.sb_progressbar.Width = 0;
-                            withBlock.sb_Panel.Visible = true;
-                            withBlock.sb_AnalysisPanel.Visible = true;
+                            withBlock.lblActivityProgress.Text = Resources.StrAnalyze;
+                            withBlock.ActivityProgressBar.Width = 0;
+                            withBlock.AnalysisPanel.Visible = true;
                             withBlock.AllFiles.Clear();
                             withBlock.TreeData.Clear();
                             break;
@@ -73,8 +64,8 @@ namespace CompactGUI
                 }
 
                 withBlock.TabControl1.SelectedTab = withBlock.ProgressPage;
-                withBlock.TableLayoutPanel4.Location = new Point(7, 24);
-                withBlock.TableLayoutPanel4.Height = withBlock.TableLayoutPanel4.Height + 30;
+                withBlock.tlpResultsConsole.Location = new Point(7, 24);
+                withBlock.tlpResultsConsole.Height = withBlock.tlpResultsConsole.Height + 30;
             }
         }
 
@@ -82,40 +73,41 @@ namespace CompactGUI
         {
             {
                 Compact withBlock = My.MyProject.Forms.Compact;
+
+                // Adjustments
                 switch (Mode)
                 {
                     case Compact.ActionMode.Compact:
                         {
-                            withBlock.btnAnalyze.Enabled = true;
-                            withBlock.btnUncompress.Visible = true;
                             withBlock.IsActive = false;
+                            Compact.isCompressed = true;
                             break;
                         }
 
                     case Compact.ActionMode.UnCompact:
                         {
-                            withBlock.btnAnalyze.Enabled = true;
-                            withBlock.btnUncompress.Visible = false;
                             withBlock.sb_ResultsPanel.Visible = false;
-                            withBlock.sb_progresslabel.Text = Resources.StrFinishDeComp;
+                            withBlock.lblActivityProgress.Text = Resources.StrFinishDeComp;
+                            Compact.isCompressed = false;
                             break;
                         }
 
                     case Compact.ActionMode.Analyze:
                         {
+                            withBlock.btnAnalyze.Enabled = false;
                             if (AnalysisShowsFolderIsCompressed)
                             {
-                                withBlock.sb_progresslabel.Text = Resources.StrHasComp;
-                                withBlock.sb_labelCompressed.Text = Resources.StrIsComp;
-                                withBlock.btnUncompress.Visible = true;
+                                withBlock.lblActivityProgress.Text = Resources.StrHasComp;
+                                withBlock.lblCompressed.Text = Resources.StrIsComp;
                                 withBlock.CompResultsPanel.Visible = true;
-                                withBlock.submitToWiki.Visible = true;
+                                withBlock.btnSubmitToWiki.Visible = true;
                                 withBlock.sb_ResultsPanel.Visible = true;
+                                Compact.isCompressed = true;
                             }
                             else
                             {
-                                withBlock.sb_progresslabel.Text = Resources.StrHasNoComp;
-                                withBlock.btnUncompress.Visible = false;
+                                withBlock.lblActivityProgress.Text = Resources.StrHasNoComp;
+                                Compact.isCompressed = false;
                             }
 
                             withBlock.IsQueryMode = false;
@@ -123,9 +115,9 @@ namespace CompactGUI
                         }
                 }
 
-                withBlock.returnArrow.Visible = true;
-                withBlock.TableLayoutPanel4.Location = new Point(7, 54);
-                withBlock.TableLayoutPanel4.Height = withBlock.TableLayoutPanel4.Height - 30;
+                withBlock.btnReturn.Visible = true;
+                withBlock.tlpResultsConsole.Location = new Point(7, 54);
+                withBlock.tlpResultsConsole.Height = withBlock.tlpResultsConsole.Height - 30;
                 withBlock.IsActive = false;
                 withBlock.GetWorkingList().Clear();
             }

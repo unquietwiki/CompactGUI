@@ -41,23 +41,23 @@ namespace CompactGUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Compact));
             this._FolderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this._OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this._topbar_title = new System.Windows.Forms.Label();
-            this._PaneltopBar = new System.Windows.Forms.Panel();
-            this._showinfopopup = new System.Windows.Forms.Label();
+            this._TopBarTitle = new System.Windows.Forms.Label();
+            this._TopBarPanel = new System.Windows.Forms.Panel();
+            this._btnConfigure = new System.Windows.Forms.Label();
             this._updateBanner = new System.Windows.Forms.Panel();
-            this._dlUpdateLink = new System.Windows.Forms.LinkLabel();
+            this._UpdateLink = new System.Windows.Forms.LinkLabel();
             this._btnAnalyze = new System.Windows.Forms.Button();
             this._topbar_dirchooserContainer = new System.Windows.Forms.Panel();
             this._dirChooser = new System.Windows.Forms.LinkLabel();
-            this._BtnMainmin = new System.Windows.Forms.Button();
-            this._BtnMainmax = new System.Windows.Forms.Button();
-            this._BtnMainexit = new System.Windows.Forms.Button();
-            this._topbar_icon = new System.Windows.Forms.PictureBox();
+            this._BtnMainMin = new System.Windows.Forms.Button();
+            this._BtnMainMax = new System.Windows.Forms.Button();
+            this._BtnMainExit = new System.Windows.Forms.Button();
+            this._TopBarIcon = new System.Windows.Forms.PictureBox();
             this._progressTimer = new System.Windows.Forms.Timer(this.components);
             this._seecompest = new System.Windows.Forms.Label();
             this._ToolTipFilesCompressed = new System.Windows.Forms.ToolTip(this.components);
-            this._help_resultsFilesCompressed = new System.Windows.Forms.Label();
-            this._sb_lblGameIssues = new System.Windows.Forms.Label();
+            this._helpResultsFilesCompressed = new System.Windows.Forms.Label();
+            this._lblGameIssues = new System.Windows.Forms.Label();
             this._compressX4 = new System.Windows.Forms.RadioButton();
             this._compressLZX = new System.Windows.Forms.RadioButton();
             this._compressX8 = new System.Windows.Forms.RadioButton();
@@ -66,85 +66,84 @@ namespace CompactGUI
             this._checkHiddenFiles = new System.Windows.Forms.CheckBox();
             this._checkRecursiveScan = new System.Windows.Forms.CheckBox();
             this._PanelMainWindow = new System.Windows.Forms.Panel();
-            this._sb_Panel = new System.Windows.Forms.Panel();
+            this._ActivityPanel = new System.Windows.Forms.Panel();
             this._TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._sb_ResultsPanel = new System.Windows.Forms.Panel();
             this._Label4 = new System.Windows.Forms.Label();
             this._Label3 = new System.Windows.Forms.Label();
-            this._sb_compressedSizeVisual = new System.Windows.Forms.Panel();
-            this._Panel6 = new System.Windows.Forms.Panel();
-            this._sb_AnalysisPanel = new System.Windows.Forms.Panel();
-            this._sb_progresslabel = new System.Windows.Forms.Label();
-            this._sb_progressbar = new System.Windows.Forms.Panel();
-            this._sb_progresspercent = new System.Windows.Forms.Label();
+            this._CompSizeBar = new System.Windows.Forms.Panel();
+            this._OrigSizeBar = new System.Windows.Forms.Panel();
+            this._AnalysisPanel = new System.Windows.Forms.Panel();
+            this._lblActivityProgress = new System.Windows.Forms.Label();
+            this._ActivityProgressBar = new System.Windows.Forms.Panel();
+            this._lblProgressPercent = new System.Windows.Forms.Label();
             this._wkPostSizeUnit = new System.Windows.Forms.Label();
             this._wkPostSizeVal = new System.Windows.Forms.Label();
             this._wkPreSizeUnit = new System.Windows.Forms.Label();
             this._TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this._Label19 = new System.Windows.Forms.Label();
-            this._sb_labelCompressed = new System.Windows.Forms.Label();
-            this._sb_FolderName = new System.Windows.Forms.Label();
+            this._lblUncompressed = new System.Windows.Forms.Label();
+            this._lblCompressed = new System.Windows.Forms.Label();
+            this._lblFolderName = new System.Windows.Forms.Label();
             this._vis_dropshadowmain2 = new System.Windows.Forms.Panel();
             this._wkPreSizeVal = new System.Windows.Forms.Label();
-            this._btnCompress = new System.Windows.Forms.Button();
-            this._btnUncompress = new System.Windows.Forms.Button();
+            this._btnCompDecomp = new System.Windows.Forms.Button();
             this._vis_dropshadowMain = new System.Windows.Forms.Panel();
             this._TabControl1 = new System.Windows.Forms.TabControl();
             this._InputPage = new System.Windows.Forms.TabPage();
-            this._Panel1 = new System.Windows.Forms.Panel();
+            this._FilesPanel = new System.Windows.Forms.Panel();
             this._Label1 = new System.Windows.Forms.Label();
             this._SelectedFiles = new System.Windows.Forms.ListBox();
             this._FlowPanel_CompressionOptions = new System.Windows.Forms.FlowLayoutPanel();
-            this._Panel4 = new System.Windows.Forms.Panel();
+            this._CompressionPanel = new System.Windows.Forms.Panel();
             this._Label2 = new System.Windows.Forms.Label();
-            this._Panel3 = new System.Windows.Forms.Panel();
+            this._ArgumentPanel = new System.Windows.Forms.Panel();
             this._comboChooseShutdown = new System.Windows.Forms.ComboBox();
             this._checkShutdownOnCompletion = new System.Windows.Forms.CheckBox();
             this._Label8 = new System.Windows.Forms.Label();
             this._ProgressPage = new System.Windows.Forms.TabPage();
-            this._TableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this._tlpResultsConsole = new System.Windows.Forms.TableLayoutPanel();
             this._CompResultsPanel = new System.Windows.Forms.Panel();
-            this._results_arc = new CompactGUI.GraphicsPanel();
-            this._labelFilesCompressed = new System.Windows.Forms.Label();
+            this._ResultsArc = new CompactGUI.GraphicsPanel();
+            this._lblFilesCompressed = new System.Windows.Forms.Label();
             this._dirChosenLabel = new System.Windows.Forms.Label();
             this._TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this._compressedSizeVisual = new System.Windows.Forms.Panel();
+            this._ResultsCompressedBar = new System.Windows.Forms.Panel();
             this._compressedSizeLabel = new System.Windows.Forms.Label();
-            this._Panel5 = new System.Windows.Forms.Panel();
+            this._ResultsOriginalBar = new System.Windows.Forms.Panel();
             this._origSizeLabel = new System.Windows.Forms.Label();
             this._Label9 = new System.Windows.Forms.Label();
             this._Label11 = new System.Windows.Forms.Label();
-            this._Panelconsole = new System.Windows.Forms.Panel();
-            this._saveconlog = new System.Windows.Forms.Button();
-            this._conOut = new System.Windows.Forms.ListBox();
-            this._returnArrow = new System.Windows.Forms.Label();
-            this._submitToWiki = new System.Windows.Forms.Label();
+            this._ConsolePanel = new System.Windows.Forms.Panel();
+            this._btnSaveConsoleLog = new System.Windows.Forms.Button();
+            this._ConsoleOutput = new System.Windows.Forms.ListBox();
+            this._btnReturn = new System.Windows.Forms.Label();
+            this._btnSubmitToWiki = new System.Windows.Forms.Label();
             this._spaceSavedLabel = new System.Windows.Forms.Label();
             this._TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this._TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this._Tray_ShowMain = new System.Windows.Forms.ToolStripMenuItem();
-            this._PaneltopBar.SuspendLayout();
+            this._TopBarPanel.SuspendLayout();
             this._updateBanner.SuspendLayout();
             this._topbar_dirchooserContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._topbar_icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._TopBarIcon)).BeginInit();
             this._PanelMainWindow.SuspendLayout();
-            this._sb_Panel.SuspendLayout();
+            this._ActivityPanel.SuspendLayout();
             this._TableLayoutPanel2.SuspendLayout();
             this._sb_ResultsPanel.SuspendLayout();
-            this._sb_AnalysisPanel.SuspendLayout();
+            this._AnalysisPanel.SuspendLayout();
             this._TableLayoutPanel3.SuspendLayout();
             this._TabControl1.SuspendLayout();
             this._InputPage.SuspendLayout();
-            this._Panel1.SuspendLayout();
+            this._FilesPanel.SuspendLayout();
             this._FlowPanel_CompressionOptions.SuspendLayout();
-            this._Panel4.SuspendLayout();
-            this._Panel3.SuspendLayout();
+            this._CompressionPanel.SuspendLayout();
+            this._ArgumentPanel.SuspendLayout();
             this._ProgressPage.SuspendLayout();
-            this._TableLayoutPanel4.SuspendLayout();
+            this._tlpResultsConsole.SuspendLayout();
             this._CompResultsPanel.SuspendLayout();
-            this._compressedSizeVisual.SuspendLayout();
-            this._Panel5.SuspendLayout();
-            this._Panelconsole.SuspendLayout();
+            this._ResultsCompressedBar.SuspendLayout();
+            this._ResultsOriginalBar.SuspendLayout();
+            this._ConsolePanel.SuspendLayout();
             this._TrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,55 +151,55 @@ namespace CompactGUI
             // 
             this._OpenFileDialog1.FileName = "OpenFileDialog1";
             // 
-            // _topbar_title
+            // _TopBarTitle
             // 
-            this._topbar_title.AutoSize = true;
-            this._topbar_title.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F);
-            this._topbar_title.ForeColor = System.Drawing.Color.White;
-            this._topbar_title.Location = new System.Drawing.Point(39, 20);
-            this._topbar_title.Name = "_topbar_title";
-            this._topbar_title.Size = new System.Drawing.Size(136, 30);
-            this._topbar_title.TabIndex = 13;
-            this._topbar_title.Text = "CompactGUI²";
+            this._TopBarTitle.AutoSize = true;
+            this._TopBarTitle.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F);
+            this._TopBarTitle.ForeColor = System.Drawing.Color.White;
+            this._TopBarTitle.Location = new System.Drawing.Point(39, 20);
+            this._TopBarTitle.Name = "_TopBarTitle";
+            this._TopBarTitle.Size = new System.Drawing.Size(136, 30);
+            this._TopBarTitle.TabIndex = 13;
+            this._TopBarTitle.Text = "CompactGUI²";
             // 
-            // _PaneltopBar
+            // _TopBarPanel
             // 
-            this._PaneltopBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this._TopBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._PaneltopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
-            this._PaneltopBar.Controls.Add(this._showinfopopup);
-            this._PaneltopBar.Controls.Add(this._updateBanner);
-            this._PaneltopBar.Controls.Add(this._btnAnalyze);
-            this._PaneltopBar.Controls.Add(this._topbar_dirchooserContainer);
-            this._PaneltopBar.Controls.Add(this._BtnMainmin);
-            this._PaneltopBar.Controls.Add(this._BtnMainmax);
-            this._PaneltopBar.Controls.Add(this._BtnMainexit);
-            this._PaneltopBar.Controls.Add(this._topbar_icon);
-            this._PaneltopBar.Controls.Add(this._topbar_title);
-            this._PaneltopBar.Location = new System.Drawing.Point(0, 0);
-            this._PaneltopBar.Name = "_PaneltopBar";
-            this._PaneltopBar.Size = new System.Drawing.Size(1000, 135);
-            this._PaneltopBar.TabIndex = 14;
-            this._PaneltopBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_topBar_MouseDown);
+            this._TopBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
+            this._TopBarPanel.Controls.Add(this._btnConfigure);
+            this._TopBarPanel.Controls.Add(this._updateBanner);
+            this._TopBarPanel.Controls.Add(this._btnAnalyze);
+            this._TopBarPanel.Controls.Add(this._topbar_dirchooserContainer);
+            this._TopBarPanel.Controls.Add(this._BtnMainMin);
+            this._TopBarPanel.Controls.Add(this._BtnMainMax);
+            this._TopBarPanel.Controls.Add(this._BtnMainExit);
+            this._TopBarPanel.Controls.Add(this._TopBarIcon);
+            this._TopBarPanel.Controls.Add(this._TopBarTitle);
+            this._TopBarPanel.Location = new System.Drawing.Point(0, 0);
+            this._TopBarPanel.Name = "_TopBarPanel";
+            this._TopBarPanel.Size = new System.Drawing.Size(1000, 135);
+            this._TopBarPanel.TabIndex = 14;
+            this._TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_topBar_MouseDown);
             // 
-            // _showinfopopup
+            // _btnConfigure
             // 
-            this._showinfopopup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._showinfopopup.AutoSize = true;
-            this._showinfopopup.Font = new System.Drawing.Font("Segoe MDL2 Assets", 11F);
-            this._showinfopopup.ForeColor = System.Drawing.Color.White;
-            this._showinfopopup.Location = new System.Drawing.Point(798, 15);
-            this._showinfopopup.Name = "_showinfopopup";
-            this._showinfopopup.Size = new System.Drawing.Size(22, 15);
-            this._showinfopopup.TabIndex = 14;
-            this._showinfopopup.Text = "";
-            this._showinfopopup.Click += new System.EventHandler(this.ShowInfoPopup_Click);
+            this._btnConfigure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnConfigure.AutoSize = true;
+            this._btnConfigure.Font = new System.Drawing.Font("Segoe MDL2 Assets", 11F);
+            this._btnConfigure.ForeColor = System.Drawing.Color.White;
+            this._btnConfigure.Location = new System.Drawing.Point(798, 15);
+            this._btnConfigure.Name = "_btnConfigure";
+            this._btnConfigure.Size = new System.Drawing.Size(22, 15);
+            this._btnConfigure.TabIndex = 14;
+            this._btnConfigure.Text = "";
+            this._btnConfigure.Click += new System.EventHandler(this.ShowInfoPopup_Click);
             // 
             // _updateBanner
             // 
             this._updateBanner.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this._updateBanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this._updateBanner.Controls.Add(this._dlUpdateLink);
+            this._updateBanner.Controls.Add(this._UpdateLink);
             this._updateBanner.Location = new System.Drawing.Point(310, 0);
             this._updateBanner.Name = "_updateBanner";
             this._updateBanner.Size = new System.Drawing.Size(380, 19);
@@ -208,21 +207,21 @@ namespace CompactGUI
             this._updateBanner.Visible = false;
             this._updateBanner.Paint += new System.Windows.Forms.PaintEventHandler(this.UpdateBanner_Paint);
             // 
-            // _dlUpdateLink
+            // _UpdateLink
             // 
-            this._dlUpdateLink.BackColor = System.Drawing.Color.Transparent;
-            this._dlUpdateLink.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this._dlUpdateLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this._dlUpdateLink.LinkColor = System.Drawing.Color.AliceBlue;
-            this._dlUpdateLink.Location = new System.Drawing.Point(0, 0);
-            this._dlUpdateLink.Margin = new System.Windows.Forms.Padding(0);
-            this._dlUpdateLink.Name = "_dlUpdateLink";
-            this._dlUpdateLink.Size = new System.Drawing.Size(380, 18);
-            this._dlUpdateLink.TabIndex = 1;
-            this._dlUpdateLink.TabStop = true;
-            this._dlUpdateLink.Text = "Update Available: Click to Download!";
-            this._dlUpdateLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this._dlUpdateLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DlUpdateLink_LinkClicked);
+            this._UpdateLink.BackColor = System.Drawing.Color.Transparent;
+            this._UpdateLink.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this._UpdateLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this._UpdateLink.LinkColor = System.Drawing.Color.AliceBlue;
+            this._UpdateLink.Location = new System.Drawing.Point(0, 0);
+            this._UpdateLink.Margin = new System.Windows.Forms.Padding(0);
+            this._UpdateLink.Name = "_UpdateLink";
+            this._UpdateLink.Size = new System.Drawing.Size(380, 18);
+            this._UpdateLink.TabIndex = 1;
+            this._UpdateLink.TabStop = true;
+            this._UpdateLink.Text = "Update Available: Click to Download!";
+            this._UpdateLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._UpdateLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DlUpdateLink_LinkClicked);
             // 
             // _btnAnalyze
             // 
@@ -285,75 +284,75 @@ namespace CompactGUI
             this._dirChooser.MouseEnter += new System.EventHandler(this.DirChooser_MouseEnter);
             this._dirChooser.MouseLeave += new System.EventHandler(this.DirChooser_MouseLeave);
             // 
-            // _BtnMainmin
+            // _BtnMainMin
             // 
-            this._BtnMainmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._BtnMainmin.BackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmin.FlatAppearance.BorderSize = 0;
-            this._BtnMainmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._BtnMainmin.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F);
-            this._BtnMainmin.ForeColor = System.Drawing.Color.White;
-            this._BtnMainmin.Location = new System.Drawing.Point(841, 0);
-            this._BtnMainmin.Margin = new System.Windows.Forms.Padding(0);
-            this._BtnMainmin.Name = "_BtnMainmin";
-            this._BtnMainmin.Size = new System.Drawing.Size(45, 42);
-            this._BtnMainmin.TabIndex = 17;
-            this._BtnMainmin.TabStop = false;
-            this._BtnMainmin.Text = "—";
-            this._BtnMainmin.UseVisualStyleBackColor = false;
-            this._BtnMainmin.Click += new System.EventHandler(this.Btn_Mainmin_Click);
+            this._BtnMainMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._BtnMainMin.BackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMin.FlatAppearance.BorderSize = 0;
+            this._BtnMainMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._BtnMainMin.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F);
+            this._BtnMainMin.ForeColor = System.Drawing.Color.White;
+            this._BtnMainMin.Location = new System.Drawing.Point(841, 0);
+            this._BtnMainMin.Margin = new System.Windows.Forms.Padding(0);
+            this._BtnMainMin.Name = "_BtnMainMin";
+            this._BtnMainMin.Size = new System.Drawing.Size(45, 42);
+            this._BtnMainMin.TabIndex = 17;
+            this._BtnMainMin.TabStop = false;
+            this._BtnMainMin.Text = "—";
+            this._BtnMainMin.UseVisualStyleBackColor = false;
+            this._BtnMainMin.Click += new System.EventHandler(this.Btn_Mainmin_Click);
             // 
-            // _BtnMainmax
+            // _BtnMainMax
             // 
-            this._BtnMainmax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._BtnMainmax.BackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmax.FlatAppearance.BorderSize = 0;
-            this._BtnMainmax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this._BtnMainmax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._BtnMainmax.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F);
-            this._BtnMainmax.ForeColor = System.Drawing.Color.White;
-            this._BtnMainmax.Location = new System.Drawing.Point(899, 0);
-            this._BtnMainmax.Margin = new System.Windows.Forms.Padding(0);
-            this._BtnMainmax.Name = "_BtnMainmax";
-            this._BtnMainmax.Size = new System.Drawing.Size(44, 42);
-            this._BtnMainmax.TabIndex = 16;
-            this._BtnMainmax.TabStop = false;
-            this._BtnMainmax.Text = "☐";
-            this._BtnMainmax.UseVisualStyleBackColor = false;
-            this._BtnMainmax.Click += new System.EventHandler(this.Btn_Mainmax_Click);
+            this._BtnMainMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._BtnMainMax.BackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMax.FlatAppearance.BorderSize = 0;
+            this._BtnMainMax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this._BtnMainMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._BtnMainMax.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F);
+            this._BtnMainMax.ForeColor = System.Drawing.Color.White;
+            this._BtnMainMax.Location = new System.Drawing.Point(899, 0);
+            this._BtnMainMax.Margin = new System.Windows.Forms.Padding(0);
+            this._BtnMainMax.Name = "_BtnMainMax";
+            this._BtnMainMax.Size = new System.Drawing.Size(44, 42);
+            this._BtnMainMax.TabIndex = 16;
+            this._BtnMainMax.TabStop = false;
+            this._BtnMainMax.Text = "☐";
+            this._BtnMainMax.UseVisualStyleBackColor = false;
+            this._BtnMainMax.Click += new System.EventHandler(this.Btn_Mainmax_Click);
             // 
-            // _BtnMainexit
+            // _BtnMainExit
             // 
-            this._BtnMainexit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._BtnMainexit.BackColor = System.Drawing.Color.Transparent;
-            this._BtnMainexit.FlatAppearance.BorderSize = 0;
-            this._BtnMainexit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this._BtnMainexit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this._BtnMainexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._BtnMainexit.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._BtnMainexit.ForeColor = System.Drawing.Color.White;
-            this._BtnMainexit.Location = new System.Drawing.Point(943, 0);
-            this._BtnMainexit.Margin = new System.Windows.Forms.Padding(0);
-            this._BtnMainexit.Name = "_BtnMainexit";
-            this._BtnMainexit.Size = new System.Drawing.Size(57, 42);
-            this._BtnMainexit.TabIndex = 15;
-            this._BtnMainexit.TabStop = false;
-            this._BtnMainexit.Text = "✕";
-            this._BtnMainexit.UseVisualStyleBackColor = false;
-            this._BtnMainexit.Click += new System.EventHandler(this.Btn_Mainexit_Click);
+            this._BtnMainExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._BtnMainExit.BackColor = System.Drawing.Color.Transparent;
+            this._BtnMainExit.FlatAppearance.BorderSize = 0;
+            this._BtnMainExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this._BtnMainExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this._BtnMainExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._BtnMainExit.Font = new System.Drawing.Font("Segoe UI Symbol", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._BtnMainExit.ForeColor = System.Drawing.Color.White;
+            this._BtnMainExit.Location = new System.Drawing.Point(943, 0);
+            this._BtnMainExit.Margin = new System.Windows.Forms.Padding(0);
+            this._BtnMainExit.Name = "_BtnMainExit";
+            this._BtnMainExit.Size = new System.Drawing.Size(57, 42);
+            this._BtnMainExit.TabIndex = 15;
+            this._BtnMainExit.TabStop = false;
+            this._BtnMainExit.Text = "✕";
+            this._BtnMainExit.UseVisualStyleBackColor = false;
+            this._BtnMainExit.Click += new System.EventHandler(this.Btn_Mainexit_Click);
             // 
-            // _topbar_icon
+            // _TopBarIcon
             // 
-            this._topbar_icon.Image = global::CompactGUI.My.Resources.Resources.iconbright;
-            this._topbar_icon.Location = new System.Drawing.Point(11, 25);
-            this._topbar_icon.Name = "_topbar_icon";
-            this._topbar_icon.Size = new System.Drawing.Size(25, 25);
-            this._topbar_icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._topbar_icon.TabIndex = 15;
-            this._topbar_icon.TabStop = false;
+            this._TopBarIcon.Image = global::CompactGUI.My.Resources.Resources.iconbright;
+            this._TopBarIcon.Location = new System.Drawing.Point(11, 25);
+            this._TopBarIcon.Name = "_TopBarIcon";
+            this._TopBarIcon.Size = new System.Drawing.Size(25, 25);
+            this._TopBarIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._TopBarIcon.TabIndex = 15;
+            this._TopBarIcon.TabStop = false;
             // 
             // _progressTimer
             // 
@@ -385,33 +384,33 @@ namespace CompactGUI
             this._ToolTipFilesCompressed.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this._ToolTipFilesCompressed.ToolTipTitle = "Information";
             // 
-            // _help_resultsFilesCompressed
+            // _helpResultsFilesCompressed
             // 
-            this._help_resultsFilesCompressed.AutoSize = true;
-            this._help_resultsFilesCompressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._help_resultsFilesCompressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this._help_resultsFilesCompressed.Location = new System.Drawing.Point(480, 168);
-            this._help_resultsFilesCompressed.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this._help_resultsFilesCompressed.Name = "_help_resultsFilesCompressed";
-            this._help_resultsFilesCompressed.Size = new System.Drawing.Size(22, 17);
-            this._help_resultsFilesCompressed.TabIndex = 31;
-            this._help_resultsFilesCompressed.Text = "(?)";
-            this._ToolTipFilesCompressed.SetToolTip(this._help_resultsFilesCompressed, resources.GetString("_help_resultsFilesCompressed.ToolTip"));
+            this._helpResultsFilesCompressed.AutoSize = true;
+            this._helpResultsFilesCompressed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._helpResultsFilesCompressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this._helpResultsFilesCompressed.Location = new System.Drawing.Point(480, 168);
+            this._helpResultsFilesCompressed.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this._helpResultsFilesCompressed.Name = "_helpResultsFilesCompressed";
+            this._helpResultsFilesCompressed.Size = new System.Drawing.Size(22, 17);
+            this._helpResultsFilesCompressed.TabIndex = 31;
+            this._helpResultsFilesCompressed.Text = "(?)";
+            this._ToolTipFilesCompressed.SetToolTip(this._helpResultsFilesCompressed, resources.GetString("_helpResultsFilesCompressed.ToolTip"));
             // 
-            // _sb_lblGameIssues
+            // _lblGameIssues
             // 
-            this._sb_lblGameIssues.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._sb_lblGameIssues.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(30)))), ((int)(((byte)(0)))));
-            this._sb_lblGameIssues.Location = new System.Drawing.Point(189, 153);
-            this._sb_lblGameIssues.Name = "_sb_lblGameIssues";
-            this._sb_lblGameIssues.Size = new System.Drawing.Size(132, 20);
-            this._sb_lblGameIssues.TabIndex = 23;
-            this._sb_lblGameIssues.Text = "! Known Issues";
-            this._sb_lblGameIssues.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this._ToolTipFilesCompressed.SetToolTip(this._sb_lblGameIssues, "This game has issues and compression is not recommended. Click to go to the Wiki " +
+            this._lblGameIssues.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblGameIssues.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(30)))), ((int)(((byte)(0)))));
+            this._lblGameIssues.Location = new System.Drawing.Point(189, 153);
+            this._lblGameIssues.Name = "_lblGameIssues";
+            this._lblGameIssues.Size = new System.Drawing.Size(132, 20);
+            this._lblGameIssues.TabIndex = 23;
+            this._lblGameIssues.Text = "! Known Issues";
+            this._lblGameIssues.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._ToolTipFilesCompressed.SetToolTip(this._lblGameIssues, "This game has issues and compression is not recommended. Click to go to the Wiki " +
         "for details. ");
-            this._sb_lblGameIssues.Visible = false;
-            this._sb_lblGameIssues.Click += new System.EventHandler(this.Sb_lblKnownIssues_Click);
+            this._lblGameIssues.Visible = false;
+            this._lblGameIssues.Click += new System.EventHandler(this.Sb_lblKnownIssues_Click);
             // 
             // _compressX4
             // 
@@ -516,8 +515,8 @@ namespace CompactGUI
             // _PanelMainWindow
             // 
             this._PanelMainWindow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._PanelMainWindow.Controls.Add(this._PaneltopBar);
-            this._PanelMainWindow.Controls.Add(this._sb_Panel);
+            this._PanelMainWindow.Controls.Add(this._TopBarPanel);
+            this._PanelMainWindow.Controls.Add(this._ActivityPanel);
             this._PanelMainWindow.Controls.Add(this._vis_dropshadowMain);
             this._PanelMainWindow.Controls.Add(this._TabControl1);
             this._PanelMainWindow.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -526,37 +525,33 @@ namespace CompactGUI
             this._PanelMainWindow.Size = new System.Drawing.Size(1002, 652);
             this._PanelMainWindow.TabIndex = 31;
             // 
-            // _sb_Panel
+            // _ActivityPanel
             // 
-            this._sb_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._sb_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this._sb_Panel.Controls.Add(this._TableLayoutPanel2);
-            this._sb_Panel.Controls.Add(this._sb_lblGameIssues);
-            this._sb_Panel.Controls.Add(this._seecompest);
-            this._sb_Panel.Controls.Add(this._wkPostSizeUnit);
-            this._sb_Panel.Controls.Add(this._wkPostSizeVal);
-            this._sb_Panel.Controls.Add(this._wkPreSizeUnit);
-            this._sb_Panel.Controls.Add(this._TableLayoutPanel3);
-            this._sb_Panel.Controls.Add(this._sb_FolderName);
-            this._sb_Panel.Controls.Add(this._vis_dropshadowmain2);
-            this._sb_Panel.Controls.Add(this._wkPreSizeVal);
-            this._sb_Panel.Controls.Add(this._btnCompress);
-            this._sb_Panel.Controls.Add(this._btnUncompress);
-            this._sb_Panel.Location = new System.Drawing.Point(647, 135);
-            this._sb_Panel.Margin = new System.Windows.Forms.Padding(0);
-            this._sb_Panel.Name = "_sb_Panel";
-            this._sb_Panel.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this._sb_Panel.Size = new System.Drawing.Size(353, 515);
-            this._sb_Panel.TabIndex = 15;
-            this._sb_Panel.Visible = false;
+            this._ActivityPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this._ActivityPanel.Controls.Add(this._TableLayoutPanel2);
+            this._ActivityPanel.Controls.Add(this._lblGameIssues);
+            this._ActivityPanel.Controls.Add(this._seecompest);
+            this._ActivityPanel.Controls.Add(this._wkPostSizeUnit);
+            this._ActivityPanel.Controls.Add(this._wkPostSizeVal);
+            this._ActivityPanel.Controls.Add(this._wkPreSizeUnit);
+            this._ActivityPanel.Controls.Add(this._TableLayoutPanel3);
+            this._ActivityPanel.Controls.Add(this._lblFolderName);
+            this._ActivityPanel.Controls.Add(this._vis_dropshadowmain2);
+            this._ActivityPanel.Controls.Add(this._wkPreSizeVal);
+            this._ActivityPanel.Controls.Add(this._btnCompDecomp);
+            this._ActivityPanel.Location = new System.Drawing.Point(647, 135);
+            this._ActivityPanel.Margin = new System.Windows.Forms.Padding(0);
+            this._ActivityPanel.Name = "_ActivityPanel";
+            this._ActivityPanel.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this._ActivityPanel.Size = new System.Drawing.Size(353, 515);
+            this._ActivityPanel.TabIndex = 15;
             // 
             // _TableLayoutPanel2
             // 
             this._TableLayoutPanel2.ColumnCount = 1;
             this._TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this._TableLayoutPanel2.Controls.Add(this._sb_ResultsPanel, 0, 0);
-            this._TableLayoutPanel2.Controls.Add(this._sb_AnalysisPanel, 0, 1);
+            this._TableLayoutPanel2.Controls.Add(this._AnalysisPanel, 0, 1);
             this._TableLayoutPanel2.Location = new System.Drawing.Point(7, 173);
             this._TableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this._TableLayoutPanel2.Name = "_TableLayoutPanel2";
@@ -570,8 +565,8 @@ namespace CompactGUI
             // 
             this._sb_ResultsPanel.Controls.Add(this._Label4);
             this._sb_ResultsPanel.Controls.Add(this._Label3);
-            this._sb_ResultsPanel.Controls.Add(this._sb_compressedSizeVisual);
-            this._sb_ResultsPanel.Controls.Add(this._Panel6);
+            this._sb_ResultsPanel.Controls.Add(this._CompSizeBar);
+            this._sb_ResultsPanel.Controls.Add(this._OrigSizeBar);
             this._sb_ResultsPanel.Location = new System.Drawing.Point(3, 3);
             this._sb_ResultsPanel.Name = "_sb_ResultsPanel";
             this._sb_ResultsPanel.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
@@ -606,65 +601,65 @@ namespace CompactGUI
             this._Label3.Text = "Original Size";
             this._Label3.Visible = false;
             // 
-            // _sb_compressedSizeVisual
+            // _CompSizeBar
             // 
-            this._sb_compressedSizeVisual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this._sb_compressedSizeVisual.Location = new System.Drawing.Point(225, 5);
-            this._sb_compressedSizeVisual.Name = "_sb_compressedSizeVisual";
-            this._sb_compressedSizeVisual.Size = new System.Drawing.Size(40, 113);
-            this._sb_compressedSizeVisual.TabIndex = 0;
+            this._CompSizeBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this._CompSizeBar.Location = new System.Drawing.Point(225, 5);
+            this._CompSizeBar.Name = "_CompSizeBar";
+            this._CompSizeBar.Size = new System.Drawing.Size(40, 113);
+            this._CompSizeBar.TabIndex = 0;
             // 
-            // _Panel6
+            // _OrigSizeBar
             // 
-            this._Panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
-            this._Panel6.Location = new System.Drawing.Point(67, 5);
-            this._Panel6.Name = "_Panel6";
-            this._Panel6.Size = new System.Drawing.Size(40, 113);
-            this._Panel6.TabIndex = 0;
+            this._OrigSizeBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(84)))), ((int)(((byte)(0)))));
+            this._OrigSizeBar.Location = new System.Drawing.Point(67, 5);
+            this._OrigSizeBar.Name = "_OrigSizeBar";
+            this._OrigSizeBar.Size = new System.Drawing.Size(40, 113);
+            this._OrigSizeBar.TabIndex = 0;
             // 
-            // _sb_AnalysisPanel
+            // _AnalysisPanel
             // 
-            this._sb_AnalysisPanel.Controls.Add(this._sb_progresslabel);
-            this._sb_AnalysisPanel.Controls.Add(this._sb_progressbar);
-            this._sb_AnalysisPanel.Controls.Add(this._sb_progresspercent);
-            this._sb_AnalysisPanel.Location = new System.Drawing.Point(3, 150);
-            this._sb_AnalysisPanel.Name = "_sb_AnalysisPanel";
-            this._sb_AnalysisPanel.Size = new System.Drawing.Size(332, 96);
-            this._sb_AnalysisPanel.TabIndex = 24;
-            this._sb_AnalysisPanel.Visible = false;
-            this._sb_AnalysisPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Sb_AnalysisPanel_Paint);
+            this._AnalysisPanel.Controls.Add(this._lblActivityProgress);
+            this._AnalysisPanel.Controls.Add(this._ActivityProgressBar);
+            this._AnalysisPanel.Controls.Add(this._lblProgressPercent);
+            this._AnalysisPanel.Location = new System.Drawing.Point(3, 150);
+            this._AnalysisPanel.Name = "_AnalysisPanel";
+            this._AnalysisPanel.Size = new System.Drawing.Size(332, 96);
+            this._AnalysisPanel.TabIndex = 24;
+            this._AnalysisPanel.Visible = false;
+            this._AnalysisPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Sb_AnalysisPanel_Paint);
             // 
-            // _sb_progresslabel
+            // _lblActivityProgress
             // 
-            this._sb_progresslabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._sb_progresslabel.ForeColor = System.Drawing.Color.White;
-            this._sb_progresslabel.Location = new System.Drawing.Point(19, 32);
-            this._sb_progresslabel.Name = "_sb_progresslabel";
-            this._sb_progresslabel.Size = new System.Drawing.Size(301, 20);
-            this._sb_progresslabel.TabIndex = 11;
-            this._sb_progresslabel.Text = "Analysing...";
-            this._sb_progresslabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblActivityProgress.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblActivityProgress.ForeColor = System.Drawing.Color.White;
+            this._lblActivityProgress.Location = new System.Drawing.Point(19, 32);
+            this._lblActivityProgress.Name = "_lblActivityProgress";
+            this._lblActivityProgress.Size = new System.Drawing.Size(301, 20);
+            this._lblActivityProgress.TabIndex = 11;
+            this._lblActivityProgress.Text = "Analysing...";
+            this._lblActivityProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // _sb_progressbar
+            // _ActivityProgressBar
             // 
-            this._sb_progressbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this._sb_progressbar.Location = new System.Drawing.Point(19, 55);
-            this._sb_progressbar.Name = "_sb_progressbar";
-            this._sb_progressbar.Size = new System.Drawing.Size(301, 14);
-            this._sb_progressbar.TabIndex = 10;
+            this._ActivityProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this._ActivityProgressBar.Location = new System.Drawing.Point(19, 55);
+            this._ActivityProgressBar.Name = "_ActivityProgressBar";
+            this._ActivityProgressBar.Size = new System.Drawing.Size(301, 14);
+            this._ActivityProgressBar.TabIndex = 10;
             // 
-            // _sb_progresspercent
+            // _lblProgressPercent
             // 
-            this._sb_progresspercent.BackColor = System.Drawing.Color.Transparent;
-            this._sb_progresspercent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this._sb_progresspercent.ForeColor = System.Drawing.Color.White;
-            this._sb_progresspercent.Location = new System.Drawing.Point(107, 72);
-            this._sb_progresspercent.Name = "_sb_progresspercent";
-            this._sb_progresspercent.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this._sb_progresspercent.Size = new System.Drawing.Size(122, 14);
-            this._sb_progresspercent.TabIndex = 22;
-            this._sb_progresspercent.Text = "0%";
-            this._sb_progresspercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblProgressPercent.BackColor = System.Drawing.Color.Transparent;
+            this._lblProgressPercent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this._lblProgressPercent.ForeColor = System.Drawing.Color.White;
+            this._lblProgressPercent.Location = new System.Drawing.Point(107, 72);
+            this._lblProgressPercent.Name = "_lblProgressPercent";
+            this._lblProgressPercent.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._lblProgressPercent.Size = new System.Drawing.Size(122, 14);
+            this._lblProgressPercent.TabIndex = 22;
+            this._lblProgressPercent.Text = "0%";
+            this._lblProgressPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _wkPostSizeUnit
             // 
@@ -709,8 +704,8 @@ namespace CompactGUI
             this._TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this._TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this._TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this._TableLayoutPanel3.Controls.Add(this._Label19, 0, 0);
-            this._TableLayoutPanel3.Controls.Add(this._sb_labelCompressed, 2, 0);
+            this._TableLayoutPanel3.Controls.Add(this._lblUncompressed, 0, 0);
+            this._TableLayoutPanel3.Controls.Add(this._lblCompressed, 2, 0);
             this._TableLayoutPanel3.Location = new System.Drawing.Point(23, 92);
             this._TableLayoutPanel3.Name = "_TableLayoutPanel3";
             this._TableLayoutPanel3.RowCount = 1;
@@ -718,48 +713,48 @@ namespace CompactGUI
             this._TableLayoutPanel3.Size = new System.Drawing.Size(307, 20);
             this._TableLayoutPanel3.TabIndex = 7;
             // 
-            // _Label19
+            // _lblUncompressed
             // 
-            this._Label19.BackColor = System.Drawing.Color.Transparent;
-            this._Label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._Label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._Label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(152)))), ((int)(((byte)(154)))));
-            this._Label19.Location = new System.Drawing.Point(0, 0);
-            this._Label19.Margin = new System.Windows.Forms.Padding(0);
-            this._Label19.Name = "_Label19";
-            this._Label19.Size = new System.Drawing.Size(149, 20);
-            this._Label19.TabIndex = 8;
-            this._Label19.Text = "Uncompressed";
-            this._Label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblUncompressed.BackColor = System.Drawing.Color.Transparent;
+            this._lblUncompressed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._lblUncompressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblUncompressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(152)))), ((int)(((byte)(154)))));
+            this._lblUncompressed.Location = new System.Drawing.Point(0, 0);
+            this._lblUncompressed.Margin = new System.Windows.Forms.Padding(0);
+            this._lblUncompressed.Name = "_lblUncompressed";
+            this._lblUncompressed.Size = new System.Drawing.Size(149, 20);
+            this._lblUncompressed.TabIndex = 8;
+            this._lblUncompressed.Text = "Uncompressed";
+            this._lblUncompressed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // _sb_labelCompressed
+            // _lblCompressed
             // 
-            this._sb_labelCompressed.BackColor = System.Drawing.Color.Transparent;
-            this._sb_labelCompressed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._sb_labelCompressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._sb_labelCompressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(152)))), ((int)(((byte)(154)))));
-            this._sb_labelCompressed.Location = new System.Drawing.Point(157, 0);
-            this._sb_labelCompressed.Margin = new System.Windows.Forms.Padding(0);
-            this._sb_labelCompressed.Name = "_sb_labelCompressed";
-            this._sb_labelCompressed.Size = new System.Drawing.Size(150, 20);
-            this._sb_labelCompressed.TabIndex = 8;
-            this._sb_labelCompressed.Text = "Estimated Compressed";
-            this._sb_labelCompressed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this._sb_labelCompressed.MouseLeave += new System.EventHandler(this.HideWikiRes);
-            this._sb_labelCompressed.MouseHover += new System.EventHandler(this.Seecompest_MouseHover);
+            this._lblCompressed.BackColor = System.Drawing.Color.Transparent;
+            this._lblCompressed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._lblCompressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblCompressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(152)))), ((int)(((byte)(154)))));
+            this._lblCompressed.Location = new System.Drawing.Point(157, 0);
+            this._lblCompressed.Margin = new System.Windows.Forms.Padding(0);
+            this._lblCompressed.Name = "_lblCompressed";
+            this._lblCompressed.Size = new System.Drawing.Size(150, 20);
+            this._lblCompressed.TabIndex = 8;
+            this._lblCompressed.Text = "Estimated Compressed";
+            this._lblCompressed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblCompressed.MouseLeave += new System.EventHandler(this.HideWikiRes);
+            this._lblCompressed.MouseHover += new System.EventHandler(this.Seecompest_MouseHover);
             // 
-            // _sb_FolderName
+            // _lblFolderName
             // 
-            this._sb_FolderName.BackColor = System.Drawing.Color.Transparent;
-            this._sb_FolderName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._sb_FolderName.ForeColor = System.Drawing.Color.White;
-            this._sb_FolderName.Location = new System.Drawing.Point(0, 17);
-            this._sb_FolderName.Name = "_sb_FolderName";
-            this._sb_FolderName.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this._sb_FolderName.Size = new System.Drawing.Size(354, 60);
-            this._sb_FolderName.TabIndex = 6;
-            this._sb_FolderName.Text = "Folder Name";
-            this._sb_FolderName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this._lblFolderName.BackColor = System.Drawing.Color.Transparent;
+            this._lblFolderName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblFolderName.ForeColor = System.Drawing.Color.White;
+            this._lblFolderName.Location = new System.Drawing.Point(0, 17);
+            this._lblFolderName.Name = "_lblFolderName";
+            this._lblFolderName.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this._lblFolderName.Size = new System.Drawing.Size(354, 60);
+            this._lblFolderName.TabIndex = 6;
+            this._lblFolderName.Text = "Folder Name";
+            this._lblFolderName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _vis_dropshadowmain2
             // 
@@ -782,45 +777,26 @@ namespace CompactGUI
             this._wkPreSizeVal.TabIndex = 6;
             this._wkPreSizeVal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // _btnCompress
+            // _btnCompDecomp
             // 
-            this._btnCompress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnCompress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
-            this._btnCompress.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btnCompress.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(112)))), ((int)(((byte)(138)))));
-            this._btnCompress.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btnCompress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btnCompress.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._btnCompress.ForeColor = System.Drawing.Color.Silver;
-            this._btnCompress.Location = new System.Drawing.Point(71, 446);
-            this._btnCompress.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
-            this._btnCompress.Name = "_btnCompress";
-            this._btnCompress.Size = new System.Drawing.Size(208, 39);
-            this._btnCompress.TabIndex = 3;
-            this._btnCompress.Text = "Compress Folder";
-            this._btnCompress.UseVisualStyleBackColor = false;
-            this._btnCompress.EnabledChanged += new System.EventHandler(this.ButtonCompress_EnabledChanged);
-            this._btnCompress.Click += new System.EventHandler(this.BtnCompress_Click);
-            this._btnCompress.Paint += new System.Windows.Forms.PaintEventHandler(this.ButtonCompress_Paint);
-            // 
-            // _btnUncompress
-            // 
-            this._btnUncompress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnUncompress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
-            this._btnUncompress.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btnUncompress.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(112)))), ((int)(((byte)(138)))));
-            this._btnUncompress.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
-            this._btnUncompress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._btnUncompress.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this._btnUncompress.ForeColor = System.Drawing.Color.White;
-            this._btnUncompress.Location = new System.Drawing.Point(71, 446);
-            this._btnUncompress.Name = "_btnUncompress";
-            this._btnUncompress.Size = new System.Drawing.Size(208, 39);
-            this._btnUncompress.TabIndex = 29;
-            this._btnUncompress.Text = "Uncompress Folder";
-            this._btnUncompress.UseVisualStyleBackColor = false;
-            this._btnUncompress.Visible = false;
-            this._btnUncompress.Click += new System.EventHandler(this.BtnUncompress_Click);
+            this._btnCompDecomp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnCompDecomp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(66)))), ((int)(((byte)(83)))));
+            this._btnCompDecomp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._btnCompDecomp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(112)))), ((int)(((byte)(138)))));
+            this._btnCompDecomp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(121)))), ((int)(((byte)(138)))));
+            this._btnCompDecomp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnCompDecomp.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnCompDecomp.ForeColor = System.Drawing.Color.Silver;
+            this._btnCompDecomp.Location = new System.Drawing.Point(71, 446);
+            this._btnCompDecomp.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this._btnCompDecomp.Name = "_btnCompDecomp";
+            this._btnCompDecomp.Size = new System.Drawing.Size(208, 39);
+            this._btnCompDecomp.TabIndex = 3;
+            this._btnCompDecomp.Text = "(De)Compress";
+            this._btnCompDecomp.UseVisualStyleBackColor = false;
+            this._btnCompDecomp.EnabledChanged += new System.EventHandler(this.ButtonCompress_EnabledChanged);
+            this._btnCompDecomp.Click += new System.EventHandler(this.BtnCompDecomp_Click);
+            this._btnCompDecomp.Paint += new System.Windows.Forms.PaintEventHandler(this.ButtonCompress_Paint);
             // 
             // _vis_dropshadowMain
             // 
@@ -851,7 +827,7 @@ namespace CompactGUI
             // _InputPage
             // 
             this._InputPage.BackColor = System.Drawing.Color.White;
-            this._InputPage.Controls.Add(this._Panel1);
+            this._InputPage.Controls.Add(this._FilesPanel);
             this._InputPage.Controls.Add(this._FlowPanel_CompressionOptions);
             this._InputPage.Location = new System.Drawing.Point(4, 22);
             this._InputPage.Name = "_InputPage";
@@ -860,18 +836,18 @@ namespace CompactGUI
             this._InputPage.TabIndex = 0;
             this._InputPage.Text = "InputPage";
             // 
-            // _Panel1
+            // _FilesPanel
             // 
-            this._Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._FilesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._Panel1.Controls.Add(this._Label1);
-            this._Panel1.Controls.Add(this._SelectedFiles);
-            this._Panel1.Location = new System.Drawing.Point(44, 214);
-            this._Panel1.Name = "_Panel1";
-            this._Panel1.Size = new System.Drawing.Size(574, 287);
-            this._Panel1.TabIndex = 24;
-            this._Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            this._FilesPanel.Controls.Add(this._Label1);
+            this._FilesPanel.Controls.Add(this._SelectedFiles);
+            this._FilesPanel.Location = new System.Drawing.Point(44, 214);
+            this._FilesPanel.Name = "_FilesPanel";
+            this._FilesPanel.Size = new System.Drawing.Size(574, 287);
+            this._FilesPanel.TabIndex = 24;
+            this._FilesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // _Label1
             // 
@@ -909,24 +885,24 @@ namespace CompactGUI
             this._FlowPanel_CompressionOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._FlowPanel_CompressionOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._FlowPanel_CompressionOptions.Controls.Add(this._Panel4);
-            this._FlowPanel_CompressionOptions.Controls.Add(this._Panel3);
+            this._FlowPanel_CompressionOptions.Controls.Add(this._CompressionPanel);
+            this._FlowPanel_CompressionOptions.Controls.Add(this._ArgumentPanel);
             this._FlowPanel_CompressionOptions.Location = new System.Drawing.Point(44, 21);
             this._FlowPanel_CompressionOptions.Name = "_FlowPanel_CompressionOptions";
             this._FlowPanel_CompressionOptions.Size = new System.Drawing.Size(574, 174);
             this._FlowPanel_CompressionOptions.TabIndex = 22;
             // 
-            // _Panel4
+            // _CompressionPanel
             // 
-            this._Panel4.Controls.Add(this._Label2);
-            this._Panel4.Controls.Add(this._compressX4);
-            this._Panel4.Controls.Add(this._compressLZX);
-            this._Panel4.Controls.Add(this._compressX8);
-            this._Panel4.Controls.Add(this._compressX16);
-            this._Panel4.Location = new System.Drawing.Point(3, 3);
-            this._Panel4.Name = "_Panel4";
-            this._Panel4.Size = new System.Drawing.Size(266, 160);
-            this._Panel4.TabIndex = 24;
+            this._CompressionPanel.Controls.Add(this._Label2);
+            this._CompressionPanel.Controls.Add(this._compressX4);
+            this._CompressionPanel.Controls.Add(this._compressLZX);
+            this._CompressionPanel.Controls.Add(this._compressX8);
+            this._CompressionPanel.Controls.Add(this._compressX16);
+            this._CompressionPanel.Location = new System.Drawing.Point(3, 3);
+            this._CompressionPanel.Name = "_CompressionPanel";
+            this._CompressionPanel.Size = new System.Drawing.Size(266, 160);
+            this._CompressionPanel.TabIndex = 24;
             // 
             // _Label2
             // 
@@ -939,19 +915,19 @@ namespace CompactGUI
             this._Label2.TabIndex = 18;
             this._Label2.Text = "Select Compression Algorithm";
             // 
-            // _Panel3
+            // _ArgumentPanel
             // 
-            this._Panel3.Controls.Add(this._comboChooseShutdown);
-            this._Panel3.Controls.Add(this._checkShutdownOnCompletion);
-            this._Panel3.Controls.Add(this._Label8);
-            this._Panel3.Controls.Add(this._checkForceCompression);
-            this._Panel3.Controls.Add(this._checkHiddenFiles);
-            this._Panel3.Controls.Add(this._checkRecursiveScan);
-            this._FlowPanel_CompressionOptions.SetFlowBreak(this._Panel3, true);
-            this._Panel3.Location = new System.Drawing.Point(275, 3);
-            this._Panel3.Name = "_Panel3";
-            this._Panel3.Size = new System.Drawing.Size(290, 160);
-            this._Panel3.TabIndex = 23;
+            this._ArgumentPanel.Controls.Add(this._comboChooseShutdown);
+            this._ArgumentPanel.Controls.Add(this._checkShutdownOnCompletion);
+            this._ArgumentPanel.Controls.Add(this._Label8);
+            this._ArgumentPanel.Controls.Add(this._checkForceCompression);
+            this._ArgumentPanel.Controls.Add(this._checkHiddenFiles);
+            this._ArgumentPanel.Controls.Add(this._checkRecursiveScan);
+            this._FlowPanel_CompressionOptions.SetFlowBreak(this._ArgumentPanel, true);
+            this._ArgumentPanel.Location = new System.Drawing.Point(275, 3);
+            this._ArgumentPanel.Name = "_ArgumentPanel";
+            this._ArgumentPanel.Size = new System.Drawing.Size(290, 160);
+            this._ArgumentPanel.TabIndex = 23;
             // 
             // _comboChooseShutdown
             // 
@@ -999,9 +975,9 @@ namespace CompactGUI
             // _ProgressPage
             // 
             this._ProgressPage.BackColor = System.Drawing.Color.White;
-            this._ProgressPage.Controls.Add(this._TableLayoutPanel4);
-            this._ProgressPage.Controls.Add(this._returnArrow);
-            this._ProgressPage.Controls.Add(this._submitToWiki);
+            this._ProgressPage.Controls.Add(this._tlpResultsConsole);
+            this._ProgressPage.Controls.Add(this._btnReturn);
+            this._ProgressPage.Controls.Add(this._btnSubmitToWiki);
             this._ProgressPage.Location = new System.Drawing.Point(4, 22);
             this._ProgressPage.Name = "_ProgressPage";
             this._ProgressPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1009,34 +985,34 @@ namespace CompactGUI
             this._ProgressPage.TabIndex = 1;
             this._ProgressPage.Text = "ProgressPage";
             // 
-            // _TableLayoutPanel4
+            // _tlpResultsConsole
             // 
-            this._TableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._tlpResultsConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._TableLayoutPanel4.AutoSize = true;
-            this._TableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._TableLayoutPanel4.ColumnCount = 1;
-            this._TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._TableLayoutPanel4.Controls.Add(this._CompResultsPanel, 0, 0);
-            this._TableLayoutPanel4.Controls.Add(this._Panelconsole, 0, 1);
-            this._TableLayoutPanel4.Location = new System.Drawing.Point(7, 54);
-            this._TableLayoutPanel4.Name = "_TableLayoutPanel4";
-            this._TableLayoutPanel4.RowCount = 2;
-            this._TableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this._TableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this._TableLayoutPanel4.Size = new System.Drawing.Size(630, 447);
-            this._TableLayoutPanel4.TabIndex = 34;
+            this._tlpResultsConsole.AutoSize = true;
+            this._tlpResultsConsole.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._tlpResultsConsole.ColumnCount = 1;
+            this._tlpResultsConsole.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpResultsConsole.Controls.Add(this._CompResultsPanel, 0, 0);
+            this._tlpResultsConsole.Controls.Add(this._ConsolePanel, 0, 1);
+            this._tlpResultsConsole.Location = new System.Drawing.Point(7, 54);
+            this._tlpResultsConsole.Name = "_tlpResultsConsole";
+            this._tlpResultsConsole.RowCount = 2;
+            this._tlpResultsConsole.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this._tlpResultsConsole.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tlpResultsConsole.Size = new System.Drawing.Size(630, 447);
+            this._tlpResultsConsole.TabIndex = 34;
             // 
             // _CompResultsPanel
             // 
-            this._CompResultsPanel.Controls.Add(this._results_arc);
-            this._CompResultsPanel.Controls.Add(this._help_resultsFilesCompressed);
-            this._CompResultsPanel.Controls.Add(this._labelFilesCompressed);
+            this._CompResultsPanel.Controls.Add(this._ResultsArc);
+            this._CompResultsPanel.Controls.Add(this._helpResultsFilesCompressed);
+            this._CompResultsPanel.Controls.Add(this._lblFilesCompressed);
             this._CompResultsPanel.Controls.Add(this._dirChosenLabel);
             this._CompResultsPanel.Controls.Add(this._TableLayoutPanel1);
-            this._CompResultsPanel.Controls.Add(this._compressedSizeVisual);
-            this._CompResultsPanel.Controls.Add(this._Panel5);
+            this._CompResultsPanel.Controls.Add(this._ResultsCompressedBar);
+            this._CompResultsPanel.Controls.Add(this._ResultsOriginalBar);
             this._CompResultsPanel.Controls.Add(this._Label9);
             this._CompResultsPanel.Controls.Add(this._Label11);
             this._CompResultsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1047,27 +1023,27 @@ namespace CompactGUI
             this._CompResultsPanel.Visible = false;
             this._CompResultsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CompResultsPanel_Paint);
             // 
-            // _results_arc
+            // _ResultsArc
             // 
-            this._results_arc.Location = new System.Drawing.Point(13, 63);
-            this._results_arc.Name = "_results_arc";
-            this._results_arc.Size = new System.Drawing.Size(265, 122);
-            this._results_arc.TabIndex = 35;
-            this._results_arc.Paint += new System.Windows.Forms.PaintEventHandler(this.ResultsArcPaint);
+            this._ResultsArc.Location = new System.Drawing.Point(13, 63);
+            this._ResultsArc.Name = "_ResultsArc";
+            this._ResultsArc.Size = new System.Drawing.Size(265, 122);
+            this._ResultsArc.TabIndex = 35;
+            this._ResultsArc.Paint += new System.Windows.Forms.PaintEventHandler(this.ResultsArcPaint);
             // 
-            // _labelFilesCompressed
+            // _lblFilesCompressed
             // 
-            this._labelFilesCompressed.AutoSize = true;
-            this._labelFilesCompressed.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._labelFilesCompressed.ForeColor = System.Drawing.Color.DimGray;
-            this._labelFilesCompressed.Location = new System.Drawing.Point(284, 167);
-            this._labelFilesCompressed.Margin = new System.Windows.Forms.Padding(0);
-            this._labelFilesCompressed.MaximumSize = new System.Drawing.Size(0, 20);
-            this._labelFilesCompressed.MinimumSize = new System.Drawing.Size(150, 20);
-            this._labelFilesCompressed.Name = "_labelFilesCompressed";
-            this._labelFilesCompressed.Size = new System.Drawing.Size(150, 20);
-            this._labelFilesCompressed.TabIndex = 30;
-            this._labelFilesCompressed.Text = "n/n Files Compressed";
+            this._lblFilesCompressed.AutoSize = true;
+            this._lblFilesCompressed.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._lblFilesCompressed.ForeColor = System.Drawing.Color.DimGray;
+            this._lblFilesCompressed.Location = new System.Drawing.Point(284, 167);
+            this._lblFilesCompressed.Margin = new System.Windows.Forms.Padding(0);
+            this._lblFilesCompressed.MaximumSize = new System.Drawing.Size(0, 20);
+            this._lblFilesCompressed.MinimumSize = new System.Drawing.Size(150, 20);
+            this._lblFilesCompressed.Name = "_lblFilesCompressed";
+            this._lblFilesCompressed.Size = new System.Drawing.Size(150, 20);
+            this._lblFilesCompressed.TabIndex = 30;
+            this._lblFilesCompressed.Text = "n/n Files Compressed";
             // 
             // _dirChosenLabel
             // 
@@ -1097,14 +1073,14 @@ namespace CompactGUI
             this._TableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this._TableLayoutPanel1.TabIndex = 31;
             // 
-            // _compressedSizeVisual
+            // _ResultsCompressedBar
             // 
-            this._compressedSizeVisual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(190)))), ((int)(((byte)(123)))));
-            this._compressedSizeVisual.Controls.Add(this._compressedSizeLabel);
-            this._compressedSizeVisual.Location = new System.Drawing.Point(288, 125);
-            this._compressedSizeVisual.Name = "_compressedSizeVisual";
-            this._compressedSizeVisual.Size = new System.Drawing.Size(320, 25);
-            this._compressedSizeVisual.TabIndex = 29;
+            this._ResultsCompressedBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(190)))), ((int)(((byte)(123)))));
+            this._ResultsCompressedBar.Controls.Add(this._compressedSizeLabel);
+            this._ResultsCompressedBar.Location = new System.Drawing.Point(288, 125);
+            this._ResultsCompressedBar.Name = "_ResultsCompressedBar";
+            this._ResultsCompressedBar.Size = new System.Drawing.Size(320, 25);
+            this._ResultsCompressedBar.TabIndex = 29;
             // 
             // _compressedSizeLabel
             // 
@@ -1117,14 +1093,14 @@ namespace CompactGUI
             this._compressedSizeLabel.TabIndex = 27;
             this._compressedSizeLabel.Text = "220 MB";
             // 
-            // _Panel5
+            // _ResultsOriginalBar
             // 
-            this._Panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(127)))), ((int)(((byte)(60)))));
-            this._Panel5.Controls.Add(this._origSizeLabel);
-            this._Panel5.Location = new System.Drawing.Point(288, 62);
-            this._Panel5.Name = "_Panel5";
-            this._Panel5.Size = new System.Drawing.Size(320, 25);
-            this._Panel5.TabIndex = 28;
+            this._ResultsOriginalBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(127)))), ((int)(((byte)(60)))));
+            this._ResultsOriginalBar.Controls.Add(this._origSizeLabel);
+            this._ResultsOriginalBar.Location = new System.Drawing.Point(288, 62);
+            this._ResultsOriginalBar.Name = "_ResultsOriginalBar";
+            this._ResultsOriginalBar.Size = new System.Drawing.Size(320, 25);
+            this._ResultsOriginalBar.TabIndex = 28;
             // 
             // _origSizeLabel
             // 
@@ -1159,73 +1135,73 @@ namespace CompactGUI
             this._Label11.TabIndex = 26;
             this._Label11.Text = "Compressed Size:";
             // 
-            // _Panelconsole
+            // _ConsolePanel
             // 
-            this._Panelconsole.Controls.Add(this._saveconlog);
-            this._Panelconsole.Controls.Add(this._conOut);
-            this._Panelconsole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._Panelconsole.Location = new System.Drawing.Point(3, 228);
-            this._Panelconsole.Name = "_Panelconsole";
-            this._Panelconsole.Size = new System.Drawing.Size(624, 216);
-            this._Panelconsole.TabIndex = 33;
+            this._ConsolePanel.Controls.Add(this._btnSaveConsoleLog);
+            this._ConsolePanel.Controls.Add(this._ConsoleOutput);
+            this._ConsolePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._ConsolePanel.Location = new System.Drawing.Point(3, 228);
+            this._ConsolePanel.Name = "_ConsolePanel";
+            this._ConsolePanel.Size = new System.Drawing.Size(624, 216);
+            this._ConsolePanel.TabIndex = 33;
             // 
-            // _saveconlog
+            // _btnSaveConsoleLog
             // 
-            this._saveconlog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._saveconlog.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._saveconlog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._saveconlog.Location = new System.Drawing.Point(533, 188);
-            this._saveconlog.Name = "_saveconlog";
-            this._saveconlog.Size = new System.Drawing.Size(75, 23);
-            this._saveconlog.TabIndex = 33;
-            this._saveconlog.Text = "Save Log";
-            this._saveconlog.UseVisualStyleBackColor = false;
-            this._saveconlog.Click += new System.EventHandler(this.Saveconlog_Click);
+            this._btnSaveConsoleLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnSaveConsoleLog.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._btnSaveConsoleLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnSaveConsoleLog.Location = new System.Drawing.Point(533, 188);
+            this._btnSaveConsoleLog.Name = "_btnSaveConsoleLog";
+            this._btnSaveConsoleLog.Size = new System.Drawing.Size(75, 23);
+            this._btnSaveConsoleLog.TabIndex = 33;
+            this._btnSaveConsoleLog.Text = "Save Log";
+            this._btnSaveConsoleLog.UseVisualStyleBackColor = false;
+            this._btnSaveConsoleLog.Click += new System.EventHandler(this.Saveconlog_Click);
             // 
-            // _conOut
+            // _ConsoleOutput
             // 
-            this._conOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._ConsoleOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._conOut.BackColor = System.Drawing.Color.White;
-            this._conOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._conOut.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._conOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(67)))), ((int)(((byte)(84)))));
-            this._conOut.FormattingEnabled = true;
-            this._conOut.HorizontalScrollbar = true;
-            this._conOut.ItemHeight = 15;
-            this._conOut.Location = new System.Drawing.Point(13, 4);
-            this._conOut.Name = "_conOut";
-            this._conOut.Size = new System.Drawing.Size(595, 165);
-            this._conOut.TabIndex = 30;
+            this._ConsoleOutput.BackColor = System.Drawing.Color.White;
+            this._ConsoleOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._ConsoleOutput.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._ConsoleOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(67)))), ((int)(((byte)(84)))));
+            this._ConsoleOutput.FormattingEnabled = true;
+            this._ConsoleOutput.HorizontalScrollbar = true;
+            this._ConsoleOutput.ItemHeight = 15;
+            this._ConsoleOutput.Location = new System.Drawing.Point(13, 4);
+            this._ConsoleOutput.Name = "_ConsoleOutput";
+            this._ConsoleOutput.Size = new System.Drawing.Size(595, 165);
+            this._ConsoleOutput.TabIndex = 30;
             // 
-            // _returnArrow
+            // _btnReturn
             // 
-            this._returnArrow.AutoSize = true;
-            this._returnArrow.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._returnArrow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(67)))), ((int)(((byte)(84)))));
-            this._returnArrow.Location = new System.Drawing.Point(11, 24);
-            this._returnArrow.Name = "_returnArrow";
-            this._returnArrow.Size = new System.Drawing.Size(205, 20);
-            this._returnArrow.TabIndex = 22;
-            this._returnArrow.Text = "❮   Return To Selection Screen";
-            this._returnArrow.Visible = false;
-            this._returnArrow.Click += new System.EventHandler(this.ReturnArrow_Click);
+            this._btnReturn.AutoSize = true;
+            this._btnReturn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(67)))), ((int)(((byte)(84)))));
+            this._btnReturn.Location = new System.Drawing.Point(11, 24);
+            this._btnReturn.Name = "_btnReturn";
+            this._btnReturn.Size = new System.Drawing.Size(205, 20);
+            this._btnReturn.TabIndex = 22;
+            this._btnReturn.Text = "❮   Return To Selection Screen";
+            this._btnReturn.Visible = false;
+            this._btnReturn.Click += new System.EventHandler(this.ReturnArrow_Click);
             // 
-            // _submitToWiki
+            // _btnSubmitToWiki
             // 
-            this._submitToWiki.AutoSize = true;
-            this._submitToWiki.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._submitToWiki.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._submitToWiki.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this._submitToWiki.Location = new System.Drawing.Point(439, 19);
-            this._submitToWiki.Name = "_submitToWiki";
-            this._submitToWiki.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this._submitToWiki.Size = new System.Drawing.Size(179, 30);
-            this._submitToWiki.TabIndex = 33;
-            this._submitToWiki.Text = "❯  Submit Results to Wiki";
-            this._submitToWiki.Visible = false;
-            this._submitToWiki.Click += new System.EventHandler(this.SubmitToWiki_Click);
+            this._btnSubmitToWiki.AutoSize = true;
+            this._btnSubmitToWiki.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._btnSubmitToWiki.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._btnSubmitToWiki.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this._btnSubmitToWiki.Location = new System.Drawing.Point(439, 19);
+            this._btnSubmitToWiki.Name = "_btnSubmitToWiki";
+            this._btnSubmitToWiki.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this._btnSubmitToWiki.Size = new System.Drawing.Size(179, 30);
+            this._btnSubmitToWiki.TabIndex = 33;
+            this._btnSubmitToWiki.Text = "❯  Submit Results to Wiki";
+            this._btnSubmitToWiki.Visible = false;
+            this._btnSubmitToWiki.Click += new System.EventHandler(this.SubmitToWiki_Click);
             // 
             // _spaceSavedLabel
             // 
@@ -1281,38 +1257,38 @@ namespace CompactGUI
             this.Text = "CompactGUI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MyForm_Closing);
             this.Load += new System.EventHandler(this.Compact_Load);
-            this._PaneltopBar.ResumeLayout(false);
-            this._PaneltopBar.PerformLayout();
+            this._TopBarPanel.ResumeLayout(false);
+            this._TopBarPanel.PerformLayout();
             this._updateBanner.ResumeLayout(false);
             this._topbar_dirchooserContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._topbar_icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._TopBarIcon)).EndInit();
             this._PanelMainWindow.ResumeLayout(false);
-            this._sb_Panel.ResumeLayout(false);
-            this._sb_Panel.PerformLayout();
+            this._ActivityPanel.ResumeLayout(false);
+            this._ActivityPanel.PerformLayout();
             this._TableLayoutPanel2.ResumeLayout(false);
             this._sb_ResultsPanel.ResumeLayout(false);
             this._sb_ResultsPanel.PerformLayout();
-            this._sb_AnalysisPanel.ResumeLayout(false);
+            this._AnalysisPanel.ResumeLayout(false);
             this._TableLayoutPanel3.ResumeLayout(false);
             this._TabControl1.ResumeLayout(false);
             this._InputPage.ResumeLayout(false);
-            this._Panel1.ResumeLayout(false);
-            this._Panel1.PerformLayout();
+            this._FilesPanel.ResumeLayout(false);
+            this._FilesPanel.PerformLayout();
             this._FlowPanel_CompressionOptions.ResumeLayout(false);
-            this._Panel4.ResumeLayout(false);
-            this._Panel4.PerformLayout();
-            this._Panel3.ResumeLayout(false);
-            this._Panel3.PerformLayout();
+            this._CompressionPanel.ResumeLayout(false);
+            this._CompressionPanel.PerformLayout();
+            this._ArgumentPanel.ResumeLayout(false);
+            this._ArgumentPanel.PerformLayout();
             this._ProgressPage.ResumeLayout(false);
             this._ProgressPage.PerformLayout();
-            this._TableLayoutPanel4.ResumeLayout(false);
+            this._tlpResultsConsole.ResumeLayout(false);
             this._CompResultsPanel.ResumeLayout(false);
             this._CompResultsPanel.PerformLayout();
-            this._compressedSizeVisual.ResumeLayout(false);
-            this._compressedSizeVisual.PerformLayout();
-            this._Panel5.ResumeLayout(false);
-            this._Panel5.PerformLayout();
-            this._Panelconsole.ResumeLayout(false);
+            this._ResultsCompressedBar.ResumeLayout(false);
+            this._ResultsCompressedBar.PerformLayout();
+            this._ResultsOriginalBar.ResumeLayout(false);
+            this._ResultsOriginalBar.PerformLayout();
+            this._ConsolePanel.ResumeLayout(false);
             this._TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1367,52 +1343,52 @@ namespace CompactGUI
             }
         }
 
-        private Label _topbar_title;
+        private Label _TopBarTitle;
 
         internal Label topbar_title
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _topbar_title;
+                return _TopBarTitle;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_topbar_title != null)
+                if (_TopBarTitle != null)
                 {
                 }
 
-                _topbar_title = value;
-                if (_topbar_title != null)
+                _TopBarTitle = value;
+                if (_TopBarTitle != null)
                 {
                 }
             }
         }
 
-        private Panel _PaneltopBar;
+        private Panel _TopBarPanel;
 
-        internal Panel PaneltopBar
+        internal Panel TopBarPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _PaneltopBar;
+                return _TopBarPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_PaneltopBar != null)
+                if (_TopBarPanel != null)
                 {
-                    _PaneltopBar.MouseDown -= Panel_topBar_MouseDown;
+                    _TopBarPanel.MouseDown -= Panel_topBar_MouseDown;
                 }
 
-                _PaneltopBar = value;
-                if (_PaneltopBar != null)
+                _TopBarPanel = value;
+                if (_TopBarPanel != null)
                 {
-                    _PaneltopBar.MouseDown += Panel_topBar_MouseDown;
+                    _TopBarPanel.MouseDown += Panel_topBar_MouseDown;
                 }
             }
         }
@@ -1477,28 +1453,28 @@ namespace CompactGUI
             }
         }
 
-        private Label _showinfopopup;
+        private Label _btnConfigure;
 
-        internal Label showinfopopup
+        internal Label btnConfigure
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _showinfopopup;
+                return _btnConfigure;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_showinfopopup != null)
+                if (_btnConfigure != null)
                 {
-                    _showinfopopup.Click -= ShowInfoPopup_Click;
+                    _btnConfigure.Click -= ShowInfoPopup_Click;
                 }
 
-                _showinfopopup = value;
-                if (_showinfopopup != null)
+                _btnConfigure = value;
+                if (_btnConfigure != null)
                 {
-                    _showinfopopup.Click += ShowInfoPopup_Click;
+                    _btnConfigure.Click += ShowInfoPopup_Click;
                 }
             }
         }
@@ -1581,25 +1557,25 @@ namespace CompactGUI
             }
         }
 
-        private PictureBox _topbar_icon;
+        private PictureBox _TopBarIcon;
 
-        internal PictureBox topbar_icon
+        internal PictureBox TopBarIcon
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _topbar_icon;
+                return _TopBarIcon;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_topbar_icon != null)
+                if (_TopBarIcon != null)
                 {
                 }
 
-                _topbar_icon = value;
-                if (_topbar_icon != null)
+                _TopBarIcon = value;
+                if (_TopBarIcon != null)
                 {
                 }
             }
@@ -1657,153 +1633,132 @@ namespace CompactGUI
             }
         }
 
-        private Button _BtnMainmin;
+        private Button _BtnMainMin;
 
         internal Button BtnMainmin
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _BtnMainmin;
+                return _BtnMainMin;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_BtnMainmin != null)
+                if (_BtnMainMin != null)
                 {
-                    _BtnMainmin.Click -= Btn_Mainmin_Click;
+                    _BtnMainMin.Click -= Btn_Mainmin_Click;
                 }
 
-                _BtnMainmin = value;
-                if (_BtnMainmin != null)
+                _BtnMainMin = value;
+                if (_BtnMainMin != null)
                 {
-                    _BtnMainmin.Click += Btn_Mainmin_Click;
+                    _BtnMainMin.Click += Btn_Mainmin_Click;
                 }
             }
         }
 
-        private Button _BtnMainmax;
+        private Button _BtnMainMax;
 
         internal Button BtnMainmax
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _BtnMainmax;
+                return _BtnMainMax;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_BtnMainmax != null)
+                if (_BtnMainMax != null)
                 {
-                    _BtnMainmax.Click -= Btn_Mainmax_Click;
+                    _BtnMainMax.Click -= Btn_Mainmax_Click;
                 }
 
-                _BtnMainmax = value;
-                if (_BtnMainmax != null)
+                _BtnMainMax = value;
+                if (_BtnMainMax != null)
                 {
-                    _BtnMainmax.Click += Btn_Mainmax_Click;
+                    _BtnMainMax.Click += Btn_Mainmax_Click;
                 }
             }
         }
 
-        private Button _BtnMainexit;
+        private Button _BtnMainExit;
 
         internal Button BtnMainexit
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _BtnMainexit;
+                return _BtnMainExit;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_BtnMainexit != null)
+                if (_BtnMainExit != null)
                 {
-                    _BtnMainexit.Click -= Btn_Mainexit_Click;
+                    _BtnMainExit.Click -= Btn_Mainexit_Click;
                 }
 
-                _BtnMainexit = value;
-                if (_BtnMainexit != null)
+                _BtnMainExit = value;
+                if (_BtnMainExit != null)
                 {
-                    _BtnMainexit.Click += Btn_Mainexit_Click;
+                    _BtnMainExit.Click += Btn_Mainexit_Click;
                 }
             }
         }
 
-        private Panel _sb_Panel;
+        private Panel _ActivityPanel;
 
-        internal Panel sb_Panel
+        internal Panel ActivityPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_Panel;
+                return _ActivityPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_Panel != null)
-                {
-                }
-
-                _sb_Panel = value;
-                if (_sb_Panel != null)
-                {
-                }
+                _ActivityPanel = value;
             }
         }
 
-        private Label _sb_progresslabel;
+        private Label _lblActivityProgress;
 
-        internal Label sb_progresslabel
+        internal Label lblActivityProgress
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_progresslabel;
+                return _lblActivityProgress;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_progresslabel != null)
-                {
-                }
-
-                _sb_progresslabel = value;
-                if (_sb_progresslabel != null)
-                {
-                }
+                _lblActivityProgress = value;
             }
         }
 
-        private Panel _sb_progressbar;
+        private Panel _ActivityProgressBar;
 
-        internal Panel sb_progressbar
+        internal Panel ActivityProgressBar
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_progressbar;
+                return _ActivityProgressBar;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_progressbar != null)
-                {
-                }
-
-                _sb_progressbar = value;
-                if (_sb_progressbar != null)
-                {
-                }
+                _ActivityProgressBar = value;
             }
         }
 
@@ -1820,14 +1775,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_wkPostSizeUnit != null)
-                {
-                }
-
                 _wkPostSizeUnit = value;
-                if (_wkPostSizeUnit != null)
-                {
-                }
             }
         }
 
@@ -1844,14 +1792,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_wkPostSizeVal != null)
-                {
-                }
-
                 _wkPostSizeVal = value;
-                if (_wkPostSizeVal != null)
-                {
-                }
             }
         }
 
@@ -1868,14 +1809,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_wkPreSizeUnit != null)
-                {
-                }
-
                 _wkPreSizeUnit = value;
-                if (_wkPreSizeUnit != null)
-                {
-                }
             }
         }
 
@@ -1892,90 +1826,69 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_TableLayoutPanel3 != null)
-                {
-                }
-
                 _TableLayoutPanel3 = value;
-                if (_TableLayoutPanel3 != null)
-                {
-                }
             }
         }
 
-        private Label _Label19;
+        private Label _lblUncompressed;
 
-        internal Label Label19
+        internal Label lblUncompressed
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Label19;
+                return _lblUncompressed;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Label19 != null)
-                {
-                }
-
-                _Label19 = value;
-                if (_Label19 != null)
-                {
-                }
+                _lblUncompressed = value;
             }
         }
 
-        private Label _sb_labelCompressed;
+        private Label _lblCompressed;
 
-        internal Label sb_labelCompressed
+        internal Label lblCompressed
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_labelCompressed;
+                return _lblCompressed;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_labelCompressed != null)
+                if (_lblCompressed != null)
                 {
-                    _sb_labelCompressed.MouseHover -= Seecompest_MouseHover;
-                    _sb_labelCompressed.MouseLeave -= HideWikiRes;
+                    _lblCompressed.MouseHover -= Seecompest_MouseHover;
+                    _lblCompressed.MouseLeave -= HideWikiRes;
                 }
 
-                _sb_labelCompressed = value;
-                if (_sb_labelCompressed != null)
+                _lblCompressed = value;
+                if (_lblCompressed != null)
                 {
-                    _sb_labelCompressed.MouseHover += Seecompest_MouseHover;
-                    _sb_labelCompressed.MouseLeave += HideWikiRes;
+                    _lblCompressed.MouseHover += Seecompest_MouseHover;
+                    _lblCompressed.MouseLeave += HideWikiRes;
                 }
             }
         }
 
-        private Label _sb_FolderName;
+        private Label _lblFolderName;
 
-        internal Label sb_FolderName
+        internal Label lblFolderName
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_FolderName;
+                return _lblFolderName;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_FolderName != null)
-                {
-                }
-
-                _sb_FolderName = value;
-                if (_sb_FolderName != null)
-                {
-                }
+                _lblFolderName = value;
             }
         }
 
@@ -1992,14 +1905,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_vis_dropshadowmain2 != null)
-                {
-                }
-
                 _vis_dropshadowmain2 = value;
-                if (_vis_dropshadowmain2 != null)
-                {
-                }
             }
         }
 
@@ -2123,25 +2029,25 @@ namespace CompactGUI
             }
         }
 
-        private Panel _Panel4;
+        private Panel _CompressionPanel;
 
-        internal Panel Panel4
+        internal Panel CompressionPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panel4;
+                return _CompressionPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panel4 != null)
+                if (_CompressionPanel != null)
                 {
                 }
 
-                _Panel4 = value;
-                if (_Panel4 != null)
+                _CompressionPanel = value;
+                if (_CompressionPanel != null)
                 {
                 }
             }
@@ -2275,27 +2181,20 @@ namespace CompactGUI
             }
         }
 
-        private Panel _Panel3;
+        private Panel _ArgumentPanel;
 
-        internal Panel Panel3
+        internal Panel ArgumentPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panel3;
+                return _ArgumentPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panel3 != null)
-                {
-                }
-
-                _Panel3 = value;
-                if (_Panel3 != null)
-                {
-                }
+                _ArgumentPanel = value;
             }
         }
 
@@ -2340,14 +2239,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_checkShutdownOnCompletion != null)
-                {
-                }
-
                 _checkShutdownOnCompletion = value;
-                if (_checkShutdownOnCompletion != null)
-                {
-                }
             }
         }
 
@@ -2364,14 +2256,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Label8 != null)
-                {
-                }
-
                 _Label8 = value;
-                if (_Label8 != null)
-                {
-                }
             }
         }
 
@@ -2388,14 +2273,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_checkForceCompression != null)
-                {
-                }
-
                 _checkForceCompression = value;
-                if (_checkForceCompression != null)
-                {
-                }
             }
         }
 
@@ -2412,14 +2290,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_checkHiddenFiles != null)
-                {
-                }
-
                 _checkHiddenFiles = value;
-                if (_checkHiddenFiles != null)
-                {
-                }
             }
         }
 
@@ -2436,43 +2307,36 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_checkRecursiveScan != null)
-                {
-                }
-
                 _checkRecursiveScan = value;
-                if (_checkRecursiveScan != null)
-                {
-                }
             }
         }
 
-        private Button _btnCompress;
+        private Button _btnCompDecomp;
 
-        internal Button btnCompress
+        internal Button btnCompDecomp
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btnCompress;
+                return _btnCompDecomp;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btnCompress != null)
+                if (_btnCompDecomp != null)
                 {
-                    _btnCompress.Click -= BtnCompress_Click;
-                    _btnCompress.Paint -= ButtonCompress_Paint;
-                    _btnCompress.EnabledChanged -= ButtonCompress_EnabledChanged;
+                    _btnCompDecomp.Click -= BtnCompDecomp_Click;
+                    _btnCompDecomp.Paint -= ButtonCompress_Paint;
+                    _btnCompDecomp.EnabledChanged -= ButtonCompress_EnabledChanged;
                 }
 
-                _btnCompress = value;
-                if (_btnCompress != null)
+                _btnCompDecomp = value;
+                if (_btnCompDecomp != null)
                 {
-                    _btnCompress.Click += BtnCompress_Click;
-                    _btnCompress.Paint += ButtonCompress_Paint;
-                    _btnCompress.EnabledChanged += ButtonCompress_EnabledChanged;
+                    _btnCompDecomp.Click += BtnCompDecomp_Click;
+                    _btnCompDecomp.Paint += ButtonCompress_Paint;
+                    _btnCompDecomp.EnabledChanged += ButtonCompress_EnabledChanged;
                 }
             }
         }
@@ -2490,114 +2354,93 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_ProgressPage != null)
-                {
-                }
-
                 _ProgressPage = value;
-                if (_ProgressPage != null)
-                {
-                }
             }
         }
 
-        private Label _returnArrow;
+        private Label _btnReturn;
 
-        internal Label returnArrow
+        internal Label btnReturn
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _returnArrow;
+                return _btnReturn;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_returnArrow != null)
+                if (_btnReturn != null)
                 {
-                    _returnArrow.Click -= ReturnArrow_Click;
+                    _btnReturn.Click -= ReturnArrow_Click;
                 }
 
-                _returnArrow = value;
-                if (_returnArrow != null)
+                _btnReturn = value;
+                if (_btnReturn != null)
                 {
-                    _returnArrow.Click += ReturnArrow_Click;
+                    _btnReturn.Click += ReturnArrow_Click;
                 }
             }
         }
 
-        private Panel _Panelconsole;
+        private Panel _ConsolePanel;
 
-        internal Panel Panelconsole
+        internal Panel ConsolePanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panelconsole;
+                return _ConsolePanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panelconsole != null)
-                {
-                }
-
-                _Panelconsole = value;
-                if (_Panelconsole != null)
-                {
-                }
+                _ConsolePanel = value;
             }
         }
 
-        private Button _saveconlog;
+        private Button _btnSaveConsoleLog;
 
-        internal Button saveconlog
+        internal Button btnSaveConsoleLog
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _saveconlog;
+                return _btnSaveConsoleLog;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_saveconlog != null)
+                if (_btnSaveConsoleLog != null)
                 {
-                    _saveconlog.Click -= Saveconlog_Click;
+                    _btnSaveConsoleLog.Click -= Saveconlog_Click;
                 }
 
-                _saveconlog = value;
-                if (_saveconlog != null)
+                _btnSaveConsoleLog = value;
+                if (_btnSaveConsoleLog != null)
                 {
-                    _saveconlog.Click += Saveconlog_Click;
+                    _btnSaveConsoleLog.Click += Saveconlog_Click;
                 }
             }
         }
 
-        private ListBox _conOut;
+        private ListBox _ConsoleOutput;
 
-        internal ListBox conOut
+        internal ListBox ConsoleOutput
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _conOut;
+                return _ConsoleOutput;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_conOut != null)
-                {
-                }
-
-                _conOut = value;
-                if (_conOut != null)
-                {
-                }
+                _ConsoleOutput = value;
             }
         }
 
@@ -2627,28 +2470,28 @@ namespace CompactGUI
             }
         }
 
-        private Label _submitToWiki;
+        private Label _btnSubmitToWiki;
 
-        internal Label submitToWiki
+        internal Label btnSubmitToWiki
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _submitToWiki;
+                return _btnSubmitToWiki;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_submitToWiki != null)
+                if (_btnSubmitToWiki != null)
                 {
-                    _submitToWiki.Click -= SubmitToWiki_Click;
+                    _btnSubmitToWiki.Click -= SubmitToWiki_Click;
                 }
 
-                _submitToWiki = value;
-                if (_submitToWiki != null)
+                _btnSubmitToWiki = value;
+                if (_btnSubmitToWiki != null)
                 {
-                    _submitToWiki.Click += SubmitToWiki_Click;
+                    _btnSubmitToWiki.Click += SubmitToWiki_Click;
                 }
             }
         }
@@ -2666,14 +2509,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_dirChosenLabel != null)
-                {
-                }
-
                 _dirChosenLabel = value;
-                if (_dirChosenLabel != null)
-                {
-                }
             }
         }
 
@@ -2690,86 +2526,58 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_TableLayoutPanel1 != null)
-                {
-                }
-
                 _TableLayoutPanel1 = value;
-                if (_TableLayoutPanel1 != null)
-                {
-                }
             }
         }
 
-        private Label _help_resultsFilesCompressed;
+        private Label _helpResultsFilesCompressed;
 
-        internal Label help_resultsFilesCompressed
+        internal Label helpResultsFilesCompressed
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _help_resultsFilesCompressed;
+                return _helpResultsFilesCompressed;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_help_resultsFilesCompressed != null)
-                {
-                }
-
-                _help_resultsFilesCompressed = value;
-                if (_help_resultsFilesCompressed != null)
-                {
-                }
+                _helpResultsFilesCompressed = value;
             }
         }
 
-        private Label _labelFilesCompressed;
+        private Label _lblFilesCompressed;
 
-        internal Label labelFilesCompressed
+        internal Label lblFilesCompressed
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _labelFilesCompressed;
+                return _lblFilesCompressed;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_labelFilesCompressed != null)
-                {
-                }
-
-                _labelFilesCompressed = value;
-                if (_labelFilesCompressed != null)
-                {
-                }
+                _lblFilesCompressed = value;
             }
         }
 
-        private Panel _compressedSizeVisual;
+        private Panel _ResultsCompressedBar;
 
-        internal Panel compressedSizeVisual
+        internal Panel ResultsCompressedBar
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _compressedSizeVisual;
+                return _ResultsCompressedBar;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_compressedSizeVisual != null)
-                {
-                }
-
-                _compressedSizeVisual = value;
-                if (_compressedSizeVisual != null)
-                {
-                }
+                _ResultsCompressedBar = value;
             }
         }
 
@@ -2786,38 +2594,24 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_compressedSizeLabel != null)
-                {
-                }
-
                 _compressedSizeLabel = value;
-                if (_compressedSizeLabel != null)
-                {
-                }
             }
         }
 
-        private Panel _Panel5;
+        private Panel _ResultsOriginalBar;
 
-        internal Panel Panel5
+        internal Panel ResultsOriginalBar
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panel5;
+                return _ResultsOriginalBar;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panel5 != null)
-                {
-                }
-
-                _Panel5 = value;
-                if (_Panel5 != null)
-                {
-                }
+                _ResultsOriginalBar = value;
             }
         }
 
@@ -2834,14 +2628,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_origSizeLabel != null)
-                {
-                }
-
                 _origSizeLabel = value;
-                if (_origSizeLabel != null)
-                {
-                }
             }
         }
 
@@ -2917,104 +2704,71 @@ namespace CompactGUI
             }
         }
 
-        private Button _btnUncompress;
+        private Label _lblProgressPercent;
 
-        internal Button btnUncompress
+        internal Label lblProgressPercent
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _btnUncompress;
+                return _lblProgressPercent;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_btnUncompress != null)
+                _lblProgressPercent = value;
+            }
+        }
+
+        private Label _lblGameIssues;
+
+        internal Label lblGameIssues
+        {
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            get
+            {
+                return _lblGameIssues;
+            }
+
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (_lblGameIssues != null)
                 {
-                    _btnUncompress.Click -= BtnUncompress_Click;
+                    _lblGameIssues.Click -= Sb_lblKnownIssues_Click;
                 }
 
-                _btnUncompress = value;
-                if (_btnUncompress != null)
+                _lblGameIssues = value;
+                if (_lblGameIssues != null)
                 {
-                    _btnUncompress.Click += BtnUncompress_Click;
+                    _lblGameIssues.Click += Sb_lblKnownIssues_Click;
                 }
             }
         }
 
-        private Label _sb_progresspercent;
+        private Panel _AnalysisPanel;
 
-        internal Label sb_progresspercent
+        internal Panel AnalysisPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_progresspercent;
+                return _AnalysisPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_progresspercent != null)
+                if (_AnalysisPanel != null)
                 {
+                    _AnalysisPanel.Paint -= Sb_AnalysisPanel_Paint;
                 }
 
-                _sb_progresspercent = value;
-                if (_sb_progresspercent != null)
+                _AnalysisPanel = value;
+                if (_AnalysisPanel != null)
                 {
-                }
-            }
-        }
-
-        private Label _sb_lblGameIssues;
-
-        internal Label sb_lblGameIssues
-        {
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            get
-            {
-                return _sb_lblGameIssues;
-            }
-
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                if (_sb_lblGameIssues != null)
-                {
-                    _sb_lblGameIssues.Click -= Sb_lblKnownIssues_Click;
-                }
-
-                _sb_lblGameIssues = value;
-                if (_sb_lblGameIssues != null)
-                {
-                    _sb_lblGameIssues.Click += Sb_lblKnownIssues_Click;
-                }
-            }
-        }
-
-        private Panel _sb_AnalysisPanel;
-
-        internal Panel sb_AnalysisPanel
-        {
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            get
-            {
-                return _sb_AnalysisPanel;
-            }
-
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                if (_sb_AnalysisPanel != null)
-                {
-                    _sb_AnalysisPanel.Paint -= Sb_AnalysisPanel_Paint;
-                }
-
-                _sb_AnalysisPanel = value;
-                if (_sb_AnalysisPanel != null)
-                {
-                    _sb_AnalysisPanel.Paint += Sb_AnalysisPanel_Paint;
+                    _AnalysisPanel.Paint += Sb_AnalysisPanel_Paint;
                 }
             }
         }
@@ -3045,27 +2799,20 @@ namespace CompactGUI
             }
         }
 
-        private Panel _Panel6;
+        private Panel _OrigSizeBar;
 
-        internal Panel Panel6
+        internal Panel OrigSizeBar
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panel6;
+                return _OrigSizeBar;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panel6 != null)
-                {
-                }
-
-                _Panel6 = value;
-                if (_Panel6 != null)
-                {
-                }
+                _OrigSizeBar = value;
             }
         }
 
@@ -3117,27 +2864,20 @@ namespace CompactGUI
             }
         }
 
-        private Panel _sb_compressedSizeVisual;
+        private Panel _CompSizeBar;
 
-        internal Panel sb_compressedSizeVisual
+        internal Panel CompSizeBar
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _sb_compressedSizeVisual;
+                return _CompSizeBar;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_sb_compressedSizeVisual != null)
-                {
-                }
-
-                _sb_compressedSizeVisual = value;
-                if (_sb_compressedSizeVisual != null)
-                {
-                }
+                _CompSizeBar = value;
             }
         }
 
@@ -3154,38 +2894,24 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_TableLayoutPanel2 != null)
-                {
-                }
-
                 _TableLayoutPanel2 = value;
-                if (_TableLayoutPanel2 != null)
-                {
-                }
             }
         }
 
-        private TableLayoutPanel _TableLayoutPanel4;
+        private TableLayoutPanel _tlpResultsConsole;
 
-        internal TableLayoutPanel TableLayoutPanel4
+        internal TableLayoutPanel tlpResultsConsole
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _TableLayoutPanel4;
+                return _tlpResultsConsole;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_TableLayoutPanel4 != null)
-                {
-                }
-
-                _TableLayoutPanel4 = value;
-                if (_TableLayoutPanel4 != null)
-                {
-                }
+                _tlpResultsConsole = value;
             }
         }
 
@@ -3215,54 +2941,54 @@ namespace CompactGUI
             }
         }
 
-        private LinkLabel _dlUpdateLink;
+        private LinkLabel _UpdateLink;
 
-        internal LinkLabel dlUpdateLink
+        internal LinkLabel UpdateLink
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _dlUpdateLink;
+                return _UpdateLink;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_dlUpdateLink != null)
+                if (_UpdateLink != null)
                 {
-                    _dlUpdateLink.LinkClicked -= DlUpdateLink_LinkClicked;
+                    _UpdateLink.LinkClicked -= DlUpdateLink_LinkClicked;
                 }
 
-                _dlUpdateLink = value;
-                if (_dlUpdateLink != null)
+                _UpdateLink = value;
+                if (_UpdateLink != null)
                 {
-                    _dlUpdateLink.LinkClicked += DlUpdateLink_LinkClicked;
+                    _UpdateLink.LinkClicked += DlUpdateLink_LinkClicked;
                 }
             }
         }
 
-        private GraphicsPanel _results_arc;
+        private GraphicsPanel _ResultsArc;
 
-        internal GraphicsPanel results_arc
+        internal GraphicsPanel ResultsArc
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _results_arc;
+                return _ResultsArc;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_results_arc != null)
+                if (_ResultsArc != null)
                 {
-                    _results_arc.Paint -= ResultsArcPaint;
+                    _ResultsArc.Paint -= ResultsArcPaint;
                 }
 
-                _results_arc = value;
-                if (_results_arc != null)
+                _ResultsArc = value;
+                if (_ResultsArc != null)
                 {
-                    _results_arc.Paint += ResultsArcPaint;
+                    _ResultsArc.Paint += ResultsArcPaint;
                 }
             }
         }
@@ -3308,14 +3034,7 @@ namespace CompactGUI
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_TrayMenu != null)
-                {
-                }
-
                 _TrayMenu = value;
-                if (_TrayMenu != null)
-                {
-                }
             }
         }
 
@@ -3397,28 +3116,28 @@ namespace CompactGUI
             }
         }
 
-        private Panel _Panel1;
+        private Panel _FilesPanel;
 
-        internal Panel Panel1
+        internal Panel FilesPanel
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _Panel1;
+                return _FilesPanel;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_Panel1 != null)
+                if (_FilesPanel != null)
                 {
-                    _Panel1.Paint -= Panel1_Paint;
+                    _FilesPanel.Paint -= Panel1_Paint;
                 }
 
-                _Panel1 = value;
-                if (_Panel1 != null)
+                _FilesPanel = value;
+                if (_FilesPanel != null)
                 {
-                    _Panel1.Paint += Panel1_Paint;
+                    _FilesPanel.Paint += Panel1_Paint;
                 }
             }
         }
